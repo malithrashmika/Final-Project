@@ -22,7 +22,7 @@
                         <Image url="@../icons/pexels-asadphoto-1449773.jpg" />
                     </image>
                 </ImageView>
-                <JFXButton id="button" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="487.0" layoutY="368.0" onAction="#btnSaveOnAction" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #D80032;" stylesheets="@../icons/button.css" text="Make Reservation" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <JFXButton id="button" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="487.0" layoutY="368.0" onAction="#btnMakeOnAction" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #D80032;" stylesheets="@../icons/button.css" text="Make Reservation" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
@@ -37,21 +37,27 @@
                   </ImageView>
                </graphic>
                 </JFXButton>
-            <Label layoutX="40.0" layoutY="114.0" prefHeight="39.0" prefWidth="126.0" text="Reserved Date :" textFill="#19249e">
+            <Label layoutX="40.0" layoutY="114.0" prefHeight="39.0" prefWidth="126.0" text="Reservation ID:" textFill="#19249e">
                <font>
                   <Font name="Cambria Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="173.0" layoutY="125.0" prefHeight="18.0" prefWidth="0.0" />
-            <Label layoutX="523.0" layoutY="114.0" prefHeight="39.0" prefWidth="134.0" text="Reserved Time :" textFill="#19249e">
+            <Label fx:id="lblRID" layoutX="172.0" layoutY="124.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold Italic" size="15.0" />
+               </font></Label>
+            <Label layoutX="550.0" layoutY="114.0" prefHeight="39.0" prefWidth="134.0" text="Reserved Time :" textFill="#19249e">
                <font>
                   <Font name="Cambria Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="656.0" layoutY="125.0" prefHeight="18.0" prefWidth="0.0" />
-            <JFXComboBox layoutX="33.0" layoutY="215.0" opacity="0.88" prefHeight="26.0" prefWidth="227.0" promptText="Employee ID" style="-fx-background-color: #FFFF;" />
-            <JFXComboBox layoutX="487.0" layoutY="215.0" opacity="0.88" prefHeight="26.0" prefWidth="227.0" promptText="Customer ID" style="-fx-background-color: #FFFF;" />
-            <DatePicker layoutX="33.0" layoutY="309.0" prefHeight="26.0" prefWidth="227.0" promptText="Date of Reservation" />
+            <Label fx:id="lblRTime" layoutX="684.0" layoutY="125.0" prefHeight="18.0" prefWidth="0.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="15.0" />
+               </font></Label>
+            <JFXComboBox fx:id="cmbEmpID" layoutX="33.0" layoutY="215.0" onAction="#cmbEmpOnAction" opacity="0.88" prefHeight="26.0" prefWidth="227.0" promptText="Employee ID" style="-fx-background-color: #FFFF;" />
+            <JFXComboBox fx:id="cmbCusID" layoutX="487.0" layoutY="215.0" onAction="#cmbCusOnAction" opacity="0.88" prefHeight="26.0" prefWidth="227.0" promptText="Customer ID" style="-fx-background-color: #FFFF;" />
+            <DatePicker fx:id="DateOFR" layoutX="33.0" layoutY="309.0" onAction="#datePickOnAction" prefHeight="26.0" prefWidth="227.0" promptText="Date of Reservation" />
             <JFXComboBox layoutX="487.0" layoutY="309.0" opacity="0.88" prefHeight="26.0" prefWidth="227.0" promptText="Table Number" style="-fx-background-color: #FFFF;" />
             <Label layoutX="33.0" layoutY="175.0" prefHeight="39.0" prefWidth="126.0" text="Employee" textFill="#19249e">
                <font>
@@ -68,9 +74,19 @@
                   <Font name="Cambria Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="487.0" layoutY="268.0" prefHeight="39.0" prefWidth="126.0" text="Table Number" textFill="#19249e">
+            <Label layoutX="487.0" layoutY="269.0" prefHeight="39.0" prefWidth="126.0" text="Table Number" textFill="#19249e">
                <font>
                   <Font name="Cambria Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="114.0" prefHeight="39.0" prefWidth="126.0" text="Reserved Date :" textFill="#19249e">
+               <font>
+                  <Font name="Cambria Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblRdate1" layoutX="413.0" layoutY="125.0" prefHeight="18.0" prefWidth="0.0" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold Italic" size="15.0" />
                </font>
             </Label>
             </children>
@@ -91,16 +107,16 @@
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></TextField>
-        <TableView fx:id="tblCustomer" editable="true" layoutX="19.0" layoutY="431.0" opacity="0.8" prefHeight="162.0" prefWidth="738.0" style="-fx-background-color: #F8F4EC;" tableMenuButtonVisible="true">
+        <TableView fx:id="tblreservation" editable="true" layoutX="19.0" layoutY="431.0" opacity="0.8" prefHeight="162.0" prefWidth="738.0" style="-fx-background-color: #F8F4EC;" tableMenuButtonVisible="true">
             <columns>
-                <TableColumn prefWidth="88.79998970031738" text="Reservation ID" />
-                <TableColumn prefWidth="99.19994354248047" text="Reserved Date" />
-                <TableColumn prefWidth="88.7999267578125" text="Reserved Time" />
-                <TableColumn prefWidth="117.5999755859375" text="Date of Reservation" />
-            <TableColumn prefWidth="94.39999389648438" text="Employee ID" />
-            <TableColumn prefWidth="92.0" text="Table Number" />
-            <TableColumn prefWidth="76.79998779296875" text="Customer ID" />
-            <TableColumn prefWidth="76.0" text="Action" />
+                <TableColumn fx:id="colReserveID" prefWidth="88.79998970031738" text="Reservation ID" />
+                <TableColumn fx:id="colReserveDate" prefWidth="99.19994354248047" text="Reserved Date" />
+                <TableColumn fx:id="colReserveTime" prefWidth="88.7999267578125" text="Reserved Time" />
+                <TableColumn fx:id="colDoR" prefWidth="117.5999755859375" text="Date of Reservation" />
+            <TableColumn fx:id="colEmpID" prefWidth="94.39999389648438" text="Employee ID" />
+            <TableColumn fx:id="colTNId" prefWidth="92.0" text="Table Number" />
+            <TableColumn fx:id="colcusId" prefWidth="76.79998779296875" text="Customer ID" />
+            <TableColumn fx:id="colAction" prefWidth="76.0" text="Action" />
             </columns>
         </TableView>
         <ImageView layoutX="710.0" layoutY="42.0">
