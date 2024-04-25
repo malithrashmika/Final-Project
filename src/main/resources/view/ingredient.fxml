@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="613.0" prefWidth="779.0" style="-fx-background-color: FFF8DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.ingredientController">
+    <children>
+        <AnchorPane layoutX="-1.0">
+            <children>
+                <ImageView fitHeight="617.0" fitWidth="780.0" opacity="0.7">
+                    <image>
+                        <Image url="@../../../../../../../resorces/pexels-rachel-claire-5490922.jpg" />
+                    </image>
+                </ImageView>
+                <TextField fx:id="txtName" layoutX="43.0" layoutY="120.0" prefHeight="26.0" prefWidth="242.0" promptText="Ingredient Name" />
+                <TextField fx:id="txtPrice" layoutX="43.0" layoutY="205.0" prefHeight="26.0" prefWidth="148.0" promptText="unit price" />
+                <Label layoutX="45.0" layoutY="92.0" text="Ingredient Name" textFill="#730667">
+                    <font>
+                        <Font name="Georgia Bold Italic" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="45.0" layoutY="179.0" text="Price" textFill="#730667" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font name="Georgia Bold Italic" size="18.0" />
+                    </font>
+                </Label>
+                <JFXButton id="button" buttonType="RAISED" layoutX="588.0" layoutY="272.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" ripplerFill="WHITE" style="-fx-background-color: #95CD41;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="23.0">
+                            <image>
+                                <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <JFXButton id="button" buttonType="RAISED" layoutX="331.0" layoutY="272.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="29.0">
+                            <image>
+                                <Image url="@../../../../../../../resorces/icons8-clear-30 (1).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <JFXButton id="button" buttonType="RAISED" layoutX="72.0" layoutY="272.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="29.0">
+                            <image>
+                                <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <Label layoutX="469.0" layoutY="92.0" text="Ingredient Category" textFill="#730667">
+                    <font>
+                        <Font name="Georgia Bold Italic" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="264.0" layoutY="171.0" text="Quantity Avalible" textFill="#730667" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font name="Georgia Bold Italic" size="18.0" />
+                    </font>
+                </Label>
+                <JFXComboBox fx:id="cmbCategory" focusColor="WHITE" labelFloat="true" layoutX="467.0" layoutY="120.0" prefHeight="26.0" prefWidth="242.0" promptText="Select Item type" style="-fx-background-color: #FFFF;" unFocusColor="WHITE">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXComboBox>
+            <Label layoutX="517.0" layoutY="173.0" text="Supplier" textFill="#730667">
+               <font>
+                  <Font name="Georgia Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbSupplier" focusColor="WHITE" labelFloat="true" layoutX="517.0" layoutY="201.0" prefHeight="26.0" prefWidth="192.0" promptText="Select Supplier" style="-fx-background-color: #FFFF;" unFocusColor="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXComboBox>
+            <TextField fx:id="txtQty" layoutX="264.0" layoutY="203.0" prefHeight="26.0" prefWidth="185.0" promptText="Qty avalible" />
+            </children>
+        </AnchorPane>
+        <JFXButton buttonType="RAISED" ellipsisString="%key.unspecified" layoutX="14.0" layoutY="28.0" onAction="#btnBackOnAction" prefHeight="39.0" prefWidth="43.0" text="." textOverrun="CLIP">
+            <font>
+                <Font size="5.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="34.0" fitWidth="34.0">
+                    <image>
+                        <Image url="@../../../../../../../resorces/icons8-back-50 (1).png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <TextField fx:id="txtInID" layoutX="399.0" layoutY="37.0" prefHeight="39.0" prefWidth="350.0" promptText="Search Ingredient ID">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font></TextField>
+        <TableView editable="true" layoutX="27.0" layoutY="358.0" prefHeight="235.0" prefWidth="731.0" style="-fx-background-color: #F8F4EC;" tableMenuButtonVisible="true">
+            <columns>
+                <TableColumn fx:id="colInID" prefWidth="86.39999580383301" text="Ingredient ID" />
+                <TableColumn fx:id="colINName" prefWidth="123.20000457763672" text="Ingredient Name" />
+                <TableColumn fx:id="colCategory" prefWidth="120.79998779296875" text="Category" />
+                <TableColumn fx:id="colPrice" prefWidth="160.80007934570312" text="Unit Price" />
+                <TableColumn fx:id="colInQty" minWidth="9.60003662109375" prefWidth="169.5999755859375" text="Qty Avalible" />
+            <TableColumn fx:id="colAction" prefWidth="73.60009765625" text="Action" />
+            </columns>
+        </TableView>
+        <ImageView layoutX="710.0" layoutY="42.0">
+            <image>
+                <Image url="@../../../../../../../resorces/icons8-search-30.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
