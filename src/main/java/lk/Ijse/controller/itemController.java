@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 public class itemController {
 
@@ -31,6 +32,9 @@ public class itemController {
     private TableColumn<?, ?> coltype;
 
     @FXML
+    private ImageView item;
+
+    @FXML
     private TableView<?> tblItem;
 
     @FXML
@@ -52,11 +56,6 @@ public class itemController {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
 
     }
 

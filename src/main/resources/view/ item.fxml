@@ -16,7 +16,7 @@
     <children>
         <AnchorPane layoutX="-1.0">
             <children>
-                <ImageView fitHeight="617.0" fitWidth="780.0" opacity="0.79">
+                <ImageView fx:id="item" fitHeight="617.0" fitWidth="780.0" opacity="0.79">
                     <image>
                         <Image url="@../../../../../../../resorces/pexels-rachel-claire-5490922.jpg" />
                     </image>
@@ -33,22 +33,7 @@
                       <Font name="Georgia Bold Italic" size="18.0" />
                   </font>
               </Label>
-              <JFXButton id="button" buttonType="RAISED" layoutX="432.0" layoutY="272.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: B80000;" stylesheets="@../icons/button.css" text="Delete" textFill="WHITE">
-                  <font>
-                      <Font name="Arial Bold" size="18.0" />
-                  </font>
-                  <graphic>
-                      <ImageView fitHeight="24.0" fitWidth="21.0">
-                          <image>
-                              <Image url="@../../../../../../../resorces/icons8-delete-50.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-                  <cursor>
-                      <Cursor fx:constant="HAND" />
-                  </cursor>
-            </JFXButton>
-              <JFXButton id="button" buttonType="RAISED" layoutX="623.0" layoutY="272.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" ripplerFill="WHITE" style="-fx-background-color: #95CD41;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+              <JFXButton id="button" buttonType="RAISED" layoutX="588.0" layoutY="272.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" ripplerFill="WHITE" style="-fx-background-color: #95CD41;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
                   <font>
                       <Font name="Arial Bold" size="18.0" />
                   </font>
@@ -63,7 +48,7 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
             </JFXButton>
-              <JFXButton id="button" buttonType="RAISED" layoutX="243.0" layoutY="272.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
+              <JFXButton id="button" buttonType="RAISED" layoutX="447.0" layoutY="272.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
                   <font>
                       <Font name="Arial Bold" size="18.0" />
                   </font>
@@ -78,7 +63,7 @@
                       <Cursor fx:constant="HAND" />
                   </cursor>
             </JFXButton>
-              <JFXButton id="button" buttonType="RAISED" layoutX="46.0" layoutY="272.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+              <JFXButton id="button" buttonType="RAISED" layoutX="302.0" layoutY="272.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
                   <font>
                       <Font name="Arial Bold" size="18.0" />
                   </font>
