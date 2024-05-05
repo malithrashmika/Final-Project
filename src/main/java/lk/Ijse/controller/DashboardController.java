@@ -73,17 +73,9 @@ public class DashboardController {
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
-        Button btn = (Button) event.getSource();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/customer.fxml"));
-        Parent customerRoot = loader.load();
-
-        // Get the root pane of the current scene
-        Pane rootPane = (Pane) btn.getScene().getRoot();
-
-        // Add the content loaded from customer.fxml to the root pane
-        rootPane.getChildren().add(customerRoot);
-
-        // Optionally, you can adjust the size of the window to fit the new content
+        AnchorPane anchorPane=FXMLLoader.load(getClass().getResource("/view/customer.fxml"));
+        root.getChildren().clear();
+        root.getChildren().add(anchorPane);
 
     }
 
@@ -132,7 +124,7 @@ public class DashboardController {
 
     @FXML
     void btnStaffOnAction(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("employee.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/view/employee.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
