@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="613.0" prefWidth="779.0" style="-fx-background-color: FFF8DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.customerController">
+<AnchorPane fx:id="root" prefHeight="613.0" prefWidth="779.0" style="-fx-background-color: FFF8DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.eventController">
     <children>
 
     </children>

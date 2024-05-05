@@ -1,16 +1,18 @@
 package lk.Ijse.controller;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class employeeController {
 
     @FXML
-    private ComboBox<?> cmbempName;
+    private JFXComboBox<?> cmbempRole;
 
     @FXML
     private TableColumn<?, ?> colempId;
@@ -25,24 +27,30 @@ public class employeeController {
     private TableColumn<?, ?> colempTel;
 
     @FXML
+    private AnchorPane root;
+
+    @FXML
     private TableView<?> tblemployee;
 
     @FXML
-    private TextField txtTel;
+    private JFXTextField txtTel;
 
     @FXML
-    private TextField txtempID;
+    private JFXTextField txtempID;
 
     @FXML
-    private TextField txtname;
+    private JFXTextField txtname;
 
     @FXML
-    void btnBackOnAction(ActionEvent event) {
+    private TextField txtsearchId;
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnClearOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) {
 
     }
 
@@ -57,7 +65,7 @@ public class employeeController {
     }
 
     @FXML
-    void cmbCustomerOnAction(ActionEvent event) {
+    void txtSearchOnAction(ActionEvent event) {
 
     }
 

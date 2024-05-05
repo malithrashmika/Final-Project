@@ -1,177 +1,279 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="613.0" prefWidth="779.0" style="-fx-background-color: FFF8DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.rideController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #D9E1E7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.rideController">
     <children>
-        <AnchorPane layoutX="-1.0">
+        <AnchorPane layoutX="277.0" layoutY="73.0" prefHeight="727.0" prefWidth="925.0" style="-fx-background-color: #fed6e3;" styleClass="body-background" stylesheets="@../icons/fb.css">
+            <effect>
+                <BoxBlur />
+            </effect></AnchorPane>
+        <VBox alignment="CENTER" layoutX="-1.0" layoutY="227.0" prefHeight="574.0" prefWidth="278.0" spacing="4.0">
             <children>
-                <ImageView fitHeight="617.0" fitWidth="780.0" opacity="0.79">
-                    <image>
-                        <Image url="@../../../../../../../resorces/pexels-denys-gromov-12645243.jpg" />
-                    </image>
-                </ImageView>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="10.0" layoutY="10.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" styleClass="b" stylesheets="@../icons/fullpackstyling.css" text="Customer" textFill="WHITE" VBox.vgrow="ALWAYS">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Calibri" size="96.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="152.0">
+                            <image>
+                                <Image url="@../icons/icons8-customer-50%20(2).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="69.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Menu" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="94.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="144.0">
+                            <image>
+                                <Image url="@../icons/icons8-cocktail-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="168.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Orders" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="140.0">
+                            <image>
+                                <Image url="@../icons/icons8-order-32.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="398.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Employee" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="152.0">
+                            <image>
+                                <Image url="@../icons/icons8-employee-50%20(1).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="431.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Suppliers" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="152.0">
+                            <image>
+                                <Image url="@../icons/icons8-lorry-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="464.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Ingredients" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="157.0">
+                            <image>
+                                <Image url="@../icons/icons8-leaf-50.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="136.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Ride" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="35.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="123.0">
+                            <image>
+                                <Image url="@../icons/icons8-ride-50%20(2).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
+                <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="34.0" layoutY="431.0" opacity="0.83" prefHeight="62.0" prefWidth="230.0" stylesheets="@../icons/fullpackstyling.css" text="Logout" textFill="WHITE">
+                    <ripplerFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color green="0.02157360315322876" blue="1.0" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color red="0.9411764740943909" green="0.1764705926179886" blue="0.1764705926179886" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </ripplerFill>
+                    <font>
+                        <Font name="Javanese Text" size="22.0" />
+                    </font>
+                    <padding>
+                        <Insets right="75.0" top="-1.0" />
+                    </padding>
+                    <graphic>
+                        <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="135.0">
+                            <image>
+                                <Image url="@../icons/icons8-login-64.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
             </children>
-        </AnchorPane>
-        <JFXButton buttonType="RAISED" ellipsisString="%key.unspecified" layoutX="14.0" layoutY="28.0" prefHeight="39.0" prefWidth="43.0" text="." textOverrun="CLIP">
-            <font>
-                <Font size="5.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="34.0" fitWidth="34.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-back-50 (1).png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </JFXButton>
-        <TextField layoutX="399.0" layoutY="37.0" prefHeight="39.0" prefWidth="350.0" promptText="Search CustomerID">
-            <font>
-                <Font name="System Bold" size="12.0" />
-            </font></TextField>
-        <TableView editable="true" layoutX="27.0" layoutY="255.0" prefHeight="338.0" prefWidth="379.0" style="-fx-background-color: #F8F4EC;" tableMenuButtonVisible="true">
-            <columns>
-                <TableColumn prefWidth="77.60000801086426" text="Customer ID" />
-                <TableColumn prefWidth="180.79998016357422" text="Name" />
-                <TableColumn prefWidth="121.60003662109375" text="Contact Number" />
-            </columns>
-        </TableView>
-        <TextField layoutX="498.0" layoutY="228.0" prefHeight="26.0" prefWidth="242.0" />
-        <TextField layoutX="498.0" layoutY="325.0" prefHeight="26.0" prefWidth="242.0" />
-        <Label layoutX="498.0" layoutY="199.0" text="Customer Name">
-            <font>
-                <Font name="Georgia Bold Italic" size="18.0" />
-            </font>
-            <textFill>
-                <RadialGradient centerX="0.48230090183494356" centerY="0.609848470398874" radius="0.5">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color />
-                            </color>
-                        </Stop>
-                        <Stop offset="0.006729475100942127">
-                            <color>
-                                <Color />
-                            </color>
-                        </Stop>
-                        <Stop offset="0.006729475100942127">
-                            <color>
-                                <Color red="0.17000000178813934" green="0.9015516042709351" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="1.0" green="1.0" blue="1.0" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </RadialGradient>
-            </textFill>
-        </Label>
-        <Label layoutX="498.0" layoutY="298.0" text="Customer contcat" textOverrun="WORD_ELLIPSIS">
-            <font>
-                <Font name="Georgia Bold Italic" size="18.0" />
-            </font>
-            <textFill>
-                <RadialGradient centerX="0.48230090183494356" centerY="0.609848470398874" radius="0.5">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color />
-                            </color>
-                        </Stop>
-                        <Stop offset="0.006729475100942127">
-                            <color>
-                                <Color />
-                            </color>
-                        </Stop>
-                        <Stop offset="0.006729475100942127">
-                            <color>
-                                <Color red="0.17000000178813934" green="0.9015516042709351" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="1.0" green="1.0" blue="1.0" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </RadialGradient>
-            </textFill>
-        </Label>
-        <ImageView layoutX="710.0" layoutY="42.0">
+        </VBox>
+        <ImageView fitHeight="254.0" fitWidth="270.0" layoutX="5.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../../../../../../resorces/icons8-search-30.png" />
+                <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
             </image>
         </ImageView>
-        <JFXButton id="button" buttonType="RAISED" layoutX="640.0" layoutY="484.0" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: B80000;" stylesheets="@../icons/button.css" text="Delete" textFill="WHITE">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="24.0" fitWidth="21.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-delete-50.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor></JFXButton>
-        <JFXButton id="button" buttonType="RAISED" layoutX="640.0" layoutY="391.0" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #95CD41;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="24.0" fitWidth="23.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor></JFXButton>
-        <JFXButton id="button" buttonType="RAISED" layoutX="480.0" layoutY="484.0" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="24.0" fitWidth="29.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-clear-30 (1).png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor></JFXButton>
-        <JFXButton id="button" buttonType="RAISED" layoutX="480.0" layoutY="392.0" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
-            <font>
-                <Font name="Arial Bold" size="18.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="24.0" fitWidth="29.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor></JFXButton>
     </children>
 </AnchorPane>

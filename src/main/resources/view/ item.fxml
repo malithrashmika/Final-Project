@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -12,120 +14,126 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="613.0" prefWidth="779.0" style="-fx-background-color: FFF8DC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
+<AnchorPane fx:id="root" layoutX="260.0" layoutY="73.0" prefHeight="727.0" prefWidth="1000.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
     <children>
-        <AnchorPane layoutX="-1.0">
-            <children>
-                <ImageView fx:id="item" fitHeight="617.0" fitWidth="780.0" opacity="0.79">
-                    <image>
-                        <Image url="@../../../../../../../resorces/pexels-rachel-claire-5490922.jpg" />
-                    </image>
-                </ImageView>
-              <TextField fx:id="txtname" layoutX="43.0" layoutY="120.0" prefHeight="26.0" prefWidth="242.0" />
-              <TextField fx:id="txtprice" layoutX="43.0" layoutY="201.0" prefHeight="26.0" prefWidth="242.0" />
-              <Label layoutX="45.0" layoutY="92.0" text="Description">
-                  <font>
-                      <Font name="Georgia Bold Italic" size="18.0" />
-                  </font>
-              </Label>
-              <Label layoutX="46.0" layoutY="168.0" text="Price" textOverrun="WORD_ELLIPSIS">
-                  <font>
-                      <Font name="Georgia Bold Italic" size="18.0" />
-                  </font>
-              </Label>
-              <JFXButton id="button" buttonType="RAISED" layoutX="588.0" layoutY="272.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" ripplerFill="WHITE" style="-fx-background-color: #95CD41;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
-                  <font>
-                      <Font name="Arial Bold" size="18.0" />
-                  </font>
-                  <graphic>
-                      <ImageView fitHeight="24.0" fitWidth="23.0">
-                          <image>
-                              <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-                  <cursor>
-                      <Cursor fx:constant="HAND" />
-                  </cursor>
-            </JFXButton>
-              <JFXButton id="button" buttonType="RAISED" layoutX="447.0" layoutY="272.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
-                  <font>
-                      <Font name="Arial Bold" size="18.0" />
-                  </font>
-                  <graphic>
-                      <ImageView fitHeight="24.0" fitWidth="29.0">
-                          <image>
-                              <Image url="@../../../../../../../resorces/icons8-clear-30 (1).png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-                  <cursor>
-                      <Cursor fx:constant="HAND" />
-                  </cursor>
-            </JFXButton>
-              <JFXButton id="button" buttonType="RAISED" layoutX="302.0" layoutY="272.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
-                  <font>
-                      <Font name="Arial Bold" size="18.0" />
-                  </font>
-                  <graphic>
-                      <ImageView fitHeight="24.0" fitWidth="29.0">
-                          <image>
-                              <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
-                          </image>
-                      </ImageView>
-                  </graphic>
-                  <cursor>
-                      <Cursor fx:constant="HAND" />
-                  </cursor>
-            </JFXButton>
-            <Label layoutX="469.0" layoutY="92.0" text="Item type">
-               <font>
-                  <Font name="Georgia Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="467.0" layoutY="168.0" text="QytOnHand" textOverrun="WORD_ELLIPSIS">
-               <font>
-                  <Font name="Georgia Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <JFXComboBox fx:id="cmbtype" focusColor="WHITE" labelFloat="true" layoutX="467.0" layoutY="120.0" onAction="#cmbItemOnAction" prefHeight="26.0" prefWidth="242.0" promptText="Select Item type" style="-fx-background-color: #FFFF;" unFocusColor="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXComboBox>
-            <TextField fx:id="txtname1" layoutX="467.0" layoutY="201.0" prefHeight="26.0" prefWidth="242.0" />
-            </children>
-        </AnchorPane>
-        <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="28.0" onAction="#btnBackOnAction" prefHeight="39.0" prefWidth="43.0" text="." textOverrun="CLIP">
-            <font>
-                <Font size="5.0" />
-            </font>
-            <graphic>
-                <ImageView fitHeight="34.0" fitWidth="34.0">
-                    <image>
-                        <Image url="@../../../../../../../resorces/icons8-back-50 (1).png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </JFXButton>
-        <TextField fx:id="txtId" layoutX="399.0" layoutY="37.0" prefHeight="39.0" prefWidth="350.0" promptText="Search Item ID">
+        <TextField fx:id="txtsearchId" layoutX="359.0" layoutY="37.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search ItemID">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font></TextField>
-        <TableView fx:id="tblItem" editable="true" layoutX="27.0" layoutY="358.0" prefHeight="235.0" prefWidth="724.0" style="-fx-background-color: #F8F4EC;" tableMenuButtonVisible="true">
+        <TableView fx:id="tblemployee" editable="true" layoutX="55.0" layoutY="431.0" prefHeight="214.0" prefWidth="658.0" style="-fx-background-color: #C0D6E8;" stylesheets="@../icons/fullpackstyling.css">
             <columns>
-                <TableColumn fx:id="colCode" prefWidth="77.60000801086426" text="Item ID" />
-                <TableColumn fx:id="colDescription" prefWidth="135.9999771118164" text="Description" />
-                <TableColumn fx:id="coltype" prefWidth="148.800048828125" text="Item Type" />
-            <TableColumn fx:id="colUnitPrice" prefWidth="100.79998779296875" text="Item Price" />
-            <TableColumn fx:id="colQtyOnHand" prefWidth="124.80001831054688" text="QtyOnHand" />
-            <TableColumn fx:id="colAction" prefWidth="119.99993896484375" text="Action" />
+                <TableColumn fx:id="colempId" prefWidth="77.60000801086426" text="item ID" />
+                <TableColumn fx:id="colempName" prefWidth="108.80001831054688" text="Name" />
+                <TableColumn fx:id="colempTel" prefWidth="197.60003662109375" text="Description" />
+                <TableColumn fx:id="colempRole" prefWidth="81.5999755859375" text="Price" />
+            <TableColumn fx:id="colempRole1" prefWidth="70.39996337890625" text="Item Type" />
+            <TableColumn fx:id="colempRole11" prefWidth="80.79998779296875" text="QtyOnHand" />
             </columns>
+            <styleClass>
+                <String fx:value="table-view" />
+                <String fx:value="table-row-cell" />
+            </styleClass>
         </TableView>
-        <ImageView layoutX="710.0" layoutY="42.0">
+        <ImageView layoutX="667.0" layoutY="42.0">
             <image>
                 <Image url="@../../../../../../../resorces/icons8-search-30.png" />
             </image>
         </ImageView>
+        <JFXButton id="button" buttonType="RAISED" layoutX="570.0" layoutY="277.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="29.0">
+                    <image>
+                        <Image url="@../../../../../../../resorces/icons8-clear-30 (1).png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+        <JFXButton id="button" buttonType="RAISED" layoutX="411.0" layoutY="277.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="23.0">
+                    <image>
+                        <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </JFXButton>
+        <JFXButton id="button" buttonType="RAISED" layoutX="411.0" layoutY="339.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView fitHeight="24.0" fitWidth="29.0">
+                    <image>
+                        <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor></JFXButton>
+        <JFXButton id="button" buttonType="RAISED" layoutX="570.0" layoutY="339.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF004D;" stylesheets="@../icons/button.css" text="Delete" textFill="#f7f7f7">
+            <font>
+                <Font name="Arial Bold" size="18.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="22.0" fitWidth="23.0">
+                    <image>
+                        <Image url="@../icons/icons8-delete-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+        <JFXTextField fx:id="txtItemID" labelFloat="true" layoutX="83.0" layoutY="99.0" prefHeight="26.0" prefWidth="242.0" promptText="Item ID">
+         <font>
+            <Font name="Corbel Bold Italic" size="13.0" />
+         </font></JFXTextField>
+        <JFXTextField fx:id="txtItemname" labelFloat="true" layoutX="83.0" layoutY="153.0" prefHeight="26.0" prefWidth="242.0" promptText="Item Name">
+         <font>
+            <Font name="Corbel Bold Italic" size="13.0" />
+         </font></JFXTextField>
+        <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="83.0" layoutY="273.0" prefHeight="26.0" prefWidth="242.0" promptText="Item Price">
+            <font>
+                <Font name="Corbel Bold Italic" size="13.0" />
+            </font></JFXTextField>
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="470.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+            </image>
+        </ImageView>
+        <Label layoutX="55.0" layoutY="33.0" prefHeight="47.0" prefWidth="286.0" text="Items" textFill="#917c7c" underline="true" wrapText="true">
+            <font>
+                <Font name="Cambria Bold Italic" size="34.0" />
+            </font>
+        </Label>
+        <JFXComboBox fx:id="cmbitemType" labelFloat="true" layoutX="83.0" layoutY="326.0" onAction="#cmbItemtOnAction" prefHeight="26.0" prefWidth="242.0" promptText="Item Type" />
+      <JFXTextField fx:id="txtItemPrice" labelFloat="true" layoutX="83.0" layoutY="204.0" prefHeight="39.0" prefWidth="242.0" promptText="Item Description">
+         <font>
+            <Font name="Corbel Bold Italic" size="13.0" />
+         </font>
+      </JFXTextField>
+      <TextField fx:id="txtqtyOnHand" layoutX="166.0" layoutY="382.0" prefHeight="26.0" prefWidth="161.0" />
+      <Label layoutX="81.0" layoutY="386.0" prefHeight="18.0" prefWidth="83.0" text="QtyOnHand :">
+         <font>
+            <Font name="Corbel Bold Italic" size="14.0" />
+         </font>
+      </Label>
     </children>
+    <cursor>
+        <Cursor fx:constant="OPEN_HAND" />
+    </cursor>
 </AnchorPane>

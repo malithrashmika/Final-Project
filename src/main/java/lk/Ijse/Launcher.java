@@ -2,6 +2,7 @@ package lk.Ijse;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,7 +13,9 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("Login.fxml"))));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+        stage.setScene(new Scene(root));
+//stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("Login.fxml"))));
 stage.setTitle("Login");
 stage.show();
     }
