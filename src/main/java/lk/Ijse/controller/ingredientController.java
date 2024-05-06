@@ -19,10 +19,10 @@ public class ingredientController implements Initializable {
     }
 
     @FXML
-    private ComboBox<?> cmbInCategory;
+    private ComboBox<?> cmbISupplier;
 
     @FXML
-    private TableColumn<?, ?> cmbSupplier;
+    private ComboBox<?> cmbInCategory;
 
     @FXML
     private TableColumn<?, ?> colIName;
@@ -35,6 +35,9 @@ public class ingredientController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colIiqty;
+
+    @FXML
+    private TableColumn<?, ?> colSupplier;
 
     @FXML
     private TableColumn<?, ?> coliCategory;
