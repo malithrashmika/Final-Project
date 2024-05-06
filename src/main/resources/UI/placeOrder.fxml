@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="UI.PlaceOrder"
+            prefHeight="400.0" prefWidth="600.0">
+    <AnchorPane layoutX="1263.0" layoutY="3.0" prefHeight="794.0" prefWidth="270.0" style="-fx-border-color: black; -fx-border-radius: 2em;">
+        <children>
+            <Label layoutX="24.0" layoutY="57.0" prefHeight="39.0" prefWidth="81.0" text="Order ID:" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="lblID" layoutX="122.0" layoutY="67.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+                <font>
+                    <Font name="Cambria Bold Italic" size="15.0" />
+                </font>
+            </Label>
+            <Label layoutX="42.0" layoutY="94.0" prefHeight="39.0" prefWidth="58.0" text="Name :" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="lblname" layoutX="101.0" layoutY="104.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+                <font>
+                    <Font name="Cambria Bold Italic" size="15.0" />
+                </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="138.0" prefHeight="39.0" prefWidth="58.0" text=" Price :" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label fx:id="lblprice" layoutX="101.0" layoutY="148.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+                <font>
+                    <Font name="Cambria Bold Italic" size="15.0" />
+                </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="187.0" prefHeight="39.0" prefWidth="113.0" text="QtyOnHand  :" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="239.0" prefHeight="39.0" prefWidth="126.0" text="Customer ID" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="334.0" prefHeight="39.0" prefWidth="126.0" text="Item" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="424.0" prefHeight="39.0" prefWidth="46.0" text="Qty :" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="txtqty" layoutX="57.0" layoutY="431.0" prefHeight="26.0" prefWidth="58.0" />
+            <JFXButton buttonType="RAISED" layoutX="186.0" layoutY="285.0" onAction="#btnNewCustomerOnAction" prefHeight="26.0" prefWidth="58.0" style="-fx-background-color: #40F8FF;" text="NEW +" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </JFXButton>
+            <JFXComboBox fx:id="cmbCusID" layoutX="19.0" layoutY="286.0" onAction="#cmbCusOnAction" prefHeight="26.0" prefWidth="129.0" promptText="Customer ID" />
+            <Label fx:id="lblqtyonHnad" layoutX="130.0" layoutY="194.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+                <font>
+                    <Font name="Cambria Bold Italic" size="15.0" />
+                </font>
+            </Label>
+            <JFXComboBox fx:id="cmbItemCode" layoutX="17.0" layoutY="371.0" onAction="#cmbitemOnAction" prefHeight="26.0" prefWidth="135.0" promptText="Item ID" />
+            <JFXButton id="button" fx:id="btnAddToCart" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="169.0" layoutY="424.0" onAction="#btnAddToCartOnAction" prefHeight="39.0" prefWidth="71.0" style="-fx-background-color: #A760FF;" stylesheets="@../icons/button.css" text="+" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <graphic>
+                    <ImageView fitHeight="26.0" fitWidth="30.0" nodeOrientation="INHERIT">
+                        <image>
+                            <Image url="@../icons/icons8-cart-64.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </JFXButton>
+            <Label layoutX="11.0" layoutY="544.0" prefHeight="39.0" prefWidth="126.0" text="Waiter" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label layoutX="13.0" layoutY="478.0" prefHeight="39.0" prefWidth="126.0" text="Status" textFill="#994583">
+                <font>
+                    <Font name="Cambria Bold Italic" size="18.0" />
+                </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="28.0" layoutY="4.0" prefHeight="47.0" prefWidth="217.0" text="Place An Order" textAlignment="CENTER" textFill="#4fff6a" underline="true">
+                <font>
+                    <Font name="Comic Sans MS Bold Italic" size="29.0" />
+                </font>
+            </Label>
+            <JFXComboBox fx:id="cmbstatus" layoutX="14.0" layoutY="515.0" onAction="#cmbstatusOnAction" prefHeight="26.0" prefWidth="151.0" promptText="status" />
+            <JFXComboBox fx:id="cmbEmpID" layoutX="15.0" layoutY="580.0" onAction="#cmbEmpOnAction" prefHeight="26.0" prefWidth="151.0" promptText="employee ID" />
+            <JFXButton id="button" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="40.0" layoutY="697.0" onAction="#btnPlaceOrderOnAction" prefHeight="39.0" prefWidth="195.0" style="-fx-background-color: #F11A7B;" stylesheets="@../icons/button.css" text="PLACE ORDER" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <graphic>
+                    <ImageView fitHeight="26.0" fitWidth="30.0" nodeOrientation="INHERIT">
+                        <image>
+                            <Image url="@../icons/icons8-booking-50.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </JFXButton>
+            <Label fx:id="lblqtyOnHand" layoutX="125.0" layoutY="196.0" prefHeight="18.0" prefWidth="0.0" />
+        </children>
+    </AnchorPane>
+
+</AnchorPane>

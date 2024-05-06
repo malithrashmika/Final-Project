@@ -4,12 +4,27 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.Ijse.model.Customer;
+import lk.Ijse.model.employee;
+import lk.Ijse.repository.CustomerRepo;
+import lk.Ijse.repository.EmployeeRepo;
 
-public class employeeController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class employeeController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
     @FXML
     private JFXComboBox<?> cmbempRole;
@@ -44,9 +59,22 @@ public class employeeController {
     @FXML
     private TextField txtsearchId;
 
+    private void setCellValueFactory() {
+        colempId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colempName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colempTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colempRole.setCellValueFactory(new PropertyValueFactory<>("email"));
+    }
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtempID.setText("");
+        txtname.setText("");
+        txtTel.setText("");
     }
 
     @FXML
@@ -56,6 +84,22 @@ public class employeeController {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+       /* String id =txtempID.getText();
+        String name = txtname.getText();
+        String tel = txtTel.getText();
+        String Role = String.valueOf(cmbempRole.getValue());
+
+        employee employee = new employee(id, name, tel, Role);
+
+        try {
+            boolean isSaved = EmployeeRepo.save(employee);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
+                clearFields();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }*/
 
     }
 

@@ -73,10 +73,10 @@ public class DashboardController {
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane=FXMLLoader.load(getClass().getResource("/view/customer.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/Customer.fxml"));
+        Parent rootNode = loader.load();
         root.getChildren().clear();
-        root.getChildren().add(anchorPane);
-
+        root.getChildren().add(rootNode);
     }
 
 
