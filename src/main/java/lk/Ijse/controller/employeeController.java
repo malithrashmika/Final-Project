@@ -1,4 +1,4 @@
-package lk.Ijse.controller;
+/*package lk.Ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -101,16 +101,89 @@ public class employeeController implements Initializable {
             throw new RuntimeException(e);
         }*/
 
+
+package lk.Ijse.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class employeeController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+        private ComboBox<?> cmbEmpRole;
+
+        @FXML
+        private TableColumn<?, ?> colempId;
+
+        @FXML
+        private TableColumn<?, ?> colempName;
+
+        @FXML
+        private TableColumn<?, ?> colempRole;
+
+        @FXML
+        private TableColumn<?, ?> colempTel;
+
+        @FXML
+        private AnchorPane root;
+
+        @FXML
+        private TableView<?> tblemployee;
+
+        @FXML
+        private TextField txtId;
+
+        @FXML
+        private TextField txtName;
+
+        @FXML
+        private TextField txtsearchId;
+
+        @FXML
+        private TextField txttel;
+
+        @FXML
+        void EmpRoleOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void btnClearOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void btnDeleteOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void btnSaveOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void btnUpdateOnAction(ActionEvent event) {
+
+        }
+
+        @FXML
+        void txtSearchOnAction(ActionEvent event) {
+
+        }
 
     }
 
-    @FXML
-    void txtSearchOnAction(ActionEvent event) {
-
-    }
-
-}

@@ -1,6 +1,5 @@
 package lk.Ijse.controller;
 
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,19 +36,19 @@ public class supplierController implements Initializable {
     private TableView<?> tblCustomer;
 
     @FXML
-    private JFXTextField txtID;
+    private TextField txtID;
 
     @FXML
-    private JFXTextField txtName;
+    private TextField txtName;
 
     @FXML
     private TextField txtSearchId;
 
     @FXML
-    private JFXTextField txtTel;
+    private TextField txtTel;
 
     @FXML
-    private JFXTextField txtemail;
+    private TextField txtemail;
 
     @FXML
     void btnClearOnAction(ActionEvent event) {

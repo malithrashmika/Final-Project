@@ -3,19 +3,23 @@ package lk.Ijse.controller;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class reservationController {
+public class reservationController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
     @FXML
     private DatePicker DateOFR;
@@ -24,10 +28,13 @@ public class reservationController {
     private JFXComboBox<?> cmbCusID;
 
     @FXML
-    private JFXComboBox<?> cmbEmpID;
+    private JFXComboBox<?> cmbEmpID1;
 
     @FXML
-    private TableColumn<?, ?> colAction;
+    private AnchorPane cmbtableId;
+
+    @FXML
+    private JFXComboBox<?> cmbtablenumber;
 
     @FXML
     private TableColumn<?, ?> colDoR;
@@ -60,27 +67,26 @@ public class reservationController {
     private Label lblRdate1;
 
     @FXML
+    private AnchorPane root;
+
+    @FXML
     private TableView<?> tblreservation;
 
     @FXML
     private TextField txtId;
 
-
     @FXML
-    private AnchorPane root;
+    void btnDeleteOnAction(ActionEvent event) {
 
-    @FXML
-    void btnBackOnAction(ActionEvent event) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
-        Stage stage = (Stage) root.getScene().getWindow();
-
-        stage.setScene(new Scene(anchorPane));
-        stage.setTitle("Dashboard Form");
-        stage.centerOnScreen();
     }
 
     @FXML
     void btnMakeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent event) {
 
     }
 
@@ -91,6 +97,16 @@ public class reservationController {
 
     @FXML
     void cmbEmpOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbtableNumOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbtableOnAction(MouseEvent event) {
 
     }
 
