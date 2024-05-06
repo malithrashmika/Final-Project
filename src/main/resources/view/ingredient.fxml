@@ -13,12 +13,12 @@
 
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.ingredientController">
    <children>
-      <TextField layoutX="65.0" layoutY="166.0" prefHeight="30.0" prefWidth="222.0" promptText="Ingredient ID" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
-      <TextField layoutX="65.0" layoutY="233.0" prefHeight="30.0" prefWidth="222.0" promptText="Name" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
-      <TextField layoutX="65.0" layoutY="300.0" prefHeight="30.0" prefWidth="222.0" promptText="Unit_Price" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
-      <TextField layoutX="65.0" layoutY="365.0" prefHeight="30.0" prefWidth="222.0" promptText="qty_available" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
-      <ComboBox layoutX="65.0" layoutY="431.0" prefHeight="30.0" prefWidth="222.0" promptText="Category" />
-      <ComboBox layoutX="65.0" layoutY="501.0" prefHeight="30.0" prefWidth="222.0" promptText="Supplier_ID" />
+      <TextField fx:id="txtInid" layoutX="65.0" layoutY="166.0" prefHeight="30.0" prefWidth="222.0" promptText="Ingredient ID" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
+      <TextField fx:id="txtInName" layoutX="65.0" layoutY="233.0" prefHeight="30.0" prefWidth="222.0" promptText="Name" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
+      <TextField fx:id="txtInUnitPrice" layoutX="65.0" layoutY="300.0" prefHeight="30.0" prefWidth="222.0" promptText="Unit_Price" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
+      <TextField fx:id="txtInQty_avalible" layoutX="65.0" layoutY="365.0" prefHeight="30.0" prefWidth="222.0" promptText="qty_available" styleClass="text" stylesheets="@../icons/fullpackstyling.css" />
+      <ComboBox fx:id="cmbInCategory" layoutX="65.0" layoutY="431.0" onAction="#cmbInCategoryOnAction" prefHeight="30.0" prefWidth="222.0" promptText="Category" />
+      <ComboBox fx:id="cmbSupplier" layoutX="65.0" layoutY="501.0" onAction="#cmbSupplierOnAction" prefHeight="30.0" prefWidth="222.0" promptText="Supplier_ID" />
       <JFXButton id="button" buttonType="RAISED" layoutX="65.0" layoutY="587.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
@@ -64,7 +64,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="570.0" layoutY="584.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="570.0" layoutY="584.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -76,14 +76,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView layoutX="306.0" layoutY="208.0" prefHeight="318.0" prefWidth="534.0" stylesheets="@../icons/fullpackstyling.css">
+      <TableView fx:id="tblIngredients" layoutX="306.0" layoutY="208.0" prefHeight="318.0" prefWidth="534.0" stylesheets="@../icons/fullpackstyling.css">
         <columns>
-          <TableColumn text="Ingredient ID" />
-          <TableColumn prefWidth="118.39996337890625" text="Name" />
-            <TableColumn prefWidth="73.60000610351562" text="Unit_Price" />
-            <TableColumn prefWidth="82.39996337890625" text="qty_available" />
-            <TableColumn prefWidth="91.20001220703125" text="Category" />
-            <TableColumn prefWidth="88.800048828125" text="Supplier_ID" />
+          <TableColumn fx:id="colIid" text="Ingredient ID" />
+          <TableColumn fx:id="colIName" prefWidth="118.39996337890625" text="Name" />
+            <TableColumn fx:id="colIUnitPrice" prefWidth="73.60000610351562" text="Unit_Price" />
+            <TableColumn fx:id="colIiqty" prefWidth="82.39996337890625" text="qty_available" />
+            <TableColumn fx:id="coliCategory" prefWidth="91.20001220703125" text="Category" />
+            <TableColumn fx:id="cmbSupplier" prefWidth="88.800048828125" text="Supplier_ID" />
         </columns>
       </TableView>
    </children>
