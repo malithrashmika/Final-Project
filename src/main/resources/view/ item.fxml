@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" layoutX="260.0" layoutY="73.0" prefHeight="727.0" prefWidth="1000.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
+<AnchorPane fx:id="root" layoutX="260.0" layoutY="73.0" prefHeight="727.0" prefWidth="1000.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="">
     <children>
         <TextField fx:id="txtsearchId" layoutX="359.0" layoutY="37.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search ItemID">
             <font>

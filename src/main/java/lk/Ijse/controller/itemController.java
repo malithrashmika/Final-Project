@@ -1,4 +1,4 @@
-package lk.Ijse.controller;
+/*package lk.Ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
@@ -27,6 +27,9 @@ public class itemController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    @FXML
+    private JFXComboBox<?> cmbitemType;
 
     @FXML
     private JFXComboBox<?> cmbtype;
@@ -158,6 +161,109 @@ public class itemController implements Initializable {
         txtprice.setText("");
         txtQtyOnHand.setText("");
     }
+    @FXML
+    void txtSearchOnAction(ActionEvent event) {
+
+    }
+    @FXML
+    void cmbItemtOnAction(ActionEvent event) {
+
+    }
+}*/
+
+package lk.Ijse.controller;
+
+import com.jfoenix.controls.JFXComboBox;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class itemController implements Initializable {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    @FXML
+    private JFXComboBox<?> ItemType;
+   
+    @FXML
+    private TableColumn<?, ?> colItemDes;
+
+    @FXML
+    private TableColumn<?, ?> colItemId;
+
+    @FXML
+    private TableColumn<?, ?> colItemName;
+
+    @FXML
+    private TableColumn<?, ?> colItemPrice;
+
+    @FXML
+    private TableColumn<?, ?> colItemQty;
+
+    @FXML
+    private TableColumn<?, ?> colItemType;
+
+    @FXML
+    private TableView<?> tblItem;
+
+    @FXML
+    private TextField txtItemDes;
+
+    @FXML
+    private TextField txtItemID;
+
+    @FXML
+    private TextField txtItemName;
+
+    @FXML
+    private TextField txtItemPrice;
+
+    @FXML
+    private TextField txtItemQty;
+
+    @FXML
+    private TextField txtsearchId;
+
+    @FXML
+    void UpdateOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnClearOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnDeleteOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnSaveOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void itemTypeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void txtSearchOnAction(ActionEvent event) {
+
+    }
+
 }
+
+
 
 

@@ -14,6 +14,18 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.DashboardController">
    <children>
+      <JFXButton buttonType="RAISED" layoutX="986.0" layoutY="25.0" onAction="#btnNewOrderOnAction" prefHeight="34.0" prefWidth="132.0" ripplerFill="#72efe7" style="-fx-background-color: #8E7AB5;" stylesheets="@../icons/fullpackstyling.css" text="New Order">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+         <graphic>
+            <ImageView>
+               <image>
+                  <Image url="@../icons/icons8-add-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
       <AnchorPane prefHeight="800.0" prefWidth="282.0" style="-fx-background-color: #7E6363;">
          <children>
             <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="20.0" layoutY="160.0" onAction="#btnCustomerOnAction" opacity="0.83" prefHeight="62.0" prefWidth="230.0" styleClass="b" stylesheets="@../../../../../Cocktail_HUB/src/main/resources/icons/fullpackstyling.css" text="Customer" textFill="WHITE">
@@ -295,12 +307,14 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="55.0" layoutY="-1.0" prefHeight="147.0" prefWidth="145.0" text="." />
-            <ImageView fitHeight="139.0" fitWidth="166.0" layoutX="45.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
-               </image>
-            </ImageView>
+            <JFXButton layoutX="55.0" layoutY="-1.0" onAction="#btnHomeAction" prefHeight="147.0" prefWidth="145.0" text=".">
+               <graphic>
+                  <ImageView fitHeight="139.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="850.0" />
@@ -323,17 +337,18 @@
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
-      <Label layoutX="684.0" layoutY="36.0" prefHeight="34.0" prefWidth="55.0" text="Date :">
+      <Label layoutX="656.0" layoutY="36.0" prefHeight="34.0" prefWidth="55.0" text="Date :">
          <font>
             <Font name="Sitka Text" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="741.0" layoutY="45.0" />
-      <Label layoutX="931.0" layoutY="36.0" prefHeight="34.0" prefWidth="62.0" text="Time :">
+      <Label layoutX="713.0" layoutY="45.0" />
+      <Label layoutX="829.0" layoutY="36.0" prefHeight="34.0" prefWidth="62.0" text="Time :">
          <font>
             <Font name="Sitka Text" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="993.0" layoutY="44.0" prefHeight="18.0" prefWidth="0.0" />
+      <Label layoutX="891.0" layoutY="44.0" prefHeight="18.0" prefWidth="0.0" />
+      <AnchorPane fx:id="Node" layoutX="1132.0" prefHeight="800.0" prefWidth="318.0" />
    </children>
 </AnchorPane>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.supplierController">
+    <TextField fx:id="txtSearchId" layoutX="359.0" layoutY="37.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search SpplierID">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font></TextField>
+    <TableView fx:id="tblCustomer" editable="true" layoutX="341.0" layoutY="301.0" prefHeight="353.0" prefWidth="482.0" style="-fx-background-color: #C3E2C2;" stylesheets="@../icons/fullpackstyling.css">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="77.60000801086426" style="-fx-background-color: BLUE;" text="Supplier ID" />
+            <TableColumn fx:id="colName" prefWidth="141.5999755859375" text="Supplier Name" />
+            <TableColumn fx:id="colTel" prefWidth="124.800048828125" text="Contact Number" />
+            <TableColumn fx:id="colEmail" prefWidth="130.39996337890625" text="Supplier Email" />
+        </columns>
+        <styleClass>
+            <String fx:value="table-view" />
+            <String fx:value="table-row-cell" />
+        </styleClass>
+    </TableView>
+    <ImageView layoutX="667.0" layoutY="42.0">
+        <image>
+            <Image url="@../../../../../../../resorces/icons8-search-30.png" />
+        </image>
+    </ImageView>
+    <JFXButton id="button" buttonType="RAISED" layoutX="200.0" layoutY="419.0" onAction="#btnUpdateOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="#f7f7f7">
+        <font>
+            <Font name="Arial Bold" size="18.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="24.0" fitWidth="29.0">
+                <image>
+                    <Image url="@../../../../../../../resorces/icons8-clear-30 (1).png" />
+                </image>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </JFXButton>
+    <JFXButton id="button" buttonType="RAISED" layoutX="41.0" layoutY="419.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+        <font>
+            <Font name="Arial Bold" size="18.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="24.0" fitWidth="23.0">
+                <image>
+                    <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
+                </image>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </JFXButton>
+    <JFXButton id="button" buttonType="RAISED" layoutX="41.0" layoutY="481.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+        <font>
+            <Font name="Arial Bold" size="18.0" />
+        </font>
+        <graphic>
+            <ImageView fitHeight="24.0" fitWidth="29.0">
+                <image>
+                    <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
+                </image>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor></JFXButton>
+    <JFXButton id="button" buttonType="RAISED" layoutX="200.0" layoutY="481.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF004D;" stylesheets="@../icons/button.css" text="Delete" textFill="#f7f7f7">
+        <font>
+            <Font name="Arial Bold" size="18.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+        <graphic>
+            <ImageView fitHeight="22.0" fitWidth="23.0">
+                <image>
+                    <Image url="@../icons/icons8-delete-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </JFXButton>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="459.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+        </image>
+    </ImageView>
+    <Label layoutX="55.0" layoutY="33.0" prefHeight="47.0" prefWidth="286.0" text="Supplier Form" textFill="#917c7c" underline="true" wrapText="true">
+        <font>
+            <Font name="Cambria Bold Italic" size="34.0" />
+        </font>
+    </Label>
+    <TextField fx:id="txtID" alignment="CENTER" layoutX="55.0" layoutY="131.0" prefHeight="26.0" prefWidth="250.0" promptText="Supplier ID" styleClass="textField" stylesheets="@../icons/textfield01.css">
+        <font>
+            <Font name="Arial Bold" size="13.0" />
+        </font>
+    </TextField>
+    <TextField fx:id="txtName" alignment="CENTER" layoutX="55.0" layoutY="194.0" prefHeight="26.0" prefWidth="250.0" promptText="Supplier Name" styleClass="textField" stylesheets="@../icons/textfield01.css">
+        <font>
+            <Font name="Arial Bold" size="13.0" />
+        </font>
+    </TextField>
+    <TextField fx:id="txtTel" alignment="CENTER" layoutX="55.0" layoutY="262.0" prefHeight="26.0" prefWidth="250.0" promptText="Supplier Contact" styleClass="textField" stylesheets="@../icons/textfield01.css">
+        <font>
+            <Font name="Arial Bold" size="13.0" />
+        </font>
+    </TextField>
+    <TextField fx:id="txtemail" alignment="CENTER" layoutX="55.0" layoutY="325.0" prefHeight="26.0" prefWidth="250.0" promptText="Supplier Email" styleClass="textField" stylesheets="@../icons/textfield01.css">
+        <font>
+            <Font name="Arial Bold" size="13.0" />
+        </font>
+    </TextField>
+    <HBox layoutX="403.0" layoutY="231.0">
+        <children>
+            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+                <font>
+                    <Font name="Sitka Text" size="29.0" />
+                </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+                <font>
+                    <Font name="Sitka Text" size="29.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+    <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="618.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+        </image>
+    </ImageView>
+</AnchorPane>

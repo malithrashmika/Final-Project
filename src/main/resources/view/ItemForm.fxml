@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
+   <children>
+      <TextField fx:id="txtItemID" layoutX="38.0" layoutY="136.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM ID" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+         <font>
+            <Font name="Cambria Bold Italic" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtItemName" layoutX="38.0" layoutY="194.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM Name" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+         <font>
+            <Font name="Cambria Bold Italic" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtItemPrice" layoutX="38.0" layoutY="314.0" prefHeight="35.0" prefWidth="263.0" promptText="Unit Price" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtItemDes" layoutX="38.0" layoutY="254.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM Description" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+         <font>
+            <Font name="Cambria Bold Italic" size="18.0" />
+         </font>
+      </TextField>
+      <TableView fx:id="tblItem" editable="true" layoutX="65.0" layoutY="441.0" prefHeight="214.0" prefWidth="742.0" style="-fx-background-color: #C0D6E8;" stylesheets="@../icons/fullpackstyling.css">
+         <columns>
+            <TableColumn fx:id="colItemId" prefWidth="77.60000801086426" text="item ID" />
+            <TableColumn fx:id="colItemName" prefWidth="156.800048828125" text="Name" />
+            <TableColumn fx:id="colItemDes" prefWidth="226.39993286132812" text="Description" />
+            <TableColumn fx:id="colItemPrice" prefWidth="91.20001220703125" text="Price" />
+            <TableColumn fx:id="colItemType" prefWidth="97.60003662109375" text="Item Type" />
+            <TableColumn fx:id="colItemQty" prefWidth="88.0" text="QtyOnHand" />
+         </columns>
+         <styleClass>
+            <String fx:value="table-view" />
+            <String fx:value="table-row-cell" />
+         </styleClass>
+      </TableView>
+      <TextField fx:id="txtItemQty" layoutX="38.0" layoutY="373.0" prefHeight="35.0" prefWidth="263.0" promptText="Qty ON Hand" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </TextField>
+      <JFXComboBox fx:id="ItemType" labelFloat="true" layoutX="351.0" layoutY="140.0" onAction="#itemTypeOnAction" prefHeight="26.0" prefWidth="111.0" promptText="ITEM Type" styleClass="text-field" unFocusColor="#4d4d4d00">
+         <stylesheets>
+            <URL value="@../icons/textfield01.css" />
+            <URL value="@../icons/textfield-custom.css" />
+         </stylesheets>
+      </JFXComboBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="496.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="425.0" layoutY="254.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="635.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="65.0" layoutY="43.0" prefHeight="47.0" prefWidth="286.0" text="Items" textFill="#917c7c" underline="true" wrapText="true">
+         <font>
+            <Font name="Cambria Bold Italic" size="34.0" />
+         </font>
+      </Label>
+      <JFXButton id="button" buttonType="RAISED" layoutX="425.0" layoutY="314.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="23.0">
+               <image>
+                  <Image url="@../../../../../../../resorces/icons8-add-user-male-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton id="button" buttonType="RAISED" layoutX="425.0" layoutY="373.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="24.0" fitWidth="29.0">
+               <image>
+                  <Image url="@../../../../../../../resorces/icons8-clear-30.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="576.0" layoutY="313.0" onAction="#UpdateOnAction" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/icons8-clear-30%20(1).png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton id="button" buttonType="RAISED" layoutX="575.0" layoutY="373.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF004D;" stylesheets="@../icons/button.css" text="Delete" textFill="#f7f7f7">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="23.0">
+               <image>
+                  <Image url="@../icons/icons8-delete-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TextField fx:id="txtsearchId" layoutX="452.0" layoutY="47.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search ItemID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

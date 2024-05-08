@@ -180,6 +180,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -190,10 +191,71 @@ import java.io.IOException;
 public class  DashboardController{
 
     @FXML
+    private AnchorPane Node;
+
+    @FXML
     private AnchorPane root;
 
     @FXML
     private AnchorPane rootNode;
+
+
+    @FXML
+    void btnNewOrderOnAction(ActionEvent event) {
+        try {
+            // Load the Customer.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/placeOrder.fxml"));
+            Parent rootNode = loader.load();
+
+            // Assuming 'root' refers to the root AnchorPane in your current scene
+            // Clear the children of the root AnchorPane
+            Node.getChildren().clear();
+
+            // Add the loaded rootNode as a child to the root AnchorPane
+            Node.getChildren().add(rootNode);
+
+            // Ensure that the loaded content fits and appears in the correct location
+            AnchorPane.setTopAnchor(rootNode, 0.0);
+            AnchorPane.setRightAnchor(rootNode, 0.0);
+            AnchorPane.setBottomAnchor(rootNode, 0.0);
+            AnchorPane.setLeftAnchor(rootNode, 0.0);
+
+            // Optionally, you can adjust the size of the window to fit the new content
+            Stage stage = (Stage) Node.getScene().getWindow();
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the IOException appropriately
+        }
+    }
+
+
+    @FXML
+    void btnHomeAction(ActionEvent event) {
+        try {
+            // Load the Customer.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/dashboard.fxml"));
+            Parent rootNode = loader.load();
+
+            // Assuming 'root' refers to the root AnchorPane in your current scene
+            // Clear the children of the root AnchorPane
+            root.getChildren().clear();
+
+            // Add the loaded rootNode as a child to the root AnchorPane
+            root.getChildren().add(rootNode);
+
+            // Ensure that the loaded content fits and appears in the correct location
+            AnchorPane.setTopAnchor(rootNode, 0.0);
+            AnchorPane.setRightAnchor(rootNode, 0.0);
+            AnchorPane.setBottomAnchor(rootNode, 0.0);
+            AnchorPane.setLeftAnchor(rootNode, 0.0);
+
+            // Optionally, you can adjust the size of the window to fit the new content
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the IOException appropriately
+        }
+    }
 
     @FXML
     void btnBookOnAction(ActionEvent event) {
@@ -282,18 +344,70 @@ public class  DashboardController{
     }
 
     @FXML
-    void btnLogOutOnAction(ActionEvent event) {
+    void btnLogOutOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/Login.fxml"));
 
+        Scene scene = new Scene(rootNode);
+        Stage stage= (Stage) this.root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Login Form");
     }
 
     @FXML
     void btnMenuOnAction(ActionEvent event) {
+        try {
+            // Load the Customer.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemForm.fxml"));
+            Parent rootNode = loader.load();
 
+            // Assuming 'root' refers to the root AnchorPane in your current scene
+            // Clear the children of the root AnchorPane
+            root.getChildren().clear();
+
+            // Add the loaded rootNode as a child to the root AnchorPane
+            root.getChildren().add(rootNode);
+
+            // Ensure that the loaded content fits and appears in the correct location
+            AnchorPane.setTopAnchor(rootNode, 0.0);
+            AnchorPane.setRightAnchor(rootNode, 0.0);
+            AnchorPane.setBottomAnchor(rootNode, 0.0);
+            AnchorPane.setLeftAnchor(rootNode, 0.0);
+
+            // Optionally, you can adjust the size of the window to fit the new content
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the IOException appropriately
+        }
     }
 
     @FXML
     void btnOrderDetailsOnAction(ActionEvent event) {
+        try {
+            // Load the Customer.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/orders.fxml"));
+            Parent rootNode = loader.load();
 
+            // Assuming 'root' refers to the root AnchorPane in your current scene
+            // Clear the children of the root AnchorPane
+            root.getChildren().clear();
+
+            // Add the loaded rootNode as a child to the root AnchorPane
+            root.getChildren().add(rootNode);
+
+            // Ensure that the loaded content fits and appears in the correct location
+            AnchorPane.setTopAnchor(rootNode, 0.0);
+            AnchorPane.setRightAnchor(rootNode, 0.0);
+            AnchorPane.setBottomAnchor(rootNode, 0.0);
+            AnchorPane.setLeftAnchor(rootNode, 0.0);
+
+            // Optionally, you can adjust the size of the window to fit the new content
+            Stage stage = (Stage) Node.getScene().getWindow();
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the IOException appropriately
+        }
     }
 
     @FXML

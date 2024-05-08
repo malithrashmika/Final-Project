@@ -1,15 +1,14 @@
 package lk.Ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -25,13 +24,16 @@ public class reservationController implements Initializable {
     private DatePicker DateOFR;
 
     @FXML
+    private ComboBox<?> EndTime;
+
+    @FXML
+    private ComboBox<?> Starttime;
+
+    @FXML
     private JFXComboBox<?> cmbCusID;
 
     @FXML
-    private JFXComboBox<?> cmbEmpID1;
-
-    @FXML
-    private AnchorPane cmbtableId;
+    private JFXComboBox<?> cmbEmpID;
 
     @FXML
     private JFXComboBox<?> cmbtablenumber;
@@ -41,6 +43,12 @@ public class reservationController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colEmpID;
+
+    @FXML
+    private TableColumn<?, ?> colReservationtime;
+
+    @FXML
+    private TableColumn<?, ?> colReservationtime1;
 
     @FXML
     private TableColumn<?, ?> colReserveDate;
@@ -58,22 +66,16 @@ public class reservationController implements Initializable {
     private TableColumn<?, ?> colcusId;
 
     @FXML
-    private Label lblRID;
-
-    @FXML
-    private Label lblRTime;
-
-    @FXML
-    private Label lblRdate1;
-
-    @FXML
     private AnchorPane root;
 
     @FXML
     private TableView<?> tblreservation;
 
     @FXML
-    private TextField txtId;
+    private JFXTextField txtReservationID;
+
+    @FXML
+    private JFXComboBox<?> txtSearchId;
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
@@ -101,12 +103,22 @@ public class reservationController implements Initializable {
     }
 
     @FXML
-    void cmbtableNumOnAction(ActionEvent event) {
+    void cmbEndTimeOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void cmbtableOnAction(MouseEvent event) {
+    void cmbsearchIDOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbstartTimeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbtableNumOnAction(ActionEvent event) {
 
     }
 

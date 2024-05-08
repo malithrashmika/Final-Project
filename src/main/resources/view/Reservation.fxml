@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #F5EEC8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.reservationController">
+    <TableView fx:id="tblreservation" editable="true" layoutX="32.0" layoutY="450.0" opacity="0.8" prefHeight="203.0" prefWidth="818.0" style="-fx-background-color: #F5EEC8;" stylesheets="@../icons/fullpackstyling.css" translateX="-9.0">
+        <columns>
+            <TableColumn fx:id="colReserveID" prefWidth="88.79998970031738" text="Reservation ID" />
+            <TableColumn fx:id="colReserveDate" prefWidth="109.59996795654297" text="Reserved Date" />
+            <TableColumn fx:id="colReserveTime" prefWidth="93.60003662109375" text="Reserved Time" />
+            <TableColumn fx:id="colDoR" prefWidth="118.39996337890625" text="Date of Reservation" />
+            <TableColumn fx:id="colEmpID" prefWidth="77.60006713867188" text="Employee ID" />
+            <TableColumn fx:id="colTNId" prefWidth="91.99993896484375" text="Table Number" />
+            <TableColumn fx:id="colcusId" prefWidth="75.2000732421875" text="Customer ID" />
+         <TableColumn fx:id="colReservationtime" prefWidth="81.5999755859375" text="Starting Time" />
+         <TableColumn fx:id="colReservationtime1" prefWidth="461.5999755859375" text="EndTime" />
+        </columns>
+    </TableView>
+            <JFXButton id="button" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="598.0" layoutY="375.0" onAction="#btnMakeOnAction" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #38E54D;" text="Make Reservation" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <graphic>
+                    <ImageView fitHeight="26.0" fitWidth="30.0" nodeOrientation="INHERIT">
+                        <image>
+                            <Image url="@../icons/icons8-booking-50.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <stylesheets>
+                    <URL value="@../icons/button.css" />
+                    <URL value="@../icons/fullpackstyling.css" />
+                </stylesheets>
+            </JFXButton>
+            <DatePicker fx:id="DateOFR" layoutX="43.0" layoutY="308.0" onAction="#datePickOnAction" prefHeight="26.0" prefWidth="227.0" promptText="Date of Reservation" style="-fx-background-color: #E9A89B; visibility: 0.2;" />
+            <JFXButton id="button" alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="322.0" layoutY="375.0" onAction="#btnDeleteOnAction" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #D80032;" text="Delete Reservation" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <graphic>
+                    <ImageView fitHeight="26.0" fitWidth="30.0" nodeOrientation="INHERIT">
+                        <image>
+                            <Image url="@../icons/icons8-delete-50.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <stylesheets>
+                    <URL value="@../icons/button.css" />
+                    <URL value="@../icons/fullpackstyling.css" />
+                </stylesheets>
+            </JFXButton>
+            <JFXComboBox fx:id="cmbCusID" labelFloat="true" layoutX="598.0" layoutY="232.0" onAction="#cmbCusOnAction" prefHeight="26.0" prefWidth="227.0" promptText="Customer ID" />
+            <JFXComboBox fx:id="cmbEmpID" labelFloat="true" layoutX="43.0" layoutY="225.0" onAction="#cmbEmpOnAction" prefHeight="26.0" prefWidth="227.0" promptText="Employee ID" />
+            <JFXComboBox fx:id="cmbtablenumber" labelFloat="true" layoutX="598.0" layoutY="309.0" onAction="#cmbtableNumOnAction" prefHeight="26.0" prefWidth="227.0" promptText="Table Number" />
+            <JFXButton id="button" alignment="CENTER" buttonType="RAISED" layoutX="43.0" layoutY="375.0" onAction="#btnUpdateOnAction" prefHeight="39.0" prefWidth="227.0" style="-fx-background-color: #35A29F;" text="Update" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+                <font>
+                    <Font name="Arial Bold" size="18.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+                <graphic>
+                    <ImageView fitHeight="26.0" fitWidth="30.0" nodeOrientation="INHERIT" translateX="-4.0">
+                        <image>
+                            <Image url="@../icons/icons8-clear-30%20(1).png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <stylesheets>
+                    <URL value="@../icons/button.css" />
+                    <URL value="@../icons/fullpackstyling.css" />
+                </stylesheets>
+            </JFXButton>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="361.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+                </image>
+            </ImageView>
+   <ComboBox fx:id="Starttime" layoutX="584.0" layoutY="169.0" onAction="#cmbstartTimeOnAction" prefHeight="26.0" prefWidth="95.0" promptText="StartTime" />
+   <ComboBox fx:id="EndTime" layoutX="724.0" layoutY="169.0" onAction="#cmbEndTimeOnAction" prefHeight="26.0" prefWidth="95.0" promptText="EndTime" />
+         <JFXComboBox fx:id="txtSearchId" labelFloat="true" layoutX="476.0" layoutY="38.0" onAction="#cmbsearchIDOnAction" prefHeight="39.0" prefWidth="242.0" promptText="Search ReservationID" styleClass="textField" stylesheets="@../icons/textfield01.css" unFocusColor="#ffffff00" />
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="684.0" layoutY="169.0" prefHeight="26.0" prefWidth="40.0" text="To" textFill="#1f4172">
+            <font>
+               <Font name="Cambria Bold" size="18.0" />
+            </font>
+         </Label>
+            <HBox layoutX="305.0" layoutY="291.0">
+                <children>
+                    <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+                        <font>
+                            <Font name="Sitka Text" size="29.0" />
+                        </font>
+                    </Label>
+                    <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+                        <font>
+                            <Font name="Sitka Text" size="29.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+            <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="520.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+                </image>
+            </ImageView>
+         <JFXTextField fx:id="txtReservationID" labelFloat="true" layoutX="43.0" layoutY="151.0" prefHeight="26.0" prefWidth="227.0" promptText="Reservation ID" styleClass="text-field" unFocusColor="WHITE" />
+          <ImageView layoutX="665.0" layoutY="43.0">
+              <image>
+                  <Image url="@../../../../../../../resorces/icons8-search-30.png" />
+              </image>
+          </ImageView>
+
+</AnchorPane>
