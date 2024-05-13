@@ -92,6 +92,9 @@ public class customerController implements Initializable {
     @FXML
     private TextField txtName;
 
+    @FXML
+    private TextField txtsearchId;
+
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -101,7 +104,7 @@ public class customerController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clearFields();
     }
     private void clearFields() {
         txtId.setText("");
@@ -162,5 +165,18 @@ public class customerController implements Initializable {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
+    @FXML
+    void btnSearchOnAction(ActionEvent event) throws SQLException {
+        String id = txtsearchId.getText();
 
+        Customer customer = CustomerRepo.searchById(id);
+        if (customer != null) {
+            txtId.setText(customer.getId());
+            txtName.setText(customer.getName());
+            txtTel.setText(customer.getTel());
+            txtemail.setText(customer.getEmail());
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+        }
+    }
 }

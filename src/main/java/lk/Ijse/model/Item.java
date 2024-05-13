@@ -1,8 +1,6 @@
 package lk.Ijse.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,6 +8,7 @@ import lombok.NoArgsConstructor;
 public class Item {
     String code;
     String name;
+    String description;
     String type;
     double price;
     int QtyOnHand;

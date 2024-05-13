@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
    <children>
       <TextField fx:id="txtItemID" layoutX="38.0" layoutY="136.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM ID" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
@@ -43,8 +42,8 @@
             <TableColumn fx:id="colItemId" prefWidth="77.60000801086426" text="item ID" />
             <TableColumn fx:id="colItemName" prefWidth="156.800048828125" text="Name" />
             <TableColumn fx:id="colItemDes" prefWidth="226.39993286132812" text="Description" />
-            <TableColumn fx:id="colItemPrice" prefWidth="91.20001220703125" text="Price" />
-            <TableColumn fx:id="colItemType" prefWidth="97.60003662109375" text="Item Type" />
+            <TableColumn fx:id="colItemType" prefWidth="91.20001220703125" text="Item Category" />
+            <TableColumn fx:id="colItemPrice" prefWidth="97.60003662109375" text="price" />
             <TableColumn fx:id="colItemQty" prefWidth="88.0" text="QtyOnHand" />
          </columns>
          <styleClass>
@@ -57,7 +56,7 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="ItemType" labelFloat="true" layoutX="351.0" layoutY="140.0" onAction="#itemTypeOnAction" prefHeight="26.0" prefWidth="111.0" promptText="ITEM Type" styleClass="text-field" unFocusColor="#4d4d4d00">
+      <JFXComboBox fx:id="ItemType" labelFloat="true" layoutX="351.0" layoutY="140.0" onAction="#itemTypeOnAction" prefHeight="26.0" prefWidth="111.0" promptText="ITEM Category" styleClass="text-field" unFocusColor="#4d4d4d00" visibleRowCount="20">
          <stylesheets>
             <URL value="@../icons/textfield01.css" />
             <URL value="@../icons/textfield-custom.css" />

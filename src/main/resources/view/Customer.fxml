@@ -10,9 +10,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #E4C59E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.customerController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #E4C59E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.customerController">
     <children>
         <TextField fx:id="txtId" layoutX="47.0" layoutY="115.0" prefHeight="26.0" prefWidth="265.0" promptText="Customer ID" />
         <TextField fx:id="txtName" layoutX="46.0" layoutY="208.0" prefHeight="26.0" prefWidth="266.0" promptText="Customer Name" />
@@ -75,7 +76,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnUpdate" layoutX="200.0" layoutY="466.0" onAction="#btnUpdateOnaction" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="WHITE">
+      <JFXButton layoutX="200.0" layoutY="466.0" onAction="#btnUpdateOnaction" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -97,5 +98,34 @@
             <Font name="Cambria Bold Italic" size="34.0" />
          </font>
       </Label>
+      <HBox layoutX="511.0" layoutY="331.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="728.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtsearchId" layoutX="369.0" layoutY="47.0" onAction="#btnSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search CustomerID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <ImageView layoutX="677.0" layoutY="52.0">
+         <image>
+            <Image url="@../../../../../../../resorces/icons8-search-30.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

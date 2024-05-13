@@ -5,7 +5,8 @@
 
 .button:hover
 {
--fx-background-color :linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #0006ff 0.0%, #ff0000 100.0%) ;
+
+
 }
 .button:pressed
 {

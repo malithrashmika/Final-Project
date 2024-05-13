@@ -317,7 +317,7 @@
                </graphic></JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="850.0" />
+      <AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="1166.0" />
       <HBox layoutX="351.0" layoutY="36.0">
          <children>
             <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
@@ -337,18 +337,23 @@
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
-      <Label layoutX="656.0" layoutY="36.0" prefHeight="34.0" prefWidth="55.0" text="Date :">
+      <Label layoutX="655.0" layoutY="25.0" prefHeight="34.0" prefWidth="55.0" text="Date :">
          <font>
             <Font name="Sitka Text" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="713.0" layoutY="45.0" />
-      <Label layoutX="829.0" layoutY="36.0" prefHeight="34.0" prefWidth="62.0" text="Time :">
+      <Label fx:id="currentDate" layoutX="711.0" layoutY="25.0" prefHeight="34.0" prefWidth="110.0">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font></Label>
+      <Label layoutX="821.0" layoutY="25.0" prefHeight="34.0" prefWidth="62.0" text="Time :">
          <font>
             <Font name="Sitka Text" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="891.0" layoutY="44.0" prefHeight="18.0" prefWidth="0.0" />
-      <AnchorPane fx:id="Node" layoutX="1132.0" prefHeight="800.0" prefWidth="318.0" />
+      <Label fx:id="currentTime" layoutX="884.0" layoutY="25.0" prefHeight="34.0" prefWidth="62.0">
+         <font>
+            <Font name="Cambria Bold" size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>

@@ -14,49 +14,48 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="Node" prefHeight="785.0" prefWidth="332.0" style="-fx-background-color: transparent; -fx-border-width: 5px; -fx-border-color: #8E7AB5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.PlaceOrderController">
    <children>
-      <Label layoutX="61.0" layoutY="65.0" prefHeight="48.0" prefWidth="78.0" text="Order ID:" textFill="#994583">
+      <Label layoutX="57.0" layoutY="54.0" prefHeight="30.0" prefWidth="78.0" text="Order ID:" textFill="#994583">
          <font>
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblID" layoutX="144.0" layoutY="78.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+      <Label fx:id="lblID" layoutX="141.0" layoutY="55.0" prefHeight="26.0" prefWidth="156.0" textFill="WHITE">
          <font>
             <Font name="Cambria Bold Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="81.0" layoutY="114.0" prefHeight="39.0" prefWidth="59.0" text="Name :" textFill="#994583">
+      <Label layoutX="81.0" layoutY="86.0" prefHeight="26.0" prefWidth="59.0" text="Name :" textFill="#994583">
          <font>
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblname" layoutX="144.0" layoutY="123.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+      <Label fx:id="lblname" layoutX="143.0" layoutY="91.0" prefHeight="26.0" prefWidth="156.0" textFill="WHITE">
          <font>
             <Font name="Cambria Bold Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="81.0" layoutY="158.0" prefHeight="39.0" prefWidth="59.0" text=" Price :" textFill="#994583">
+      <Label layoutX="81.0" layoutY="124.0" prefHeight="26.0" prefWidth="59.0" text=" Price :" textFill="#994583">
          <font>
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblprice" layoutX="142.0" layoutY="167.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+      <Label fx:id="lblprice" layoutX="138.0" layoutY="127.0" prefHeight="26.0" prefWidth="156.0" textFill="WHITE">
          <font>
             <Font name="Cambria Bold Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="23.0" layoutY="203.0" prefHeight="39.0" prefWidth="113.0" text="QtyOnHand  :" textFill="#994583">
+      <Label layoutX="23.0" layoutY="164.0" prefHeight="39.0" prefWidth="113.0" text="QtyOnHand  :" textFill="#994583">
          <font>
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a66" height="36.0" layoutX="140.0" layoutY="117.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a6b" height="36.0" layoutX="140.0" layoutY="159.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a66" height="36.0" layoutX="140.0" layoutY="70.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a6b" height="36.0" layoutX="140.0" layoutY="204.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <Label fx:id="lblprice1" layoutX="144.0" layoutY="213.0" prefHeight="20.0" prefWidth="0.0" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a66" height="26.0" layoutX="140.0" layoutY="91.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a6b" height="26.0" layoutX="140.0" layoutY="127.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a66" height="26.0" layoutX="140.0" layoutY="58.0" opacity="0.13" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a6b" height="26.0" layoutX="140.0" layoutY="175.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Label fx:id="lblQtyOnHand" layoutX="138.0" layoutY="178.0" prefHeight="20.0" prefWidth="156.0" textFill="WHITE">
          <font>
             <Font name="Cambria Bold Italic" size="15.0" />
          </font>
@@ -66,7 +65,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="ItemID" layoutX="32.0" layoutY="357.0" prefHeight="36.0" prefWidth="190.0" promptText="Item ID" unFocusColor="WHITE">
+      <JFXComboBox fx:id="ItemID" layoutX="32.0" layoutY="357.0" onAction="#cmbItemOnAction" prefHeight="36.0" prefWidth="190.0" promptText="Item ID" unFocusColor="WHITE">
          <stylesheets>
             <URL value="@../icons/textfield01.css" />
             <URL value="@../icons/textfield-custom.css" />
@@ -102,7 +101,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <Label layoutX="23.0" layoutY="488.0" prefHeight="39.0" prefWidth="59.0" text="Status" textFill="#994583">
+      <Label layoutX="23.0" layoutY="488.0" prefHeight="39.0" prefWidth="59.0" text="Table" textFill="#994583">
          <font>
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
@@ -112,7 +111,7 @@
             <Font name="Cambria Bold Italic" size="18.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="orderstatus" labelFloat="true" layoutX="47.0" layoutY="529.0" prefHeight="36.0" prefWidth="218.0" promptText="ORDER Status" unFocusColor="WHITE">
+      <JFXComboBox fx:id="ordertable" labelFloat="true" layoutX="47.0" layoutY="529.0" onAction="#cmbTableOnAction" prefHeight="36.0" prefWidth="218.0" promptText="Reservation ID" unFocusColor="WHITE">
          <stylesheets>
             <URL value="@../icons/textfield01.css" />
             <URL value="@../icons/textfield-custom.css" />
@@ -122,7 +121,7 @@
             <String fx:value="text-field" />
          </styleClass>
       </JFXComboBox>
-      <JFXComboBox fx:id="waiterID" labelFloat="true" layoutX="47.0" layoutY="606.0" prefHeight="36.0" prefWidth="218.0" promptText="Employee ID" unFocusColor="WHITE">
+      <JFXComboBox fx:id="waiterID" labelFloat="true" layoutX="47.0" layoutY="606.0" onAction="#cmbEmployeeOnAction" prefHeight="36.0" prefWidth="218.0" promptText="Employee ID" unFocusColor="WHITE">
          <stylesheets>
             <URL value="@../icons/textfield01.css" />
             <URL value="@../icons/textfield-custom.css" />
@@ -152,7 +151,7 @@
             <Font name="Microsoft YaHei UI Light" size="29.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="34.0" layoutY="284.0" prefHeight="26.0" prefWidth="184.0" promptText="Customer Contact">
+      <JFXTextField fx:id="txtContact" labelFloat="true" layoutX="34.0" layoutY="284.0" onAction="#txtCustomerOnAction" prefHeight="26.0" prefWidth="184.0" promptText="Customer Contact">
          <font>
             <Font name="Microsoft JhengHei UI" size="14.0" />
          </font>
@@ -165,5 +164,16 @@
             <String fx:value="text-field" />
          </styleClass>
       </JFXTextField>
+      <Label layoutX="11.0" layoutY="215.0" prefHeight="26.0" prefWidth="126.0" text="CustomerName" textFill="#994583">
+         <font>
+            <Font name="Cambria Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCustomerName" layoutX="137.0" layoutY="215.0" prefHeight="26.0" prefWidth="156.0" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold Italic" size="15.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#67798a6b" height="26.0" layoutX="138.0" layoutY="215.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
    </children>
 </AnchorPane>

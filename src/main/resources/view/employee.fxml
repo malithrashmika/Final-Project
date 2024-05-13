@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #F5DAD2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.employeeController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #F5DAD2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.employeeController">
     <children>
         <TextField fx:id="txtsearchId" layoutX="359.0" layoutY="37.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search EmployeeID">
             <font>
@@ -24,8 +24,9 @@
             <columns>
                 <TableColumn fx:id="colempId" prefWidth="77.60000801086426" text="Employee ID" />
                 <TableColumn fx:id="colempName" prefWidth="112.79998779296875" text="Name" />
-                <TableColumn fx:id="colempTel" prefWidth="154.4000244140625" text="Contact Number" />
-                <TableColumn fx:id="colempRole" prefWidth="128.79998779296875" text="Role" />
+                <TableColumn fx:id="colempTel" prefWidth="107.20001220703125" text="Contact Number" />
+                <TableColumn fx:id="colempRole" prefWidth="90.4000244140625" text="Salary" />
+            <TableColumn fx:id="colempSalary" prefWidth="90.4000244140625" text="Role" />
             </columns>
             <styleClass>
                 <String fx:value="table-view" />
@@ -107,8 +108,8 @@
             </font>
         </Label>
       <TextField fx:id="txtId" layoutX="57.0" layoutY="125.0" prefHeight="26.0" prefWidth="265.0" promptText="Employee ID" />
-      <TextField fx:id="txtName" layoutX="56.0" layoutY="194.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Name" />
-      <TextField fx:id="txttel" layoutX="56.0" layoutY="268.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Contact" />
+      <TextField fx:id="txtName" layoutX="56.0" layoutY="178.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Name" />
+      <TextField fx:id="txttel" layoutX="56.0" layoutY="231.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Contact" />
       <ComboBox fx:id="cmbEmpRole" layoutX="56.0" layoutY="329.0" onAction="#EmpRoleOnAction" prefHeight="26.0" prefWidth="266.0" promptText="Employee Role" />
       <HBox layoutX="417.0" layoutY="236.0">
          <children>
@@ -129,6 +130,7 @@
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtSalary" layoutX="56.0" layoutY="283.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Salary" />
     </children>
    <cursor>
       <Cursor fx:constant="OPEN_HAND" />

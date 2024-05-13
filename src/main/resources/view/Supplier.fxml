@@ -18,7 +18,7 @@
         <font>
             <Font name="System Bold" size="12.0" />
         </font></TextField>
-    <TableView fx:id="tblCustomer" editable="true" layoutX="341.0" layoutY="301.0" prefHeight="353.0" prefWidth="482.0" style="-fx-background-color: #C3E2C2;" stylesheets="@../icons/fullpackstyling.css">
+    <TableView fx:id="tblSupplier" editable="true" layoutX="341.0" layoutY="301.0" prefHeight="353.0" prefWidth="482.0" style="-fx-background-color: #C3E2C2;" stylesheets="@../icons/fullpackstyling.css">
         <columns>
             <TableColumn fx:id="colId" prefWidth="77.60000801086426" style="-fx-background-color: BLUE;" text="Supplier ID" />
             <TableColumn fx:id="colName" prefWidth="141.5999755859375" text="Supplier Name" />

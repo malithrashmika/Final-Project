@@ -5,9 +5,10 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 
-public class employee {
+public class Employee {
     String id;
     String name;
     String Tel;
+    String salary;
     String Role;
 }

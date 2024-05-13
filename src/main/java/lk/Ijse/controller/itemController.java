@@ -174,24 +174,31 @@ public class itemController implements Initializable {
 package lk.Ijse.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+import lk.Ijse.db.ResturentItem;
+
+import lk.Ijse.model.Item;
+import lk.Ijse.model.tm.ItemTm;
+import lk.Ijse.repository.ItemRepo;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class itemController implements Initializable {
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 
     @FXML
-    private JFXComboBox<?> ItemType;
+    private TableView<Item> tableView;
+    @FXML
+    private JFXComboBox<ResturentItem> ItemType;
    
     @FXML
     private TableColumn<?, ?> colItemDes;
@@ -212,7 +219,7 @@ public class itemController implements Initializable {
     private TableColumn<?, ?> colItemType;
 
     @FXML
-    private TableView<?> tblItem;
+    private TableView<ItemTm> tblItem;
 
     @FXML
     private TextField txtItemDes;
@@ -231,36 +238,182 @@ public class itemController implements Initializable {
 
     @FXML
     private TextField txtsearchId;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellValueFactory();
+        loadAllItems();
+        ObservableList<ResturentItem> types = FXCollections.observableArrayList(ResturentItem.values());
+        ItemType.setItems(types);
+    }
+
+    private void loadAllItems() {
+        ObservableList<ItemTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<Item> itemList = ItemRepo.getAll();
+            for (Item item : itemList) {
+                ItemTm itemTm = new ItemTm(
+                        item.getCode(),
+                        item.getName(),
+                        item.getDescription(),
+                        item.getType(),
+                        item.getPrice(),
+                        item.getQtyOnHand()
+                );
+
+                obList.add(itemTm);
+            }
+
+            tblItem.setItems(obList);
+            tblItem.refresh(); // Refresh TableView
+
+            // Debugging: Print contents of obList
+            System.out.println("Contents of obList:");
+            for (ItemTm itemTm : obList) {
+                System.out.println(itemTm);
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    private void setCellValueFactory() {
+        colItemId.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colItemDes.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
+        colItemType.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colItemPrice.setCellValueFactory(new PropertyValueFactory<>("itemPrice"));
+        colItemQty.setCellValueFactory(new PropertyValueFactory<>("itemQtyOnHand"));
+    }
+
+
 
     @FXML
     void UpdateOnAction(ActionEvent event) {
+        String code =txtItemID.getText();
+        String name = txtItemName.getText();
+        String des = txtItemDes.getText();
+        String category =ItemType.getSelectionModel().getSelectedItem().toString();
+        double price = Double.parseDouble(txtItemPrice.getText());
+        int qty = Integer.parseInt(txtItemQty.getText());
 
+        Item item = new Item(code, name, des, category, price, qty);
+
+        try {
+            boolean isUpdated = ItemRepo.update(item);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
+                refreshTable();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
+        clearFields();
+    }
 
+    private void clearFields() {
+        txtItemID.setText("");
+        txtItemName.setText("");
+        txtItemDes.setText("");
+        txtItemPrice.setText("");
+        txtItemQty.setText("");
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String id = txtItemID.getText();
+
+        try {
+            boolean isDeleted = ItemRepo.delete(id);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Item deleted!").show();
+                refreshTable();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
 
     }
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
+        String code =txtItemID.getText();
+        String name = txtItemName.getText();
+        String des = txtItemDes.getText();
+        String category =ItemType.getSelectionModel().getSelectedItem().toString();
+        double price = Double.parseDouble(txtItemPrice.getText());
+        int qty = Integer.parseInt(txtItemQty.getText());
+
+        Item item = new Item(code, name, des, category, price, qty);
+
+        try {
+            boolean isSaved = ItemRepo.save(item);
+            if (isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Item saved!").show();
+                clearFields();
+                refreshTable();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
     @FXML
     void itemTypeOnAction(ActionEvent event) {
+        ResturentItem resturentItem = ItemType.getValue();
+        if (resturentItem != null) {
 
+        }
     }
 
     @FXML
-    void txtSearchOnAction(ActionEvent event) {
+    void txtSearchOnAction(ActionEvent event) throws SQLException {
+        String id = txtsearchId.getText();
 
+        Item item = ItemRepo.searchByCode(id);
+        if (item != null) {
+            txtItemID.setText(item.getCode());
+            txtItemName.setText(item.getName());
+            txtItemDes.setText(item.getDescription());
+            ItemType.getItems().add(ResturentItem.valueOf(item.getType()));
+            txtItemPrice.setText(String.valueOf(item.getPrice()));
+            txtItemQty.setText(String.valueOf(item.getQtyOnHand()));
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "ITEM not found!").show();
+        }
     }
+    private void refreshTable() {
+        try {
+            // Reload data from the database or any other source
+            List<Item> itemList = ItemRepo.getAll();
+            ObservableList<ItemTm> obList = FXCollections.observableArrayList();
+
+            for (Item item : itemList) {
+                obList.add(new ItemTm(
+                        item.getCode(),
+                        item.getName(),
+                        item.getDescription(),
+                        item.getType(),
+                        item.getPrice(),
+                        item.getQtyOnHand()
+                ));
+            }
+
+            // Clear and set new items to the TableView
+            tblItem.getItems().clear();
+            tblItem.setItems(obList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
 

@@ -8,10 +8,11 @@ import java.sql.Date;
 @Data
 public class Order {
     private String orderId;
-    private Date orderDate;
-    private String orderStatus;
-    private String orderTime;
     private String customerId;
+    private Date orderDate;
+    private String orderTime;
+    private String Table;
     private String employeeId;
+
 
 }
