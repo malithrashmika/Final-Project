@@ -34,14 +34,15 @@ public class OrderRepo {
 //        return pstm.executeUpdate() > 0;
 //    }
 public static boolean save(Order order) throws SQLException {
-    String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?, ?)";
+    String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?, ?, ?)";
     try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
         pstm.setString(1, order.getOrderId());
-        pstm.setDate(2, Date.valueOf(order.getOrderDate().toLocalDate())); // Convert LocalDate to SQL Date
-        pstm.setTime(3, Time.valueOf(order.getOrderTime())); // Convert LocalTime to SQL Time
+        pstm.setDate(2, order.getOrderDate()); // Convert LocalDate to SQL Date
+        pstm.setTime(3, order.getTime());
         pstm.setString(4, order.getTable());
         pstm.setString(5, order.getCustomerId());
         pstm.setString(6, order.getEmployeeId());
+        pstm.setDouble(7,order.getNetTotal());
 
         return pstm.executeUpdate() > 0;
     }

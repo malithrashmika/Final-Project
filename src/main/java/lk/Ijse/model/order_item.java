@@ -8,9 +8,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class order_item {
-    private String orderid;
+
     private String ItemID;
+    private String orderid;
     private int Qty;
+    private double unitprice;
+    private double totalprice;
 
 
 }

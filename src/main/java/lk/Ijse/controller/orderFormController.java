@@ -880,12 +880,15 @@ import javafx.stage.Stage;
 import lk.Ijse.db.TableType;
 import lk.Ijse.model.*;
 import lk.Ijse.model.tm.CartTm;
+import lk.Ijse.model.tm.CustomerTm;
+import lk.Ijse.model.tm.OrderTm;
 import lk.Ijse.repository.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -930,6 +933,9 @@ public class orderFormController implements Initializable {
     private TableColumn<?, ?> colCartunitPrice;
 
     @FXML
+    private TableColumn<?, ?> colDate;
+
+    @FXML
     private TableColumn<?, ?> colEmpID;
 
     @FXML
@@ -937,6 +943,9 @@ public class orderFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colReservationID;
+
+    @FXML
+    private TableColumn<?, ?> colTime;
 
     @FXML
     private TableColumn<?, ?> colTotal;
@@ -949,9 +958,6 @@ public class orderFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colqty;
-
-    @FXML
-    private TableColumn<?, ?> colstatus;
 
     @FXML
     private TableColumn<?, ?> colunitPrice;
@@ -978,13 +984,6 @@ public class orderFormController implements Initializable {
     private Label lbltablecharge;
 
     @FXML
-    private TableColumn<?, ?> colDate;
-
-    @FXML
-    private TableColumn<?, ?> colTime;
-
-
-    @FXML
     private TextField txtcusContact;
 
 
@@ -1000,24 +999,23 @@ public class orderFormController implements Initializable {
     @FXML
     private TextField txtqty;
     private ObservableList<CartTm> cartList = FXCollections.observableArrayList();
+    private ObservableList<OrderTm> orderList = FXCollections.observableArrayList();
     private double netTotal = 0;
     private double SubTotal=0;
     private String customer_id;
-    LocalTime currentTime = LocalTime.now();
-    private int qty=0;
-    // Define the desired format
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-    private String empId;
+
 
 
     private int quantityAvailable;
-    private double NetTotal;
+    private ObservableList<?> odList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setCellValueFactory();
+        setCartValueFactory();
+      // setCellValueFactory();
         loadNextOrderId();
         getCurrentOrderId();
+        setDate();
         getItemCodes();
         getWaiterIds();
         ObservableList<TableType> Tabletype = FXCollections.observableArrayList(TableType.values());
@@ -1035,6 +1033,9 @@ public class orderFormController implements Initializable {
         }
     }
 
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+    }
 
 
     private void loadNextOrderId() {
@@ -1059,7 +1060,7 @@ public class orderFormController implements Initializable {
         return "O1";
     }
 
-    private void setCellValueFactory() {
+    private void setCartValueFactory() {
         colCartitemID.setCellValueFactory(new PropertyValueFactory<>("code"));
         colCartorderdes.setCellValueFactory(new PropertyValueFactory<>("description"));
         colCartqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -1199,20 +1200,23 @@ public class orderFormController implements Initializable {
         String orderId = lblOrderID.getText();
         String cusId = customer_id;
         Date date = Date.valueOf(LocalDate.now());
-        String formattedTime = currentTime.format(formatter);
+        Time time = Time.valueOf(LocalTime.now());
         String table =cmbordertable.getSelectionModel().getSelectedItem().toString();
         String empId =cmbwaiterID.getSelectionModel().getSelectedItem();
+        double netTotal = Double.parseDouble(lblNetTotal.getText());
 
-        var order = new Order(orderId, cusId, date, formattedTime, table, empId );
+        Order order = new Order(orderId, cusId, date,time, table, empId,netTotal );
 
         List<order_item> odList = new ArrayList<>();
         for (int i = 0; i < tblCart.getItems().size(); i++) {
             CartTm tm = cartList.get(i);
 
             order_item od = new order_item(
-                    orderId,
                     tm.getCode(),
-                    tm.getQty()
+                    orderId,
+                    tm.getQty(),
+                    tm.getUnitPrice(),
+                    tm.getTotal()
             );
             odList.add(od);
         }
@@ -1296,6 +1300,51 @@ public class orderFormController implements Initializable {
         }
 
     }
+   /*     private  void setCellValueFactory() {
+        colOrderID.setCellValueFactory(new PropertyValueFactory<>("order_id"));
+        colitemID.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colorderdes.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colunitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colReservationID.setCellValueFactory(new PropertyValueFactory<>("table"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+        colEmpID.setCellValueFactory(new PropertyValueFactory<>("waiter"));
+        colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
+   }*/
+
+/*    private void loadAllOrders() {
+
+        try {
+            List<Order> odlist = PlaceOrderRepo.getordersAll();
+            for (Order order : odlist) {
+                OrderTm tm = new OrderTm(
+                        order.getOrderId(),
+                        order.getOrderDate(),
+                        order.getTime(),
+                        order.getTable(),
+                        order.getCustomerId(),
+                        order.getEmployeeId(),
+                        order.getNetTotal()
+                );
+                odlist.add(tm);
+            }
+            List<order_item> odItemlist = PlaceOrderRepo.getorder_itemsAll();
+            for (order_item odItem : odItemlist) {
+                OrderTm tmp = new OrderTm(
+                        odItem.getItemID(),
+                        odItem.getQty(),
+                        odItem.getUnitprice()
+                );
+                odItemlist.add(tmp);
+            }
+
+            tblOrder.setItems(odList,odItemlist);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
 
 
 }
