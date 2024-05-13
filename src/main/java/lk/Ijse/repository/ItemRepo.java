@@ -120,7 +120,7 @@ public class ItemRepo {
         return codeList;
     }
 
-    public static boolean updateQty(List<order_item> odList, Connection connection) throws SQLException {
+    public static boolean updateQty(List<order_item> odList) throws SQLException {
         for (order_item od : odList) {
             if (!updateQty(od)) {
                 return false;

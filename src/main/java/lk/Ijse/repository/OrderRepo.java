@@ -33,7 +33,7 @@ public class OrderRepo {
 //
 //        return pstm.executeUpdate() > 0;
 //    }
-public static boolean save(Order order, Connection connection) throws SQLException {
+public static boolean save(Order order) throws SQLException {
     String sql = "INSERT INTO orders VALUES(?, ?, ?, ?, ?, ?)";
     try (PreparedStatement pstm = DbConnection.getInstance().getConnection().prepareStatement(sql)) {
         pstm.setString(1, order.getOrderId());

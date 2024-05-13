@@ -3,15 +3,14 @@ package lk.Ijse.repository;
 import lk.Ijse.db.DbConnection;
 import lk.Ijse.model.order_item;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
 public class OrderDetailRepo {
-    public static boolean save(List<order_item> odList, Connection connection) throws SQLException {
+    public static boolean save(List<order_item> odList) throws SQLException {
         for (order_item od : odList) {
-            if(!save((List<order_item>) od, connection)) {
+            if(!save((List<order_item>) od)) {
                 return false;
             }
         }
