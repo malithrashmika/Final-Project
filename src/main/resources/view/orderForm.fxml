@@ -175,13 +175,13 @@
       <TableView fx:id="tblOrder" editable="true" layoutX="532.0" layoutY="334.0" opacity="0.92" prefHeight="341.0" prefWidth="622.0" style="-fx-background-color: #F8F4EC; -fx-background-radius: 5em; -fx-border-radius: 1px; -fx-border-color: #51829B; -fx-border-width: 1px 2px 5px;" stylesheets="@../icons/fullpackstyling.css">
          <columns>
             <TableColumn fx:id="colOrderID" prefWidth="57.600006103515625" style="-fx-background-color: #7077A1;" text="OrderID" />
-            <TableColumn fx:id="colitemID" prefWidth="48.0" style="-fx-background-color: #0C359E;" text="Item ID" />
-            <TableColumn fx:id="colorderdes" prefWidth="103.20001220703125" style="-fx-background-color: #3C5B6F;" text="Description" />
-            <TableColumn fx:id="colunitPrice" prefWidth="43.99993896484375" style="-fx-background-color: #51829B;" text="Price" />
-            <TableColumn fx:id="colReservationID" prefWidth="47.20001220703125" style="-fx-background-color: #43766C;" text="Table" />
             <TableColumn fx:id="colDate" prefWidth="69.5999755859375" text="Date" />
             <TableColumn fx:id="colTime" prefWidth="74.4000244140625" style="-fx-background-color: #793FDF;" text="Time" />
+            <TableColumn fx:id="colReservationID" prefWidth="47.20001220703125" style="-fx-background-color: #43766C;" text="Table" />
             <TableColumn fx:id="colEmpID" prefWidth="52.7999267578125" style="-fx-background-color: #8E7AB5;" text="Waiter" />
+            <TableColumn fx:id="colCustomerID" prefWidth="79.199951171875" style="-fx-background-color: #3C5B6F;" text="CustomerID" />
+            <TableColumn fx:id="colitemID" prefWidth="48.0" style="-fx-background-color: #0C359E;" text="Item ID" />
+            <TableColumn fx:id="colunitPrice" prefWidth="68.0" style="-fx-background-color: #51829B;" text="Price" />
             <TableColumn fx:id="colqty" prefWidth="32.800048828125" style="-fx-background-color: #B784B7;" text="Qty" />
             <TableColumn fx:id="colTotal" prefWidth="46.39990234375" style="-fx-background-color: #430A5D;" text="Total" />
             <TableColumn fx:id="colAction" prefWidth="45.5999755859375" style="-fx-background-color: #31363F;" text="Action" />

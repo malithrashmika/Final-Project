@@ -891,7 +891,6 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -954,7 +953,7 @@ public class orderFormController implements Initializable {
     private TableColumn<?, ?> colitemID;
 
     @FXML
-    private TableColumn<?, ?> colorderdes;
+    private TableColumn<?, ?> colCustomerID;
 
     @FXML
     private TableColumn<?, ?> colqty;
@@ -994,10 +993,11 @@ public class orderFormController implements Initializable {
     private TableView<CartTm> tblCart;
 
     @FXML
-    private TableView<?> tblOrder;
+    private TableView<OrderTm> tblOrder;
 
     @FXML
     private TextField txtqty;
+
     private ObservableList<CartTm> cartList = FXCollections.observableArrayList();
     private ObservableList<OrderTm> orderList = FXCollections.observableArrayList();
     private double netTotal = 0;
@@ -1012,7 +1012,14 @@ public class orderFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCartValueFactory();
-      // setCellValueFactory();
+        setCellValueFactory();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                loadAllOrders();
+            }
+        });
+        thread.start();
         loadNextOrderId();
         getCurrentOrderId();
         setDate();
@@ -1300,53 +1307,52 @@ public class orderFormController implements Initializable {
         }
 
     }
-   /*     private  void setCellValueFactory() {
-        colOrderID.setCellValueFactory(new PropertyValueFactory<>("order_id"));
-        colitemID.setCellValueFactory(new PropertyValueFactory<>("code"));
-        colorderdes.setCellValueFactory(new PropertyValueFactory<>("description"));
-        colunitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colReservationID.setCellValueFactory(new PropertyValueFactory<>("table"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+   private void setCellValueFactory() {
+        colOrderID.setCellValueFactory(new PropertyValueFactory<>("orderId"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        colTime.setCellValueFactory(new PropertyValueFactory<>("orderTime"));
+        colReservationID.setCellValueFactory(new PropertyValueFactory<>("tableType"));
         colEmpID.setCellValueFactory(new PropertyValueFactory<>("waiter"));
-        colqty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-        colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
-   }*/
-
-/*    private void loadAllOrders() {
-
-        try {
-            List<Order> odlist = PlaceOrderRepo.getordersAll();
-            for (Order order : odlist) {
-                OrderTm tm = new OrderTm(
-                        order.getOrderId(),
-                        order.getOrderDate(),
-                        order.getTime(),
-                        order.getTable(),
-                        order.getCustomerId(),
-                        order.getEmployeeId(),
-                        order.getNetTotal()
-                );
-                odlist.add(tm);
-            }
-            List<order_item> odItemlist = PlaceOrderRepo.getorder_itemsAll();
-            for (order_item odItem : odItemlist) {
-                OrderTm tmp = new OrderTm(
-                        odItem.getItemID(),
-                        odItem.getQty(),
-                        odItem.getUnitprice()
-                );
-                odItemlist.add(tmp);
-            }
-
-            tblOrder.setItems(odList,odItemlist);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
+       colCustomerID.setCellValueFactory(new PropertyValueFactory<>("CustomerID"));
+       colitemID.setCellValueFactory(new PropertyValueFactory<>("ItemId"));
+       colunitPrice.setCellValueFactory(new PropertyValueFactory<>("orderPrice"));
+       colqty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("netTotal"));
+       colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
+    }
 
 
+   private void loadAllOrders() {
+
+
+       ObservableList<OrderTm> obList = FXCollections.observableArrayList();
+
+       try {
+           List<OrderDetails> orderDetailsList = PlaceOrderRepo.getordersAll();
+           for (OrderDetails orderDetails : orderDetailsList) {
+               OrderTm tm = new OrderTm(
+                       orderDetails.getOrderId(),
+                       orderDetails.getOrderDate(),
+                       orderDetails.getOrderTime(),
+                       orderDetails.getTableType(),
+                       orderDetails.getWaiter(),
+                       orderDetails.getCustomerID(),
+                       orderDetails.getItemId(),
+                       orderDetails.getOrderPrice(),
+                       orderDetails.getQuantity(),
+                       orderDetails.getNetTotal(),
+                       new JFXButton()
+
+               );
+
+               obList.add(tm);
+           }
+
+           tblOrder.setItems(obList);
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+    }
 }
 
 

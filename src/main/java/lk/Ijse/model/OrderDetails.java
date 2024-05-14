@@ -1,19 +1,15 @@
-package lk.Ijse.model.tm;
+package lk.Ijse.model;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Time;
 
-import com.jfoenix.controls.JFXButton;
-import lombok.*;
-
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
-@ToString
-@EqualsAndHashCode
-
-public class OrderTm  {
+@Data
+public class OrderDetails {
     private String orderId;
     private Date orderDate;
     private Time orderTime;
@@ -24,6 +20,4 @@ public class OrderTm  {
     private double orderPrice;
     private int quantity;
     private double netTotal;
-    private JFXButton btnRemove;
-
 }

@@ -11,7 +11,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.Ijse.Util.Regex;
+import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.model.Customer;
 import lk.Ijse.model.tm.CustomerTm;
 import lk.Ijse.repository.CustomerRepo;
@@ -20,6 +23,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static lk.Ijse.Util.Regex.setTextColor;
 
 public class customerController implements Initializable {
     @Override
@@ -178,5 +183,9 @@ public class customerController implements Initializable {
         } else {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
         }
+    }
+    @FXML
+    public void txtCustomerIDOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.ID,txtId);
     }
 }
