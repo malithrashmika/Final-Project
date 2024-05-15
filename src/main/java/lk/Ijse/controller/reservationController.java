@@ -17,7 +17,16 @@ import java.util.ResourceBundle;
 public class reservationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellValueFactory();
+        loadAllReservations();
+    }
 
+    private void loadAllReservations() {
+
+    }
+
+    private void setCellValueFactory() {
+        
     }
 
     @FXML

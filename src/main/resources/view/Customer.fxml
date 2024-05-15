@@ -16,9 +16,9 @@
 <AnchorPane fx:id="root" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #E4C59E;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.customerController">
     <children>
         <TextField fx:id="txtId" layoutX="47.0" layoutY="115.0" onKeyReleased="#txtCustomerIDOnKeyReleased" prefHeight="26.0" prefWidth="265.0" promptText="Customer ID" />
-        <TextField fx:id="txtName" layoutX="46.0" layoutY="208.0" prefHeight="26.0" prefWidth="266.0" promptText="Customer Name" />
-        <TextField fx:id="txtTel" layoutX="46.0" layoutY="293.0" prefHeight="26.0" prefWidth="266.0" promptText="Customer Contact" />
-        <TextField fx:id="txtemail" layoutX="46.0" layoutY="385.0" prefHeight="26.0" prefWidth="266.0" promptText="Customer Email" />
+        <TextField fx:id="txtName" layoutX="46.0" layoutY="208.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Customer Name" />
+        <TextField fx:id="txtTel" layoutX="46.0" layoutY="293.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Customer Contact" />
+        <TextField fx:id="txtemail" layoutX="46.0" layoutY="385.0" onKeyReleased="#txtEmailOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Customer Email" />
       <TableView fx:id="tblCustomer" editable="true" layoutX="357.0" layoutY="441.0" prefHeight="214.0" prefWidth="470.0" style="-fx-background-color: #FFFF;" stylesheets="@../icons/fullpackstyling.css">
          <columns>
             <TableColumn fx:id="colId" prefWidth="77.60000801086426" text="Customer ID" />

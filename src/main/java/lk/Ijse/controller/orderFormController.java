@@ -49,9 +49,6 @@ public class orderFormController implements Initializable {
     private ComboBox<String> cmbwaiterID;
 
     @FXML
-    private TableColumn<?, ?> colAction;
-
-    @FXML
     private TableColumn<?, ?> colCartAction;
 
     @FXML
@@ -456,7 +453,6 @@ public class orderFormController implements Initializable {
        colunitPrice.setCellValueFactory(new PropertyValueFactory<>("orderPrice"));
        colqty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("netTotal"));
-       colAction.setCellValueFactory(new PropertyValueFactory<>("btnRemove"));
     }
 
 
@@ -478,8 +474,7 @@ public class orderFormController implements Initializable {
                        orderDetails.getItemId(),
                        orderDetails.getOrderPrice(),
                        orderDetails.getQuantity(),
-                       orderDetails.getNetTotal(),
-                       new JFXButton()
+                       orderDetails.getNetTotal()
 
                );
 

@@ -184,8 +184,30 @@ public class customerController implements Initializable {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
         }
     }
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFieldRegex.ID,txtId)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.NAME,txtName)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.CONTACT,txtTel)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.EMAIL,txtemail)) return false;
+        return true;
+    }
     @FXML
     public void txtCustomerIDOnKeyReleased(KeyEvent keyEvent) {
         Regex.setTextColor(TextFieldRegex.ID,txtId);
+    }
+
+    @FXML
+    void txtContactOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextFieldRegex.CONTACT,txtTel);
+    }
+
+    @FXML
+    void txtEmailOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextFieldRegex.EMAIL,txtemail);
+    }
+
+    @FXML
+    void txtNameOnKeyReleased(KeyEvent event) {
+        Regex.setTextColor(TextFieldRegex.NAME,txtName);
     }
 }

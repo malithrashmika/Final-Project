@@ -107,9 +107,9 @@
                 <Font name="Cambria Bold Italic" size="34.0" />
             </font>
         </Label>
-      <TextField fx:id="txtId" layoutX="57.0" layoutY="125.0" prefHeight="26.0" prefWidth="265.0" promptText="Employee ID" />
-      <TextField fx:id="txtName" layoutX="56.0" layoutY="178.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Name" />
-      <TextField fx:id="txttel" layoutX="56.0" layoutY="231.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Contact" />
+      <TextField fx:id="txtId" layoutX="57.0" layoutY="125.0" onKeyReleased="#txtEmployeeIDOnKeyReleased" prefHeight="26.0" prefWidth="265.0" promptText="Employee ID" />
+      <TextField fx:id="txtName" layoutX="56.0" layoutY="178.0" onKeyPressed="#txtNameOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Employee Name" />
+      <TextField fx:id="txttel" layoutX="56.0" layoutY="231.0" onKeyReleased="#txtContactOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Employee Contact" />
       <ComboBox fx:id="cmbEmpRole" layoutX="56.0" layoutY="329.0" onAction="#EmpRoleOnAction" prefHeight="26.0" prefWidth="266.0" promptText="Employee Role" />
       <HBox layoutX="417.0" layoutY="236.0">
          <children>
@@ -130,7 +130,7 @@
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtSalary" layoutX="56.0" layoutY="283.0" prefHeight="26.0" prefWidth="266.0" promptText="Employee Salary" />
+      <TextField fx:id="txtSalary" layoutX="56.0" layoutY="283.0" onKeyReleased="#txtSalaryOnKeyReleased" prefHeight="26.0" prefWidth="266.0" promptText="Employee Salary" />
     </children>
    <cursor>
       <Cursor fx:constant="OPEN_HAND" />

@@ -219,56 +219,6 @@ public class  DashboardController{
         currentTime.setEllipsisString(null);
     }
 
-
-
-    @FXML
-    void btnNewOrderOnAction(ActionEvent event) {
-//        try {
-//            // Load the placeOrder.fxml file
-//            FXMLLoader placeOrderLoader = new FXMLLoader(getClass().getResource("/view/placeOrder.fxml"));
-//            Parent placeOrderRootNode = placeOrderLoader.load();
-//
-//            // Assuming 'Node' refers to the anchor pane where you want to load placeOrder.fxml
-//            // Clear the children of the 'Node'
-//            Node.getChildren().clear();
-//
-//            // Add the loaded placeOrderRootNode as a child to the 'Node'
-//            Node.getChildren().add(placeOrderRootNode);
-//
-//            // Ensure that the loaded content fits and appears in the correct location
-//            AnchorPane.setTopAnchor(placeOrderRootNode, 0.0);
-//            AnchorPane.setRightAnchor(placeOrderRootNode, 0.0);
-//            AnchorPane.setBottomAnchor(placeOrderRootNode, 0.0);
-//            AnchorPane.setLeftAnchor(placeOrderRootNode, 0.0);
-//
-//            // Load the orders.fxml file
-//            FXMLLoader ordersLoader = new FXMLLoader(getClass().getResource("/view/orders.fxml"));
-//            Parent ordersRootNode = ordersLoader.load();
-//
-//            // Assuming 'root' refers to the anchor pane where you want to load orders.fxml
-//            // Clear the children of the 'root'
-//            root.getChildren().clear();
-//
-//            // Add the loaded ordersRootNode as a child to the 'root'
-//            root.getChildren().add(ordersRootNode);
-//
-//            // Ensure that the loaded content fits and appears in the correct location
-//            AnchorPane.setTopAnchor(ordersRootNode, 0.0);
-//            AnchorPane.setRightAnchor(ordersRootNode, 0.0);
-//            AnchorPane.setBottomAnchor(ordersRootNode, 0.0);
-//            AnchorPane.setLeftAnchor(ordersRootNode, 0.0);
-//
-//            // Optionally, you can adjust the size of the window to fit the new content
-//            Stage stage = (Stage) root.getScene().getWindow();
-//            stage.sizeToScene();
-//        } catch (IOException e) {
-//            e.printStackTrace(); // Handle the IOException appropriately
-//        }
-    }
-
-
-
-
     @FXML
     void btnHomeAction(ActionEvent event) {
         try {

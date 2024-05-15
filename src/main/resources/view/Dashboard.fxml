@@ -14,18 +14,6 @@
 
 <AnchorPane fx:id="rootNode" prefHeight="800.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.DashboardController">
    <children>
-      <JFXButton buttonType="RAISED" layoutX="986.0" layoutY="25.0" onAction="#btnNewOrderOnAction" prefHeight="34.0" prefWidth="132.0" ripplerFill="#72efe7" style="-fx-background-color: #8E7AB5;" stylesheets="@../icons/fullpackstyling.css" text="New Order">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font>
-         <graphic>
-            <ImageView>
-               <image>
-                  <Image url="@../icons/icons8-add-30.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
       <AnchorPane prefHeight="800.0" prefWidth="282.0" style="-fx-background-color: #7E6363;">
          <children>
             <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="20.0" layoutY="160.0" onAction="#btnCustomerOnAction" opacity="0.83" prefHeight="62.0" prefWidth="230.0" styleClass="b" stylesheets="@../../../../../Cocktail_HUB/src/main/resources/icons/fullpackstyling.css" text="Customer" textFill="WHITE">

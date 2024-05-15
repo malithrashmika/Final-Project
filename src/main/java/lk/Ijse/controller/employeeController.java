@@ -112,6 +112,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.Ijse.Util.Regex;
+import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.db.EmployeeRoles;
 import lk.Ijse.model.Customer;
 import lk.Ijse.model.Employee;
@@ -119,6 +121,7 @@ import lk.Ijse.model.tm.EmployeeTm;
 import lk.Ijse.repository.CustomerRepo;
 import lk.Ijse.repository.EmployeeRepo;
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -249,14 +252,18 @@ public class employeeController implements Initializable {
             Employee employee = new Employee(id, name, tel,salary, Role);
 
             try {
-                boolean isSaved = EmployeeRepo.save(employee);
-                if (isSaved) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
-                    clearFields();
-                    obList.clear();
-                    loadAllEmployees();
+                if (isValid()) {
+                    boolean isSaved = EmployeeRepo.save(employee);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
+                        clearFields();
+                        obList.clear();
+                        loadAllEmployees();
 
+                    }
                 }
+                new Alert(Alert.AlertType.WARNING, "Invalid Input!").show();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -297,6 +304,27 @@ public class employeeController implements Initializable {
                 new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
             }
         }
-
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFieldRegex.ID,txtId)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.NAME,txtName)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.CONTACT,txttel  )) return false;
+        if (!Regex.setTextColor(TextFieldRegex.SALARY,txtSalary)) return false;
+        return true;
     }
+    public void txtSalaryOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.SALARY,txtSalary);
+    }
+
+    public void txtEmployeeIDOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.ID,txtId);
+    }
+
+    public void txtNameOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.NAME,txtName);
+    }
+
+    public void txtContactOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.CONTACT,txttel);
+    }
+}
 

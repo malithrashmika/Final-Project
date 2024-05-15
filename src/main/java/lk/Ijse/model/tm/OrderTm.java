@@ -24,6 +24,5 @@ public class OrderTm  {
     private double orderPrice;
     private int quantity;
     private double netTotal;
-    private JFXButton btnRemove;
 
 }

@@ -1,5 +1,6 @@
 package lk.Ijse.Util;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
 import java.util.regex.Matcher;
@@ -10,22 +11,28 @@ public class Regex {
         String filed="";
         switch (textField) {
             case ID:
-                filed="^([A-Z][0-9]{3})$";
+                filed="^([A-Z][0-9]{4})$";
                 break;
             case NAME:
-                filed="^[A-z|\\\\s]{3,}$";
+                filed="^[A-z|\\\\s]{15,}$";
                 break;
             case PRICE:
-                filed=text;
+                filed= "^\\d([0-9]){1,}[.]([0-9]){1,}$";
                 break;
             case ADDRESS:
-                filed=text;
+                filed="[A-za-z\\\\s]{1,}";
                 break;
             case CONTACT:
-                filed=text;
+                filed="^([+]94{1,3}|[0])([1-9]{2})([0-9]){1,7}$";
                 break;
             case SALARY:
-                filed=text;
+                filed= "^\\d([0-9]){1,}[.]([0-9]){1,}$";
+                break;
+            case EMAIL:
+                filed="^([A-z])([A-z0-9.]){1,}[@]([A-z0-9]){1,10}[.]([A-z]){2,5}$";
+                break;
+            case QTY:
+                filed="^\\d+$";
                 break;
         }
         Pattern pattern = Pattern.compile(filed);
@@ -40,16 +47,18 @@ public class Regex {
         if (matcher.matches()){
             return true;
         }
-        return true;
+        return false;
     }
     public static boolean setTextColor(TextFieldRegex location, TextField textField) {
         if (Regex.isTextFieldValid(location,textField.getText())){
-            textField.setStyle("-fx-background-color: rgba(0,255,0,255);");
+            textField.setStyle("-fx-border-color: rgba(255,0,0,255);");
+            new Alert(Alert.AlertType.ERROR,"invalid ").show();
             return true;
         }else {
-            textField.setStyle("-fx-background-color: rgba(255,0,0,255);");
+            textField.setStyle("-fx-border-color: rgba(0,255,0,255);");
             return false;
         }
     }
+
 }
 
