@@ -178,8 +178,8 @@
             <TableColumn fx:id="colDate" prefWidth="69.5999755859375" text="Date" />
             <TableColumn fx:id="colTime" prefWidth="70.40008544921875" style="-fx-background-color: #B1D5D8;" text="Time" />
             <TableColumn fx:id="colReservationID" prefWidth="75.99993896484375" text="Table" />
-            <TableColumn fx:id="colEmpID" prefWidth="60.0" style="-fx-background-color: #8E7AB5;" text="Waiter" />
-            <TableColumn fx:id="colCustomerID" prefWidth="72.0" text="CustomerID" />
+            <TableColumn fx:id="colEmpID" prefWidth="72.0" style="-fx-background-color: #8E7AB5;" text="CustomerID" />
+            <TableColumn fx:id="colCustomerID" prefWidth="61.5999755859375" text="Waiter ID" />
             <TableColumn fx:id="colitemID" prefWidth="59.20001220703125" style="-fx-background-color: #92B0B2;" text="Item ID" />
             <TableColumn fx:id="colunitPrice" prefWidth="62.4000244140625" text="Price" />
             <TableColumn fx:id="colqty" prefWidth="32.800048828125" style="-fx-background-color: #B784B7;" text="Qty" />
