@@ -105,5 +105,20 @@ public class EmployeeRepo {
         }
         return idList;
     }
+
+    public static List<String> searchById() throws SQLException {
+        String sql = "SELECT employee_id FROM employee";
+
+        List<String> ids = new ArrayList<>();
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        ResultSet resultSet = connection.createStatement().executeQuery(sql);
+
+        while (resultSet.next()) {
+            ids.add(resultSet.getString(1));
+        }
+
+        return ids;
+    }
 }
 

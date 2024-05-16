@@ -232,17 +232,6 @@ public class ingredientController implements Initializable {
             txtInQty_avalible.setText(String.valueOf(ingredient.getQty_avalible()));
             txtInUnitPrice.setText(String.valueOf(ingredient.getUnit_price()));
             cmbISupplier.getSelectionModel().select(ingredient.getSupplier_id());
-
-            // Retrieve and select the corresponding supplier from the database
-//            String supplierId = ingredient.getSupplier_id();
-//            if (supplierId != null) {
-//                Supplier supplier = SupplierRepo.searchById(supplierId); // Implement SupplierRepo to search by ID
-//                if (supplier != null) {
-//                    // Assuming cmbISupplier is your ComboBox<JFXComboBox<String>>
-//                    cmbISupplier.getSelectionModel().select(Integer.parseInt(ingredient.getSupplier_id()));
-//
-//                }
-//            }
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Ingredient not found!").show();
         }

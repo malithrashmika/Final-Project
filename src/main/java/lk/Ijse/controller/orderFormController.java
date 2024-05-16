@@ -201,6 +201,24 @@ public class orderFormController implements Initializable {
         }
         return "O1";
     }
+    private void getCurrentOrderId() {
+        try {
+            String currentId = OrderRepo.getCurrentId();
+            String nextOrderId = generateNextOrderId(currentId);
+            lblOrderID.setText(nextOrderId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String generateNextOrderId(String currentId) {
+        if(currentId != null) {
+            String[] split = currentId.split("O");
+            int idNum = Integer.parseInt(split[1]);
+            return "O" + ++idNum;
+        }
+        return "O1";
+    }
 
     private void setCartValueFactory() {
         colCartitemID.setCellValueFactory(new PropertyValueFactory<>("code"));
@@ -233,24 +251,7 @@ public class orderFormController implements Initializable {
         }
     }
 
-    private void getCurrentOrderId() {
-        try {
-            String currentId = OrderRepo.getCurrentId();
-            String nextOrderId = generateNextOrderId(currentId);
-            lblOrderID.setText(nextOrderId);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
-    private String generateNextOrderId(String currentId) {
-        if(currentId != null) {
-            String[] split = currentId.split("O");
-            int idNum = Integer.parseInt(split[1]);
-            return "O" + ++idNum;
-        }
-        return "O1";
-    }
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
