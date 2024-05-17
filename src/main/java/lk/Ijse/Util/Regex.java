@@ -11,10 +11,10 @@ public class Regex {
         String filed="";
         switch (textField) {
             case ID:
-                filed="^([A-Z][0-9]{4})$";
+                filed="^([A-Z][0-9]{3})$";
                 break;
             case NAME:
-                filed="^[A-z|\\\\s]{15,}$";
+                filed="^[A-z|\\\\s]{3,}$";
                 break;
             case PRICE:
                 filed= "^\\d([0-9]){1,}[.]([0-9]){1,}$";
@@ -51,11 +51,12 @@ public class Regex {
     }
     public static boolean setTextColor(TextFieldRegex location, TextField textField) {
         if (Regex.isTextFieldValid(location,textField.getText())){
-            textField.setStyle("-fx-border-color: rgba(255,0,0,255);");
-            new Alert(Alert.AlertType.ERROR,"invalid ").show();
+            textField.setStyle("-fx-border-color: rgba(0,255,0,255);");
+            textField.setStyle("-fx-border-color: rgba(0,255,0,255);");
             return true;
         }else {
-            textField.setStyle("-fx-border-color: rgba(0,255,0,255);");
+            textField.setStyle("-fx-border-color: rgba(255,0,0,255);");
+            textField.setStyle("-fx-border-color: rgba(255,0,0,255);");
             return false;
         }
     }

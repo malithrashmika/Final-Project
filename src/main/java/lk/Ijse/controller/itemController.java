@@ -268,10 +268,6 @@ public class itemController implements Initializable {
             tblItem.refresh(); // Refresh TableView
 
             // Debugging: Print contents of obList
-            System.out.println("Contents of obList:");
-            for (ItemTm itemTm : obList) {
-                System.out.println(itemTm);
-            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

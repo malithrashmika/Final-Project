@@ -15,12 +15,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import lk.Ijse.db.DbConnection;
 import lk.Ijse.db.TableType;
 import lk.Ijse.model.*;
 import lk.Ijse.model.tm.CartTm;
 import lk.Ijse.model.tm.CustomerTm;
 import lk.Ijse.model.tm.OrderTm;
 import lk.Ijse.repository.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,10 +40,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class orderFormController implements Initializable {
 
@@ -275,19 +283,38 @@ public class orderFormController implements Initializable {
         btnRemove.setCursor(Cursor.HAND);
 
         btnRemove.setOnAction((e) -> {
+            int selectedIndex = tblCart.getSelectionModel().getSelectedIndex();
+            if (selectedIndex == -1) {
+                new Alert(Alert.AlertType.WARNING, "Please select an item to remove.").show();
+                return;
+            }
+
             ButtonType yes = new ButtonType("yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("no", ButtonBar.ButtonData.CANCEL_CLOSE);
 
             Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
-            if(type.orElse(no) == yes) {
-                int selectedIndex = tblCart.getSelectionModel().getSelectedIndex();
+            if (type.orElse(no) == yes) {
                 cartList.remove(selectedIndex);
-
                 tblCart.refresh();
                 calculateSubTotal();
             }
         });
+        for (int i = 0; i < tblCart.getItems().size(); i++) {
+            if (code.equals(colCartitemID.getCellData(i))) {
+                qty += cartList.get(i).getQty();
+                total = unitPrice * qty;
+
+                cartList.get(i).setQty(qty);
+                cartList.get(i).setTotal(total);
+
+                tblCart.refresh();
+                calculateSubTotal();
+                txtqty.setText("");
+                return;
+            }
+        }
+
 
         // Create the CartTm object and add it to the cartList
         CartTm cartTm = new CartTm(code, description, unitPrice, qty, total, btnRemove);
@@ -369,6 +396,7 @@ public class orderFormController implements Initializable {
         boolean isPlaced = PlaceOrderRepo.placeOrder(po);
         if(isPlaced) {
             new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
+            loadAllOrders();
         } else {
             new Alert(Alert.AlertType.WARNING, "order not placed!").show();
         }
@@ -413,6 +441,13 @@ public class orderFormController implements Initializable {
                 lblItemName.setText(item.getDescription());
                 LblUnitPrice.setText(String.valueOf(item.getPrice()));
                 lblQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
+                quantityAvailable = item.getQtyOnHand();
+            } else {
+                // Handle the case where the item is not found
+                lblItemName.setText("");
+                LblUnitPrice.setText("");
+                lblQtyOnHand.setText("0");
+                quantityAvailable = 0;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -420,6 +455,24 @@ public class orderFormController implements Initializable {
 
         txtqty.requestFocus();
     }
+
+
+ /*   @FXML
+    void cmbItemOnAction(ActionEvent event) {
+        String code = cmbItemID.getValue();
+        try {
+            Item item = ItemRepo.searchByCode(code);
+            if (item != null) {
+                lblItemName.setText(item.getDescription());
+                LblUnitPrice.setText(String.valueOf(item.getPrice()));
+                lblQtyOnHand.setText(String.valueOf(item.getQtyOnHand()));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        txtqty.requestFocus();
+    }*/
 
     @FXML
     void cmbTableOnAction(ActionEvent event) {
@@ -454,6 +507,25 @@ public class orderFormController implements Initializable {
        colunitPrice.setCellValueFactory(new PropertyValueFactory<>("orderPrice"));
        colqty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("netTotal"));
+    }
+    @FXML
+    void btnPrintBillOnAction(ActionEvent event) throws  SQLException, JRException {
+        JasperDesign jasperDesign =
+                JRXmlLoader.load("src/main/resources/Reports/CustomerBill.jrxml");
+        JasperReport jasperReport =
+                JasperCompileManager.compileReport(jasperDesign);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("OrderID",lblOrderID.getText());
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport,
+                        data,
+                        DbConnection.getInstance().getConnection());
+
+        JasperViewer.viewReport(jasperPrint,false);
+
     }
 
 

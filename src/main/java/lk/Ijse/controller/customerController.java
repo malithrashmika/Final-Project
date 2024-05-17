@@ -126,6 +126,7 @@ public class customerController implements Initializable {
             boolean isDeleted = CustomerRepo.delete(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
+                loadAllCustomers();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -146,6 +147,8 @@ public class customerController implements Initializable {
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
                 clearFields();
+                loadAllCustomers();
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -165,6 +168,7 @@ public class customerController implements Initializable {
             boolean isUpdated = CustomerRepo.update(customer);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
+                loadAllCustomers();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

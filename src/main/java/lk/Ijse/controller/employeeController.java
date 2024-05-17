@@ -235,6 +235,7 @@ public class employeeController implements Initializable {
                 boolean isDeleted = EmployeeRepo.delete(id);
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "employee deleted!").show();
+                    loadAllEmployees();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -283,6 +284,7 @@ public class employeeController implements Initializable {
                 boolean isUpdated = EmployeeRepo.update(employee);
                 if(isUpdated) {
                     new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
+                    loadAllEmployees();
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -74,12 +74,37 @@ public class LoginformController {
 
     private void navigateToTheDashboard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Home.fxml"));
 
         Scene scene = new Scene(rootNode);
         Stage stage= (Stage) this.root.getScene().getWindow();
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setTitle("Dashboard Form");
+/*        try {
+            // Load the Customer.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Home.fxml"));
+            Parent rootNode = loader.load();
+
+            // Assuming 'root' refers to the root AnchorPane in your current scene
+            // Clear the children of the root AnchorPane
+            root.getChildren().clear();
+
+            // Add the loaded rootNode as a child to the root AnchorPane
+            root.getChildren().add(rootNode);
+
+            // Ensure that the loaded content fits and appears in the correct location
+            AnchorPane.setTopAnchor(rootNode, 0.0);
+            AnchorPane.setRightAnchor(rootNode, 0.0);
+            AnchorPane.setBottomAnchor(rootNode, 0.0);
+            AnchorPane.setLeftAnchor(rootNode, 0.0);
+
+            // Optionally, you can adjust the size of the window to fit the new content
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.sizeToScene();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the IOException appropriately
+        }*/
     }
 
 

@@ -13,61 +13,69 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #DCFFB7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
+<AnchorPane prefHeight="700.0" prefWidth="1168.0" style="-fx-background-color: #222831;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
    <children>
-      <TextField fx:id="txtItemID" layoutX="38.0" layoutY="136.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM ID" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <Rectangle arcHeight="53.0" arcWidth="59.0" fill="#eaf5ff0a" height="648.0" layoutX="34.0" layoutY="32.0" stroke="#9e9e9e" strokeType="INSIDE" strokeWidth="3.0" style="-fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);;" width="416.0" />
+      <TextField fx:id="txtItemID" layoutX="110.0" layoutY="117.0" prefHeight="34.0" prefWidth="266.0" promptText="ITEM ID" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
-            <Font name="Cambria Bold Italic" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemName" layoutX="38.0" layoutY="194.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM Name" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemName" layoutX="110.0" layoutY="175.0" prefHeight="34.0" prefWidth="266.0" promptText="ITEM Name" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
-            <Font name="Cambria Bold Italic" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemPrice" layoutX="38.0" layoutY="314.0" prefHeight="35.0" prefWidth="263.0" promptText="Unit Price" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemPrice" layoutX="110.0" layoutY="303.0" prefHeight="34.0" prefWidth="266.0" promptText="Unit Price" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
-            <Font name="Cambria Bold" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemDes" layoutX="38.0" layoutY="254.0" prefHeight="35.0" prefWidth="263.0" promptText="ITEM Description" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemDes" layoutX="110.0" layoutY="240.0" prefHeight="34.0" prefWidth="266.0" promptText="ITEM Description" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
-            <Font name="Cambria Bold Italic" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblItem" editable="true" layoutX="65.0" layoutY="441.0" prefHeight="214.0" prefWidth="742.0" style="-fx-background-color: #C0D6E8;" stylesheets="@../icons/fullpackstyling.css">
+      <TableView fx:id="tblItem" editable="true" layoutX="497.0" layoutY="328.0" prefHeight="262.0" prefWidth="648.0" style="-fx-background-color: #C0D6E8;">
          <columns>
             <TableColumn fx:id="colItemId" prefWidth="77.60000801086426" text="item ID" />
-            <TableColumn fx:id="colItemName" prefWidth="156.800048828125" text="Name" />
-            <TableColumn fx:id="colItemDes" prefWidth="226.39993286132812" text="Description" />
-            <TableColumn fx:id="colItemType" prefWidth="91.20001220703125" text="Item Category" />
-            <TableColumn fx:id="colItemPrice" prefWidth="97.60003662109375" text="price" />
-            <TableColumn fx:id="colItemQty" prefWidth="88.0" text="QtyOnHand" />
+            <TableColumn fx:id="colItemName" prefWidth="118.4000244140625" text="Name" />
+            <TableColumn fx:id="colItemDes" prefWidth="171.99990844726562" text="Description" />
+            <TableColumn fx:id="colItemType" prefWidth="114.4000244140625" text="Item Category" />
+            <TableColumn fx:id="colItemPrice" prefWidth="71.20001220703125" text="price" />
+            <TableColumn fx:id="colItemQty" prefWidth="84.0" text="QtyOnHand" />
          </columns>
          <styleClass>
-            <String fx:value="table-view" />
+            <String fx:value="table-header" />
             <String fx:value="table-row-cell" />
+            <String fx:value="table-view" />
+            <String fx:value="text" />
          </styleClass>
+         <stylesheets>
+            <URL value="@../icons/Tablechatstyling.css" />
+            <URL value="@../icons/fullpackstyling.css" />
+         </stylesheets>
       </TableView>
-      <TextField fx:id="txtItemQty" layoutX="38.0" layoutY="373.0" prefHeight="35.0" prefWidth="263.0" promptText="Qty ON Hand" style="-fx-border-color: #31363F;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemQty" layoutX="108.0" layoutY="364.0" prefHeight="34.0" prefWidth="266.0" promptText="Qty ON Hand" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
-            <Font name="Cambria Bold" size="18.0" />
+            <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <JFXComboBox fx:id="ItemType" labelFloat="true" layoutX="351.0" layoutY="140.0" onAction="#itemTypeOnAction" prefHeight="26.0" prefWidth="111.0" promptText="ITEM Category" styleClass="text-field" unFocusColor="#4d4d4d00" visibleRowCount="20">
+      <JFXComboBox fx:id="ItemType" labelFloat="true" layoutX="110.0" layoutY="424.0" onAction="#itemTypeOnAction" prefHeight="34.0" prefWidth="263.0" promptText="ITEM Category" style="-fx-border-color: #8B7E74; -fx-background-radius: 1em; -fx-border-radius: 1em;" styleClass="text-field" unFocusColor="#4d4d4d00" visibleRowCount="20">
          <stylesheets>
             <URL value="@../icons/textfield01.css" />
             <URL value="@../icons/textfield-custom.css" />
          </stylesheets>
       </JFXComboBox>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="496.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="655.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
-      <HBox layoutX="425.0" layoutY="254.0">
+      <HBox layoutX="584.0" layoutY="252.0">
          <children>
             <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
                <font>
@@ -81,17 +89,12 @@
             </Label>
          </children>
       </HBox>
-      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="635.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="794.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
          </image>
       </ImageView>
-      <Label layoutX="65.0" layoutY="43.0" prefHeight="47.0" prefWidth="286.0" text="Items" textFill="#917c7c" underline="true" wrapText="true">
-         <font>
-            <Font name="Cambria Bold Italic" size="34.0" />
-         </font>
-      </Label>
-      <JFXButton id="button" buttonType="RAISED" layoutX="425.0" layoutY="314.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+      <JFXButton id="button" buttonType="RAISED" layoutX="80.0" layoutY="513.0" onAction="#btnSaveOnAction" prefHeight="34.0" prefWidth="118.0" style="-fx-background-color: #38E54D;" stylesheets="@../icons/button.css" text="Save" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -106,7 +109,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton id="button" buttonType="RAISED" layoutX="425.0" layoutY="373.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
+      <JFXButton id="button" buttonType="RAISED" layoutX="283.0" layoutY="513.0" onAction="#btnClearOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #7077A1;" stylesheets="@../icons/button.css" text="Clear" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -121,7 +124,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="576.0" layoutY="313.0" onAction="#UpdateOnAction" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="80.0" layoutY="569.0" onAction="#UpdateOnAction" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: #FF9800;" stylesheets="@../icons/button.css" text="Update" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -133,7 +136,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton id="button" buttonType="RAISED" layoutX="575.0" layoutY="373.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF004D;" stylesheets="@../icons/button.css" text="Delete" textFill="#f7f7f7">
+      <JFXButton id="button" buttonType="RAISED" layoutX="283.0" layoutY="571.0" onAction="#btnDeleteOnAction" prefHeight="30.0" prefWidth="118.0" style="-fx-background-color: #FF004D;" stylesheets="@../icons/button.css" text="Delete" textFill="#f7f7f7">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -148,10 +151,15 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TextField fx:id="txtsearchId" layoutX="452.0" layoutY="47.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search ItemID">
+      <TextField fx:id="txtsearchId" layoutX="611.0" layoutY="45.0" onAction="#txtSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search ItemID" style="-fx-border-color: #8B7E74; -fx-background-radius: 1em; -fx-border-radius: 1em;">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
+      <Label alignment="CENTER" layoutX="81.0" layoutY="62.0" prefHeight="38.0" prefWidth="322.0" text="Items Form" textFill="#a45353">
+         <font>
+            <Font name="Georgia" size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
