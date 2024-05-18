@@ -397,6 +397,8 @@ public class orderFormController implements Initializable {
         if(isPlaced) {
             new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
             loadAllOrders();
+            getCurrentOrderId();
+            generateBill(orderId);
         } else {
             new Alert(Alert.AlertType.WARNING, "order not placed!").show();
         }
@@ -508,9 +510,25 @@ public class orderFormController implements Initializable {
        colqty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("netTotal"));
     }
+
+    private void generateBill(String orderId) {
+        try {
+
+            JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Reports/CustomerBill.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("orderId", orderId);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DbConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
     void btnPrintBillOnAction(ActionEvent event) throws  SQLException, JRException {
-        JasperDesign jasperDesign =
+ /*       JasperDesign jasperDesign =
                 JRXmlLoader.load("src/main/resources/Reports/CustomerBill.jrxml");
         JasperReport jasperReport =
                 JasperCompileManager.compileReport(jasperDesign);
@@ -524,7 +542,7 @@ public class orderFormController implements Initializable {
                         data,
                         DbConnection.getInstance().getConnection());
 
-        JasperViewer.viewReport(jasperPrint,false);
+        JasperViewer.viewReport(jasperPrint,false);*/
 
     }
 

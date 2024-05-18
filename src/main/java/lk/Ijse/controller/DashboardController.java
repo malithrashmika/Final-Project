@@ -5,11 +5,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.Ijse.db.DbConnection;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -24,9 +30,57 @@ public class  DashboardController{
     @FXML
     private Label currentTime;
 
+    @FXML
+    private Label lblEmployeeCount;
+
+    @FXML
+    private Label lblOrderCount;
+
+    @FXML
+    private Label lblUserCount;
+
+    @FXML
+    private Label lblbookCount;
+
+
+    private int currentIndex = 0;
+
+    private int EmployeeCount;
+
+    private int UserCount;
+
+    private int BookingCount;
+
+    private int OrderCount;
+
     public void initialize() {
         setDate();
         setTime();
+        try {
+            EmployeeCount = getEmployeeCount();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        try {
+            OrderCount = getOrderCount();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+        try {
+            UserCount = getUserCount();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        try {
+            BookingCount = getBookingCount();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        setBookingCount(BookingCount);
+        setEmployeeCount(EmployeeCount);
+        setUserCount(UserCount);
+        setOrderCount(OrderCount);
     }
 
     private void setDate() {
@@ -40,33 +94,86 @@ public class  DashboardController{
         currentTime.setText(formattedTime);
         currentTime.setEllipsisString(null);
     }
+    private void setOrderCount(int UserCount) {
+        lblOrderCount.setText(String.valueOf(UserCount));
+
+    }
+    private int getOrderCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS Order_count FROM orders";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()) {
+            return resultSet.getInt("Order_count");
+        }
+        return 0;
+    }
+
+
+    private void setUserCount(int UserCount) {
+        lblUserCount.setText(String.valueOf(UserCount));
+
+    }
+
+    private int getUserCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS User_count FROM users";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()) {
+            return resultSet.getInt("User_count");
+        }
+        return 0;
+    }
+
+    private void setEmployeeCount(int EmployeeCount) {
+        lblEmployeeCount.setText(String.valueOf(EmployeeCount));
+    }
+
+    private int getEmployeeCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS Employee_count FROM employee";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()) {
+            return resultSet.getInt("Employee_count");
+        }
+        return 0;
+    }
+
+
+    private void setBookingCount(int BookingCount) {
+        lblbookCount.setText(String.valueOf(BookingCount));
+    }
+
+    private int getBookingCount() throws SQLException {
+        String sql = "SELECT COUNT(*) AS Booking_count FROM reservation";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        if(resultSet.next()) {
+            return resultSet.getInt("Booking_count");
+        }
+        return 0;
+    }
+
 
     @FXML
-    void btnHomeAction(ActionEvent event) {
-        try {
-            // Load the Customer.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Home.fxml"));
-            Parent rootNode = loader.load();
+    void btnHomeAction(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/Dashboard.fxml"));
+        Stage stage = (Stage) root.getScene().getWindow();
 
-            // Assuming 'root' refers to the root AnchorPane in your current scene
-            // Clear the children of the root AnchorPane
-            root.getChildren().clear();
-
-            // Add the loaded rootNode as a child to the root AnchorPane
-            root.getChildren().add(rootNode);
-
-            // Ensure that the loaded content fits and appears in the correct location
-            AnchorPane.setTopAnchor(rootNode, 0.0);
-            AnchorPane.setRightAnchor(rootNode, 0.0);
-            AnchorPane.setBottomAnchor(rootNode, 0.0);
-            AnchorPane.setLeftAnchor(rootNode, 0.0);
-
-            // Optionally, you can adjust the size of the window to fit the new content
-            Stage stage = (Stage) root.getScene().getWindow();
-            stage.sizeToScene();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the IOException appropriately
-        }
+        stage.setScene(new Scene(anchorPane));
+        stage.setTitle("Dashboard Form");
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -307,6 +414,7 @@ public class  DashboardController{
         }
 
     }
+
 
 }
 

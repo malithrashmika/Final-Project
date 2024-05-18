@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.orderFormController">
+<AnchorPane fx:id="root" prefHeight="700.0" prefWidth="1168.0" style="-fx-background-color: #E5E5CB;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.orderFormController">
    <children>
       <TableView fx:id="tblCart" editable="true" layoutX="587.0" layoutY="17.0" opacity="0.92" prefHeight="262.0" prefWidth="536.0" stylesheets="@../icons/Tablechatstyling.css">
          <columns>
@@ -172,7 +172,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="tblOrder" editable="true" layoutX="532.0" layoutY="334.0" opacity="0.92" prefHeight="341.0" prefWidth="622.0" style="-fx-background-color: #F8F4EC; -fx-background-radius: 5em; -fx-border-radius: 1px; -fx-border-color: #51829B; -fx-border-width: 1px 2px 5px;" stylesheets="@../icons/Tablechatstyling.css">
+      <TableView fx:id="tblOrder" editable="true" layoutX="532.0" layoutY="334.0" opacity="0.92" prefHeight="341.0" prefWidth="622.0" style="-fx-background-color: #F8F4EC; -fx-border-radius: 1px; -fx-border-color: #51829B; -fx-border-width: 1px 2px 5px;" stylesheets="@../icons/Tablechatstyling.css">
          <columns>
             <TableColumn fx:id="colOrderID" prefWidth="57.600006103515625" style="-fx-background-color: #7077A1;" text="OrderID" />
             <TableColumn fx:id="colDate" prefWidth="69.5999755859375" text="Date" />

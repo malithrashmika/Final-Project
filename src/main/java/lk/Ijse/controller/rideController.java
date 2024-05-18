@@ -7,6 +7,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.API.api;
+import lk.Ijse.model.Customer;
+import lk.Ijse.repository.CustomerRepo;
+
+import java.sql.SQLException;
 
 public class rideController {
 
@@ -42,5 +46,15 @@ public class rideController {
     void txtCustomerOnAction(ActionEvent event) {
         // This method is triggered when the customer text field action is performed
         // You can add logic here if needed
+        String cusTel = txtcusContact.getText();
+
+        try {
+            Customer customer = CustomerRepo.searchByContact(cusTel);
+
+            lblcustomerName.setText(customer.getName());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

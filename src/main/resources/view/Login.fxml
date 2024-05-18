@@ -32,7 +32,7 @@
                   <Font name="Sitka Text" size="53.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUserId" layoutX="555.0" layoutY="329.0" prefHeight="26.0" prefWidth="218.0" promptText="Username" />
+            <TextField fx:id="txtUserId" layoutX="555.0" layoutY="329.0" onAction="#userOnAction" prefHeight="26.0" prefWidth="218.0" promptText="Username" />
             <TextField fx:id="txtPassword" layoutX="555.0" layoutY="389.0" onAction="#pwOnAction" prefHeight="26.0" prefWidth="218.0" promptText="Password" />
 
             <JFXButton fx:id="Loginbtn" buttonType="RAISED" layoutX="564.0" layoutY="457.0" onAction="#btnLoginOnAction" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: d4af37;" text="Login" textFill="WHITE">
