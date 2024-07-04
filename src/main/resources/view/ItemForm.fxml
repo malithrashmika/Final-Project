@@ -19,17 +19,17 @@
 <AnchorPane prefHeight="700.0" prefWidth="1168.0" style="-fx-background-color: #222831;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.Ijse.controller.itemController">
    <children>
       <Rectangle arcHeight="53.0" arcWidth="59.0" fill="#eaf5ff0a" height="648.0" layoutX="34.0" layoutY="32.0" stroke="#9e9e9e" strokeType="INSIDE" strokeWidth="3.0" style="-fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);;" width="416.0" />
-      <TextField fx:id="txtItemID" layoutX="110.0" layoutY="117.0" prefHeight="34.0" prefWidth="266.0" promptText="ITEM ID" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemID" layoutX="110.0" layoutY="117.0" onKeyReleased="#txtIDOnKeyReleased" prefHeight="34.0" prefWidth="266.0" promptText="ITEM ID" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemName" layoutX="110.0" layoutY="175.0" prefHeight="34.0" prefWidth="266.0" promptText="ITEM Name" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemName" layoutX="110.0" layoutY="175.0" onKeyReleased="#txtNameOnKeyReleased" prefHeight="34.0" prefWidth="266.0" promptText="ITEM Name" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtItemPrice" layoutX="110.0" layoutY="303.0" prefHeight="34.0" prefWidth="266.0" promptText="Unit Price" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemPrice" layoutX="110.0" layoutY="303.0" onKeyReleased="#UnitPriceOnKeyReleased" prefHeight="34.0" prefWidth="266.0" promptText="Unit Price" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
@@ -59,7 +59,7 @@
             <URL value="@../icons/fullpackstyling.css" />
          </stylesheets>
       </TableView>
-      <TextField fx:id="txtItemQty" layoutX="108.0" layoutY="364.0" prefHeight="34.0" prefWidth="266.0" promptText="Qty ON Hand" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
+      <TextField fx:id="txtItemQty" layoutX="108.0" layoutY="364.0" onKeyReleased="#txtQtyOnKeyReleased" prefHeight="34.0" prefWidth="266.0" promptText="Qty ON Hand" style="-fx-border-color: #8B7E74; -fx-border-radius: 1em; -fx-background-radius: 1em;" styleClass="text-field" stylesheets="@../icons/textfield-custom.css">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

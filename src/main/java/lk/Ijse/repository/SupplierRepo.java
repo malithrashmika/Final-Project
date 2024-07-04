@@ -1,6 +1,7 @@
 package lk.Ijse.repository;
 
 import lk.Ijse.db.DbConnection;
+import lk.Ijse.model.Ingredient;
 import lk.Ijse.model.Supplier;
 
 import java.sql.Connection;
@@ -93,5 +94,23 @@ public class SupplierRepo {
             idList.add(id);
         }
         return idList;
+    }
+    public static Supplier searchById(String id) throws SQLException {
+        String sql = "SELECT * FROM supplier WHERE supplier_id = ?";
+        PreparedStatement pstm = DbConnection.getInstance().getConnection()
+                .prepareStatement(sql);
+
+        pstm.setObject(1, id);
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()) {
+            return new Supplier(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4)
+
+            );
+        }
+        return null;
     }
 }

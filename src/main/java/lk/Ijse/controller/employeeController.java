@@ -203,7 +203,7 @@ public class employeeController implements Initializable {
         colempName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colempRole.setCellValueFactory(new PropertyValueFactory<>("Role"));
         colempTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
-        colempSalary.setCellValueFactory(new PropertyValueFactory<>("Salary"));
+        colempSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
     }
 
     @FXML
@@ -235,6 +235,7 @@ public class employeeController implements Initializable {
                 boolean isDeleted = EmployeeRepo.delete(id);
                 if(isDeleted) {
                     new Alert(Alert.AlertType.CONFIRMATION, "employee deleted!").show();
+                    clearFields();
                     loadAllEmployees();
                 }
             } catch (SQLException e) {
@@ -255,15 +256,15 @@ public class employeeController implements Initializable {
             try {
                 if (isValid()) {
                     boolean isSaved = EmployeeRepo.save(employee);
-                    if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
-                        clearFields();
-                        obList.clear();
-                        loadAllEmployees();
-
+                    if (isValid()) {
+                        if (isSaved) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "employee saved!").show();
+                            clearFields();
+                            obList.clear();
+                            loadAllEmployees();
+                        }
                     }
                 }
-                new Alert(Alert.AlertType.WARNING, "Invalid Input!").show();
 
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -282,9 +283,11 @@ public class employeeController implements Initializable {
 
             try {
                 boolean isUpdated = EmployeeRepo.update(employee);
-                if(isUpdated) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
-                    loadAllEmployees();
+                if (isValid()) {
+                    if (isUpdated) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
+                        loadAllEmployees();
+                    }
                 }
             } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -314,7 +317,7 @@ public class employeeController implements Initializable {
         return true;
     }
     public void txtSalaryOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {
-        Regex.setTextColor(TextFieldRegex.SALARY,txtSalary);
+        Regex.setTextColor(TextFieldRegex.PRICE,txtSalary);
     }
 
     public void txtEmployeeIDOnKeyReleased(javafx.scene.input.KeyEvent keyEvent) {

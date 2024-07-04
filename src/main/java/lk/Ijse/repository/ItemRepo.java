@@ -21,14 +21,14 @@ public class ItemRepo {
         pstm.setObject(1, item.getCode());
         pstm.setObject(2, item.getName());
         pstm.setObject(3, item.getDescription());
-        pstm.setObject(4, item.getType());
+        pstm.setObject(4, item.getCategory());
         pstm.setObject(5, item.getPrice());
         pstm.setObject(6, item.getQtyOnHand());
 
         return pstm.executeUpdate() > 0;
     }
     public static boolean update(Item item) throws SQLException {
-        String sql = "UPDATE item SET name = ?, Description=?, type = ?, price = ?, QtyOnHand = ? WHERE item_id = ?";
+        String sql = "UPDATE item SET name = ?, Description=?, Category = ?, price = ?, Qty_On_Hand = ? WHERE item_id = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class ItemRepo {
 
         pstm.setObject(1, item.getName());
         pstm.setObject(2, item.getDescription());
-        pstm.setObject(3, item.getType());
+        pstm.setObject(3, item.getCategory());
         pstm.setObject(4, item.getPrice());
         pstm.setObject(5, item.getQtyOnHand());
         pstm.setObject(6, item.getCode());

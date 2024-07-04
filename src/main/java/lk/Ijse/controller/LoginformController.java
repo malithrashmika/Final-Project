@@ -11,9 +11,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.Ijse.Util.Regex;
+import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.db.DbConnection;
 
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -102,4 +105,5 @@ public class LoginformController {
 
     public void userOnAction(ActionEvent actionEvent) {txtPassword.requestFocus();
     }
+
 }

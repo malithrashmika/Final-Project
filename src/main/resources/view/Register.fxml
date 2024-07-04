@@ -25,7 +25,7 @@
                                 <Font name="Sitka Text" size="53.0" />
                             </font>
                         </Label>
-                  <JFXButton buttonType="RAISED" layoutX="29.0" layoutY="21.0" prefHeight="26.0" prefWidth="26.0">
+                  <JFXButton buttonType="RAISED" layoutX="29.0" layoutY="21.0" onAction="#btnBackOnAction" prefHeight="26.0" prefWidth="26.0">
                      <graphic>
                         <ImageView fitHeight="34.0" fitWidth="32.0">
                            <image>

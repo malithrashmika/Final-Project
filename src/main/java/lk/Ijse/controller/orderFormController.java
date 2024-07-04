@@ -25,6 +25,7 @@ import lk.Ijse.repository.*;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
@@ -325,6 +326,7 @@ public class orderFormController implements Initializable {
 
         // Clear the quantity text field and calculate the subtotal
         txtqty.clear();
+        tblCart.refresh();
         calculateSubTotal();
         calculateNetTotal();
     }
@@ -366,7 +368,7 @@ public class orderFormController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException {
         String orderId = lblOrderID.getText();
         String cusId = customer_id;
         Date date = Date.valueOf(LocalDate.now());
@@ -398,6 +400,7 @@ public class orderFormController implements Initializable {
             new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
             loadAllOrders();
             getCurrentOrderId();
+            btnPrintBillOnAction(null);
             generateBill(orderId);
         } else {
             new Alert(Alert.AlertType.WARNING, "order not placed!").show();
@@ -512,41 +515,63 @@ public class orderFormController implements Initializable {
     }
 
     private void generateBill(String orderId) {
-        try {
-
-            JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Reports/CustomerBill.jrxml");
-            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("orderId", orderId);
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DbConnection.getInstance().getConnection());
-            JasperViewer.viewReport(jasperPrint, false);
-        } catch (JRException | SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//
+//            JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Reports/CustomerOrderBill.jrxml");
+//            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+//
+//            Map<String, Object> parameters = new HashMap<>();
+//            parameters.put("orderId", orderId);
+//
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DbConnection.getInstance().getConnection());
+//            JasperViewer.viewReport(jasperPrint, false);
+//        } catch (JRException | SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
     @FXML
     void btnPrintBillOnAction(ActionEvent event) throws  SQLException, JRException {
- /*       JasperDesign jasperDesign =
-                JRXmlLoader.load("src/main/resources/Reports/CustomerBill.jrxml");
-        JasperReport jasperReport =
-                JasperCompileManager.compileReport(jasperDesign);
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Reports/CocktailBill.jrxml");
+        JRDesignQuery jrDesignQuery = new JRDesignQuery();
+        jrDesignQuery.setText("SELECT \n" +
+                "    o.order_id,\n" +
+                "    o.date,\n" +
+                "    o.time,\n" +
+                "    o.table,\n" +
+                "    o.netTotal,\n" +
+                "    c.customer_id,\n" +
+                "    c.name AS customer_name,\n" +
+                "    e.employee_id,\n" +
+                "    i.item_id,\n" +
+                "    i.name AS item_name,\n" +
+                "    i.description,\n" +
+                "    i.Category,\n" +
+                "    i.price,\n" +
+                "    i.Qty_On_Hand,\n" +
+                "    oi.qty,\n" +
+                "    oi.unit_price,\n" +
+                "    oi.subtotal\n" +
+                "FROM \n" +
+                "    order_item oi\n" +
+                "JOIN \n" +
+                "    orders o ON oi.order_id = o.order_id\n" +
+                "JOIN \n" +
+                "    customer c ON o.customer_id = c.customer_id\n" +
+                "JOIN \n" +
+                "    employee e ON o.employee_id = e.employee_id\n" +
+                "JOIN \n" +
+                "    item i ON oi.item_id = i.item_id\n" +
+                "WHERE \n" +
+                "    o.order_id = (SELECT MAX(order_id) FROM orders);\n");
+        jasperDesign.setQuery(jrDesignQuery);
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("OrderID",lblOrderID.getText());
+
 
         JasperPrint jasperPrint =
-                JasperFillManager.fillReport(
-                        jasperReport,
-                        data,
-                        DbConnection.getInstance().getConnection());
-
-        JasperViewer.viewReport(jasperPrint,false);*/
-
+                JasperFillManager.fillReport(jasperReport, null,DbConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
     }
-
-
    private void loadAllOrders() {
 
 

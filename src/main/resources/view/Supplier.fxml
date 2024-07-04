@@ -110,22 +110,22 @@
             <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
         </image>
     </ImageView>
-    <TextField fx:id="txtID" alignment="CENTER" layoutX="136.0" layoutY="159.0" prefHeight="34.0" prefWidth="266.0" promptText="Supplier ID" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
+    <TextField fx:id="txtID" alignment="CENTER" layoutX="136.0" layoutY="159.0" onKeyReleased="#txtIDOnKeyRelease" prefHeight="34.0" prefWidth="266.0" promptText="Supplier ID" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
         <font>
             <Font name="Arial Bold" size="13.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtName" alignment="CENTER" layoutX="136.0" layoutY="222.0" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Name" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
+    <TextField fx:id="txtName" alignment="CENTER" layoutX="136.0" layoutY="222.0" onKeyReleased="#NameOnKeyRelease" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Name" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
         <font>
             <Font name="Arial Bold" size="13.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtTel" alignment="CENTER" layoutX="136.0" layoutY="290.0" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Contact" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
+    <TextField fx:id="txtTel" alignment="CENTER" layoutX="136.0" layoutY="290.0" onKeyReleased="#contactOnKeyRelease" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Contact" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
         <font>
             <Font name="Arial Bold" size="13.0" />
         </font>
     </TextField>
-    <TextField fx:id="txtemail" alignment="CENTER" layoutX="136.0" layoutY="353.0" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Email" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
+    <TextField fx:id="txtemail" alignment="CENTER" layoutX="136.0" layoutY="353.0" onKeyReleased="#EmailOnKeyRelease" prefHeight="34.0" prefWidth="266.0" promptText="Supplier Email" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
         <font>
             <Font name="Arial Bold" size="13.0" />
         </font>

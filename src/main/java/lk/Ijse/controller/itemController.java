@@ -182,6 +182,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.scene.input.KeyEvent;
+import lk.Ijse.Util.Regex;
+import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.db.ResturentItem;
 
 import lk.Ijse.model.Item;
@@ -256,7 +259,7 @@ public class itemController implements Initializable {
                         item.getCode(),
                         item.getName(),
                         item.getDescription(),
-                        item.getType(),
+                        item.getCategory(),
                         item.getPrice(),
                         item.getQtyOnHand()
                 );
@@ -300,7 +303,7 @@ public class itemController implements Initializable {
         try {
             boolean isUpdated = ItemRepo.update(item);
             if(isUpdated) {
-                new Alert(Alert.AlertType.CONFIRMATION, "employee updated!").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Item updated!").show();
                 refreshTable();
             }
         } catch (SQLException e) {
@@ -330,6 +333,7 @@ public class itemController implements Initializable {
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item deleted!").show();
                 refreshTable();
+                clearFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -378,7 +382,7 @@ public class itemController implements Initializable {
             txtItemID.setText(item.getCode());
             txtItemName.setText(item.getName());
             txtItemDes.setText(item.getDescription());
-            ItemType.getItems().add(ResturentItem.valueOf(item.getType()));
+            ItemType.getItems().add(ResturentItem.valueOf(item.getCategory()));
             txtItemPrice.setText(String.valueOf(item.getPrice()));
             txtItemQty.setText(String.valueOf(item.getQtyOnHand()));
         } else {
@@ -396,7 +400,7 @@ public class itemController implements Initializable {
                         item.getCode(),
                         item.getName(),
                         item.getDescription(),
-                        item.getType(),
+                        item.getCategory(),
                         item.getPrice(),
                         item.getQtyOnHand()
                 ));
@@ -411,6 +415,20 @@ public class itemController implements Initializable {
     }
 
 
+    public void txtIDOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.ID,txtItemID);
+    }
+
+    public void txtNameOnKeyReleased(KeyEvent keyEvent) {
+    }
+
+    public void UnitPriceOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.PRICE,txtItemPrice);
+    }
+
+    public void txtQtyOnKeyReleased(KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.QTY,txtItemQty);
+    }
 }
 
 

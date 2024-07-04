@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class  DashboardController{
+
+    @FXML
+    private BarChart<?, ?> order_item;
+
 
     @FXML
     private AnchorPane root;

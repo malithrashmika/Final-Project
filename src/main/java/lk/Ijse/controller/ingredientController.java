@@ -138,6 +138,7 @@ public class ingredientController implements Initializable {
             boolean isDeleted = IngredientsRepo.delete(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item deleted!").show();
+                loadAllIngredients();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -160,6 +161,7 @@ public class ingredientController implements Initializable {
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item saved!").show();
                 clearFields();
+                loadAllIngredients();
 
             }
         } catch (SQLException e) {
@@ -182,6 +184,8 @@ public class ingredientController implements Initializable {
             boolean isUpdated = IngredientsRepo.update(ingredient);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Ingredient updated!").show();
+                clearFields();
+                loadAllIngredients();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

@@ -11,12 +11,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.Ijse.Util.Regex;
+import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.model.Customer;
 import lk.Ijse.model.Supplier;
 import lk.Ijse.model.tm.SupplierTm;
 import lk.Ijse.repository.CustomerRepo;
 import lk.Ijse.repository.SupplierRepo;
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -109,6 +112,7 @@ public class supplierController implements Initializable {
             boolean isDeleted = SupplierRepo.delete(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier deleted!").show();
+                loadAllSupplier();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -126,9 +130,12 @@ public class supplierController implements Initializable {
 
         try {
             boolean isSaved = SupplierRepo.save(supplier);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier saved!").show();
-                clearFields();
+            if (isValid()) {
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier saved!").show();
+                    clearFields();
+                    loadAllSupplier();
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -145,9 +152,12 @@ public class supplierController implements Initializable {
         Supplier supplier = new Supplier(id, name, tel, email);
         try {
             boolean isSaved = SupplierRepo.update(supplier);
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated!").show();
-                clearFields();
+            if (isValid()) {
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated!").show();
+                    clearFields();
+                    loadAllSupplier();
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -158,15 +168,40 @@ public class supplierController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtSearchId.getText();
 
-//        Supplier supplier = SupplierRepo.searchById(id);
-//        if (supplier != null) {
-//            txtID.setText(supplier.getSupplierId());
-//            txtName.setText(supplier.getSupplierName());
-//            txtTel.setText(supplier.getContactNumber());
-//            txtemail.setText(supplier.getContactEmail());
-//        } else {
-//            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
-//        }
+        Supplier supplier = SupplierRepo.searchById(id);
+        if (supplier != null) {
+            txtID.setText(supplier.getSupplierId());
+            txtName.setText(supplier.getSupplierName());
+            txtTel.setText(supplier.getContactNumber());
+            txtemail.setText(supplier.getContactEmail());
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+        }
     }
 
+    public boolean isValid(){
+        if (!Regex.setTextColor(TextFieldRegex.ID,txtID)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.NAME,txtName)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.CONTACT,txtTel)) return false;
+        if (!Regex.setTextColor(TextFieldRegex.EMAIL,txtemail)) return false;
+        return true;
+    }
+
+
+    public void txtIDOnKeyRelease(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.ID,txtID);
+
+    }
+
+    public void NameOnKeyRelease(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.NAME,txtName);
+    }
+
+    public void contactOnKeyRelease(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.CONTACT,txtTel);
+    }
+
+    public void EmailOnKeyRelease(javafx.scene.input.KeyEvent keyEvent) {
+        Regex.setTextColor(TextFieldRegex.EMAIL,txtemail);
+    }
 }

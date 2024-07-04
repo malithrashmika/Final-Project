@@ -9,7 +9,7 @@ public class Item {
     String code;
     String name;
     String description;
-    String type;
+    String category;
     double price;
     int QtyOnHand;
 }

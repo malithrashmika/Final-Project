@@ -28,8 +28,8 @@
                 <TableColumn fx:id="colempId" prefWidth="90.39996337890625" text="Employee ID" />
                 <TableColumn fx:id="colempName" prefWidth="171.20001220703125" text="Name" />
                 <TableColumn fx:id="colempTel" prefWidth="133.60003662109375" text="Contact Number" />
-                <TableColumn fx:id="colempRole" prefWidth="111.199951171875" text="Salary" />
-            <TableColumn fx:id="colempSalary" prefWidth="198.40008544921875" text="Role" />
+                <TableColumn fx:id="colempRole" prefWidth="111.199951171875" text="Role" />
+            <TableColumn fx:id="colempSalary" prefWidth="198.40008544921875" text="Salary" />
             </columns>
          <stylesheets>
             <URL value="@../icons/fullpackstyling.css" />

@@ -2,6 +2,7 @@ package lk.Ijse.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,7 +40,9 @@ public class rideController {
         } catch (Exception e) {
             e.printStackTrace();
             // Handle any exceptions that may occur during the SMS sending process
+
         }
+        new Alert(Alert.AlertType.CONFIRMATION, "Ride is Requested..Driver is on the way!").show();
     }
 
     @FXML
