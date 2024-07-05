@@ -179,11 +179,11 @@ JOIN
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Calibri" size="28" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Cocktail HUB]]></text>
+				<text><![CDATA[WHITE PEPER]]></text>
 			</staticText>
 			<image>
 				<reportElement x="160" y="40" width="50" height="50" uuid="b6c83c20-1131-4ad4-a247-e87f682ac7a1"/>
-				<imageExpression><![CDATA["D:/ijse/ideaprojects/Cocktail_HUB/src/main/resources/icons/—Pngtree—colorful cocktail martini glass_3570052.png"]]></imageExpression>
+				<imageExpression><![CDATA["D:/resorces/612673f6089683dfd97f4ff33a1371aa.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
@@ -311,6 +311,7 @@ JOIN
 			</staticText>
 		</band>
 	</columnHeader>
+
 	<detail>
 		<band height="42" splitType="Stretch">
 			<textField>

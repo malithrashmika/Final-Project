@@ -77,7 +77,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="144.0">
                      <image>
-                        <Image url="@../icons/icons8-cocktail-50%20(2).png" />
+                        <Image url="@../icons/icons8-cocktail-50%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -108,7 +108,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="162.0">
                      <image>
-                        <Image url="@../icons/icons8-booking-50%20(1).png" />
+                        <Image url="@../icons/icons8-booking-50.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -139,7 +139,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="140.0">
                      <image>
-                        <Image url="@../icons/icons8-order-50%20(2).png" />
+                        <Image url="@../icons/download%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -170,7 +170,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="152.0">
                      <image>
-                        <Image url="@../icons/icons8-employee-50%20(2).png" />
+                        <Image url="@../icons/download%20(2).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -201,7 +201,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="152.0">
                      <image>
-                        <Image url="@../icons/icons8-lorry-50%20(1).png" />
+                        <Image url="@../icons/download%20(4).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -232,7 +232,7 @@
                <graphic>
                   <ImageView fitHeight="31.0" fitWidth="32.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="157.0">
                      <image>
-                        <Image url="@../icons/icons8-leaf-50%20(2).png" />
+                        <Image url="@../icons/icons8-leaf-50%20(1).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -263,7 +263,7 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="123.0">
                      <image>
-                        <Image url="@../icons/icons8-ride-50.png" />
+                        <Image url="@../icons/icons8-ride-50%20(2).png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -294,24 +294,62 @@
                <graphic>
                   <ImageView fitHeight="38.0" fitWidth="44.0" nodeOrientation="INHERIT" preserveRatio="true" translateX="135.0">
                      <image>
-                        <Image url="@../icons/icons8-logout-64.png" />
+                        <Image url="@../icons/icons8-login-64.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
             <JFXButton layoutX="55.0" layoutY="-1.0" onAction="#btnHomeAction" prefHeight="147.0" prefWidth="145.0" text=".">
                <graphic>
-                  <ImageView fitHeight="139.0" fitWidth="166.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="158.0" fitWidth="193.0">
                      <image>
-                        <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+                        <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
                      </image>
                   </ImageView>
                </graphic></JFXButton>
+            <HBox layoutX="725.0" layoutY="274.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
+                     <font>
+                        <Font name="Sitka Text" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
+                     <font>
+                        <Font name="Sitka Text" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="725.0" layoutY="77.0">
+               <image>
+                  <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
+               </image>
+            </ImageView>
+            <HBox layoutX="725.0" layoutY="274.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
+                     <font>
+                        <Font name="Sitka Text" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
+                     <font>
+                        <Font name="Sitka Text" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="725.0" layoutY="77.0">
+               <image>
+                  <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="1166.0" style="-fx-background-color: #344C64;">
+      <AnchorPane fx:id="root" layoutX="282.0" layoutY="100.0" prefHeight="700.0" prefWidth="1166.0" style="-fx-background-color: #ffa000;">
          <children>
-            <AnchorPane layoutX="923.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../icons/friutCss.css">
+            <AnchorPane layoutX="923.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D0E41;" stylesheets="@../icons/friutCss.css">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="shopping-online-card" />
@@ -322,7 +360,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOrderCount" alignment="CENTER" layoutX="68.0" layoutY="100.0" prefHeight="62.0" prefWidth="62.0" textFill="#5d0e41">
+                  <Label fx:id="lblOrderCount" alignment="CENTER" layoutX="68.0" layoutY="100.0" prefHeight="62.0" prefWidth="62.0" textFill="#ffeeee">
                      <font>
                         <Font name="Candara Bold" size="31.0" />
                      </font>
@@ -334,7 +372,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="345.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../icons/friutCss.css">
+            <AnchorPane layoutX="345.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D0E41;" stylesheets="@../icons/friutCss.css">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="shopping-online-card" />
@@ -345,7 +383,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblEmployeeCount" alignment="CENTER" layoutX="70.0" layoutY="100.0" prefHeight="62.0" prefWidth="62.0" textFill="#5d0e41">
+                  <Label fx:id="lblEmployeeCount" alignment="CENTER" layoutX="70.0" layoutY="100.0" prefHeight="62.0" prefWidth="62.0" textFill="#ffeeee">
                      <font>
                         <Font name="Candara Bold" size="31.0" />
                      </font>
@@ -357,7 +395,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="45.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../icons/friutCss.css">
+            <AnchorPane layoutX="45.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D0E41;" stylesheets="@../icons/friutCss.css">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="shopping-online-card" />
@@ -368,7 +406,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblUserCount" alignment="CENTER" layoutX="69.0" layoutY="99.0" prefHeight="62.0" prefWidth="62.0" textFill="#5d0e41">
+                  <Label fx:id="lblUserCount" alignment="CENTER" layoutX="69.0" layoutY="99.0" prefHeight="62.0" prefWidth="62.0" textFill="#ffeeee">
                      <font>
                         <Font name="Candara Bold" size="31.0" />
                      </font>
@@ -380,12 +418,12 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <BarChart fx:id="order_item" layoutX="129.0" layoutY="280.0" prefHeight="400.0" prefWidth="536.0" title="orders">
+            <BarChart layoutX="129.0" layoutY="280.0" prefHeight="400.0" prefWidth="536.0">
               <xAxis>
-                <CategoryAxis label="orders" side="BOTTOM" />
+                <CategoryAxis side="BOTTOM" />
               </xAxis>
               <yAxis>
-                <NumberAxis label="Items" side="LEFT" />
+                <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="744.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
@@ -403,7 +441,7 @@
                   <Image url="@../icons/pexels-pixabay-301692.jpg" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="637.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../icons/friutCss.css">
+            <AnchorPane layoutX="637.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #5D0E41;" stylesheets="@../icons/friutCss.css">
                <styleClass>
                   <String fx:value="shadow" />
                   <String fx:value="shopping-online-card" />
@@ -414,7 +452,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblbookCount" alignment="CENTER" layoutX="68.0" layoutY="92.0" prefHeight="62.0" prefWidth="62.0" textFill="#5d0e41">
+                  <Label fx:id="lblbookCount" alignment="CENTER" layoutX="68.0" layoutY="92.0" prefHeight="62.0" prefWidth="62.0" textFill="#ffeeee">
                      <font>
                         <Font name="Candara Bold" size="31.0" />
                      </font>
@@ -429,23 +467,18 @@
          </children></AnchorPane>
       <HBox layoutX="351.0" layoutY="36.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+            <Label prefHeight="34.0" prefWidth="102.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
                <font>
                   <Font name="Sitka Text" size="29.0" />
                </font>
             </Label>
-            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+            <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
                <font>
                   <Font name="Sitka Text" size="29.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="566.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
-         </image>
-      </ImageView>
       <Label layoutX="655.0" layoutY="25.0" prefHeight="34.0" prefWidth="55.0" text="Date :">
          <font>
             <Font name="Sitka Text" size="19.0" />

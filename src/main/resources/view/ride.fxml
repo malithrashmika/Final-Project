@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -53,5 +54,24 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <HBox layoutX="763.0" layoutY="430.0">
+         <children>
+            <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
+               <font>
+                  <Font name="Sitka Text" size="29.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="763.0" layoutY="233.0">
+         <image>
+            <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

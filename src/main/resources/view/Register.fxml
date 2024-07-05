@@ -17,10 +17,10 @@
                     <children>
                         <ImageView fitHeight="559.0" fitWidth="547.0" layoutX="-1.0" style="-fx-opacity: 0.85;">
                             <image>
-                                <Image url="@../icons/pexels-roshan-ravi-15047644.jpg" />
+                                <Image url="@../../../../../../resorces/pexels-zo-willibrord-2130276-3763426.jpg" />
                             </image>
                         </ImageView>
-                        <Label layoutX="370.0" layoutY="21.0" prefHeight="60.0" prefWidth="183.0" text="COCKT" textFill="WHITE">
+                        <Label layoutX="361.0" layoutY="22.0" prefHeight="60.0" prefWidth="183.0" text="WHITE" textFill="WHITE">
                             <font>
                                 <Font name="Sitka Text" size="53.0" />
                             </font>
@@ -39,14 +39,14 @@
                   </JFXButton>
                     </children>
                 </AnchorPane>
-                <Label layoutX="544.0" layoutY="19.0" prefHeight="66.0" prefWidth="230.0" text="AIL  HUB" textFill="#717100">
+                <Label layoutX="544.0" layoutY="19.0" prefHeight="66.0" prefWidth="230.0" text="PEPER" textFill="#717100">
                     <font>
                         <Font name="Sitka Text" size="53.0" />
                     </font>
                 </Label>
                 <TextField fx:id="txtUserId" layoutX="564.0" layoutY="183.0" prefHeight="26.0" prefWidth="218.0" promptText="Username" />
                 <TextField fx:id="txtemail" layoutX="564.0" layoutY="264.0" prefHeight="26.0" prefWidth="218.0" promptText="e-mail" />
-                <JFXButton fx:id="registerbtn" buttonType="RAISED" layoutX="564.0" layoutY="457.0" onAction="#btnRegisterOnAction" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: d4af37;" text="Register" textFill="WHITE">
+                <JFXButton fx:id="registerbtn" buttonType="RAISED" layoutX="564.0" layoutY="457.0" onAction="#btnRegisterOnAction" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #ffa000;" text="Register" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>

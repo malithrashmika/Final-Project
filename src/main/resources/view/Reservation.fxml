@@ -103,11 +103,6 @@
                     <URL value="@../icons/fullpackstyling.css" />
                 </stylesheets>
             </JFXButton>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="618.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
-                </image>
-            </ImageView>
    <ComboBox fx:id="Starttime" layoutX="57.0" layoutY="374.0" onAction="#cmbstartTimeOnAction" prefHeight="26.0" prefWidth="95.0" promptText="StartTime" style="-fx-border-radius: 0.5em; -fx-border-color: #393E46; -fx-background-radius: 0.5em;" />
    <ComboBox fx:id="EndTime" layoutX="197.0" layoutY="374.0" onAction="#cmbEndTimeOnAction" prefHeight="26.0" prefWidth="95.0" promptText="EndTime" style="-fx-border-radius: 0.5em; -fx-border-color: #393E46; -fx-background-radius: 0.5em;" />
          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="155.0" layoutY="374.0" prefHeight="26.0" prefWidth="40.0" text="To" textFill="#1f4172">
@@ -115,25 +110,7 @@
                <Font name="Cambria Bold" size="18.0" />
             </font>
          </Label>
-            <HBox layoutX="562.0" layoutY="260.0">
-                <children>
-                    <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
-                        <font>
-                            <Font name="Sitka Text" size="29.0" />
-                        </font>
-                    </Label>
-                    <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
-                        <font>
-                            <Font name="Sitka Text" size="29.0" />
-                        </font>
-                    </Label>
-                </children>
-            </HBox>
-            <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="777.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
-                </image>
-            </ImageView>
+            <HBox layoutX="562.0" layoutY="260.0" />
           <ImageView layoutX="794.0" layoutY="47.0">
               <image>
                   <Image url="@../../../../../../../resorces/icons8-search-30.png" />
@@ -158,5 +135,24 @@
       <font>
          <Font name="Gadugi Bold" size="12.0" />
       </font></TextField>
+   <HBox layoutX="581.0" layoutY="289.0">
+      <children>
+         <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
+            <font>
+               <Font name="Sitka Text" size="29.0" />
+            </font>
+         </Label>
+         <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
+            <font>
+               <Font name="Sitka Text" size="29.0" />
+            </font>
+         </Label>
+      </children>
+   </HBox>
+   <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="581.0" layoutY="92.0">
+      <image>
+         <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
+      </image>
+   </ImageView>
 
 </AnchorPane>
