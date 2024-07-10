@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.Ijse.db.DbConnection;
+import lk.Ijse.db.DBConnection;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -52,10 +52,10 @@ public class registerformController {
     private boolean saveUser(String userId, String email, String password) throws SQLException {
         String sql = "INSERT INTO users VALUES(?, ?, ?)";
 
-       /* DbConnection dbConnection = DbConnection.getInstance();
+       /* DBConnection dbConnection = DBConnection.getInstance();
         Connection connection = dbConnection.getConnection();*/
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
 
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setObject(1, userId);

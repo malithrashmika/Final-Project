@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.Ijse.db.DbConnection;
+import lk.Ijse.db.DBConnection;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -63,23 +63,23 @@ public class  DashboardController{
         setTime();
         try {
             EmployeeCount = getEmployeeCount();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         try {
             OrderCount = getOrderCount();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
         try {
             UserCount = getUserCount();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         try {
             BookingCount = getBookingCount();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
         setBookingCount(BookingCount);
@@ -103,10 +103,10 @@ public class  DashboardController{
         lblOrderCount.setText(String.valueOf(UserCount));
 
     }
-    private int getOrderCount() throws SQLException {
+    private int getOrderCount() throws SQLException, ClassNotFoundException {
         String sql = "SELECT COUNT(*) AS Order_count FROM orders";
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 
@@ -122,10 +122,10 @@ public class  DashboardController{
 
     }
 
-    private int getUserCount() throws SQLException {
+    private int getUserCount() throws SQLException, ClassNotFoundException {
         String sql = "SELECT COUNT(*) AS User_count FROM users";
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 
@@ -139,10 +139,10 @@ public class  DashboardController{
         lblEmployeeCount.setText(String.valueOf(EmployeeCount));
     }
 
-    private int getEmployeeCount() throws SQLException {
+    private int getEmployeeCount() throws SQLException, ClassNotFoundException {
         String sql = "SELECT COUNT(*) AS Employee_count FROM employee";
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 
@@ -157,10 +157,10 @@ public class  DashboardController{
         lblbookCount.setText(String.valueOf(BookingCount));
     }
 
-    private int getBookingCount() throws SQLException {
+    private int getBookingCount() throws SQLException, ClassNotFoundException {
         String sql = "SELECT COUNT(*) AS Booking_count FROM reservation";
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getDbConnection().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 

@@ -187,8 +187,8 @@ import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
 import lk.Ijse.db.ResturentItem;
 
-import lk.Ijse.model.Item;
-import lk.Ijse.model.tm.ItemTm;
+import lk.Ijse.model.ItemDTO;
+import lk.Ijse.tm.ItemTm;
 import lk.Ijse.repository.ItemRepo;
 
 import java.net.URL;
@@ -199,7 +199,7 @@ import java.util.ResourceBundle;
 public class itemController implements Initializable {
 
     @FXML
-    private TableView<Item> tableView;
+    private TableView<ItemDTO> tableView;
     @FXML
     private JFXComboBox<ResturentItem> ItemType;
    
@@ -253,8 +253,8 @@ public class itemController implements Initializable {
         ObservableList<ItemTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Item> itemList = ItemRepo.getAll();
-            for (Item item : itemList) {
+            List<ItemDTO> itemList = ItemRepo.getAll();
+            for (ItemDTO item : itemList) {
                 ItemTm itemTm = new ItemTm(
                         item.getCode(),
                         item.getName(),
@@ -298,7 +298,7 @@ public class itemController implements Initializable {
         double price = Double.parseDouble(txtItemPrice.getText());
         int qty = Integer.parseInt(txtItemQty.getText());
 
-        Item item = new Item(code, name, des, category, price, qty);
+        ItemDTO item = new ItemDTO(code, name, des, category, price, qty);
 
         try {
             boolean isUpdated = ItemRepo.update(item);
@@ -350,7 +350,7 @@ public class itemController implements Initializable {
         double price = Double.parseDouble(txtItemPrice.getText());
         int qty = Integer.parseInt(txtItemQty.getText());
 
-        Item item = new Item(code, name, des, category, price, qty);
+        ItemDTO item = new ItemDTO(code, name, des, category, price, qty);
 
         try {
             boolean isSaved = ItemRepo.save(item);
@@ -377,7 +377,7 @@ public class itemController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtsearchId.getText();
 
-        Item item = ItemRepo.searchByCode(id);
+        ItemDTO item = ItemRepo.searchByCode(id);
         if (item != null) {
             txtItemID.setText(item.getCode());
             txtItemName.setText(item.getName());
@@ -392,10 +392,10 @@ public class itemController implements Initializable {
     private void refreshTable() {
         try {
             // Reload data from the database or any other source
-            List<Item> itemList = ItemRepo.getAll();
+            List<ItemDTO> itemList = ItemRepo.getAll();
             ObservableList<ItemTm> obList = FXCollections.observableArrayList();
 
-            for (Item item : itemList) {
+            for (ItemDTO item : itemList) {
                 obList.add(new ItemTm(
                         item.getCode(),
                         item.getName(),

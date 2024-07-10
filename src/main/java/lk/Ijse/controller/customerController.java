@@ -15,16 +15,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
-import lk.Ijse.model.Customer;
-import lk.Ijse.model.tm.CustomerTm;
-import lk.Ijse.repository.CustomerRepo;
+import lk.Ijse.model.CustomerDTO;
+import lk.Ijse.tm.CustomerTm;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import static lk.Ijse.Util.Regex.setTextColor;
 
 public class customerController implements Initializable {
     @Override
@@ -37,8 +34,8 @@ public class customerController implements Initializable {
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Customer> customerList = CustomerRepo.getAll();
-            for (Customer customer : customerList) {
+            List<CustomerDTO> customerList = CustomerRepo.getAll();
+            for (CustomerDTO customer : customerList) {
                 CustomerTm tm = new CustomerTm(
                         customer.getId(),
                         customer.getName(),
@@ -103,7 +100,7 @@ public class customerController implements Initializable {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colTel.setCellValueFactory(new PropertyValueFactory<>("e_Tel"));
         colemail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
@@ -141,7 +138,7 @@ public class customerController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        Customer customer = new Customer(id, name, tel, email);
+        CustomerDTO customer = new CustomerDTO(id, name, tel, email);
 
         try {
             boolean isSaved = CustomerRepo.save(customer);
@@ -165,7 +162,7 @@ public class customerController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        Customer customer = new Customer(id, name, tel,email);
+        CustomerDTO customer = new CustomerDTO(id, name, tel,email);
 
         try {
             boolean isUpdated = CustomerRepo.update(customer);
@@ -186,7 +183,7 @@ public class customerController implements Initializable {
     void btnSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtsearchId.getText();
 
-        Customer customer = CustomerRepo.searchById(id);
+        CustomerDTO customer = CustomerRepo.searchById(id);
         if (customer != null) {
             txtId.setText(customer.getId());
             txtName.setText(customer.getName());

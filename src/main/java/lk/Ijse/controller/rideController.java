@@ -8,8 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.API.api;
-import lk.Ijse.model.Customer;
-import lk.Ijse.repository.CustomerRepo;
+import lk.Ijse.model.CustomerDTO;
 
 import java.sql.SQLException;
 
@@ -52,7 +51,7 @@ public class rideController {
         String cusTel = txtcusContact.getText();
 
         try {
-            Customer customer = CustomerRepo.searchByContact(cusTel);
+            CustomerDTO customer = CustomerRepo.searchByContact(cusTel);
 
             lblcustomerName.setText(customer.getName());
 

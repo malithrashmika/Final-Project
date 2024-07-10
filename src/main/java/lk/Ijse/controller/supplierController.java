@@ -13,13 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
-import lk.Ijse.model.Customer;
-import lk.Ijse.model.Supplier;
-import lk.Ijse.model.tm.SupplierTm;
-import lk.Ijse.repository.CustomerRepo;
+import lk.Ijse.model.SupplierDTO;
+import lk.Ijse.tm.SupplierTm;
 import lk.Ijse.repository.SupplierRepo;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,13 +32,13 @@ public class supplierController implements Initializable {
         ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Supplier> supplierList = SupplierRepo.getAll();
-            for (Supplier supplier : supplierList) {
+            List<SupplierDTO> supplierDTOList = SupplierRepo.getAll();
+            for (SupplierDTO supplierDTO : supplierDTOList) {
                 SupplierTm tm = new SupplierTm(
-                        supplier.getSupplierId(),
-                        supplier.getSupplierName(),
-                        supplier.getContactNumber(),
-                        supplier.getContactEmail()
+                        supplierDTO.getSupplierId(),
+                        supplierDTO.getSupplierName(),
+                        supplierDTO.getContactNumber(),
+                        supplierDTO.getContactEmail()
                 );
 
                 obList.add(tm);
@@ -89,7 +86,7 @@ public class supplierController implements Initializable {
     private void setCellValueFactory() {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colTel.setCellValueFactory(new PropertyValueFactory<>("e_Tel"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
@@ -126,10 +123,10 @@ public class supplierController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        Supplier supplier = new Supplier(id, name, tel, email);
+        SupplierDTO supplierDTO = new SupplierDTO(id, name, tel, email);
 
         try {
-            boolean isSaved = SupplierRepo.save(supplier);
+            boolean isSaved = SupplierRepo.save(supplierDTO);
             if (isValid()) {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Supplier saved!").show();
@@ -149,9 +146,9 @@ public class supplierController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        Supplier supplier = new Supplier(id, name, tel, email);
+        SupplierDTO supplierDTO = new SupplierDTO(id, name, tel, email);
         try {
-            boolean isSaved = SupplierRepo.update(supplier);
+            boolean isSaved = SupplierRepo.update(supplierDTO);
             if (isValid()) {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated!").show();
@@ -168,12 +165,12 @@ public class supplierController implements Initializable {
     void txtSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtSearchId.getText();
 
-        Supplier supplier = SupplierRepo.searchById(id);
-        if (supplier != null) {
-            txtID.setText(supplier.getSupplierId());
-            txtName.setText(supplier.getSupplierName());
-            txtTel.setText(supplier.getContactNumber());
-            txtemail.setText(supplier.getContactEmail());
+        SupplierDTO supplierDTO = SupplierRepo.searchById(id);
+        if (supplierDTO != null) {
+            txtID.setText(supplierDTO.getSupplierId());
+            txtName.setText(supplierDTO.getSupplierName());
+            txtTel.setText(supplierDTO.getContactNumber());
+            txtemail.setText(supplierDTO.getContactEmail());
         } else {
             new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
         }

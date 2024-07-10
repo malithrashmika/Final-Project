@@ -15,12 +15,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import lk.Ijse.db.DbConnection;
+import lk.Ijse.db.DBConnection;
 import lk.Ijse.db.TableType;
 import lk.Ijse.model.*;
-import lk.Ijse.model.tm.CartTm;
-import lk.Ijse.model.tm.CustomerTm;
-import lk.Ijse.model.tm.OrderTm;
+import lk.Ijse.tm.CartTm;
+import lk.Ijse.tm.OrderTm;
 import lk.Ijse.repository.*;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -30,9 +29,6 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -368,7 +364,7 @@ public class orderFormController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException {
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException, JRException, ClassNotFoundException {
         String orderId = lblOrderID.getText();
         String cusId = customer_id;
         Date date = Date.valueOf(LocalDate.now());
@@ -377,13 +373,13 @@ public class orderFormController implements Initializable {
         String empId =cmbwaiterID.getSelectionModel().getSelectedItem();
         double netTotal = Double.parseDouble(lblNetTotal.getText());
 
-        Order order = new Order(orderId, cusId, date,time, table, empId,netTotal );
+        OrderDTO orderDTO = new OrderDTO(orderId, cusId, date,time, table, empId,netTotal );
 
-        List<order_item> odList = new ArrayList<>();
+        List<order_itemDTO> odList = new ArrayList<>();
         for (int i = 0; i < tblCart.getItems().size(); i++) {
             CartTm tm = cartList.get(i);
 
-            order_item od = new order_item(
+            order_itemDTO od = new order_itemDTO(
                     tm.getCode(),
                     orderId,
                     tm.getQty(),
@@ -394,7 +390,7 @@ public class orderFormController implements Initializable {
         }
 
 
-        PlaceOrder po = new PlaceOrder(order, odList);
+        PlaceOrderDTO po = new PlaceOrderDTO(orderDTO, odList);
         boolean isPlaced = PlaceOrderRepo.placeOrder(po);
         if(isPlaced) {
             new Alert(Alert.AlertType.CONFIRMATION, "order placed!").show();
@@ -434,14 +430,14 @@ public class orderFormController implements Initializable {
     void cmbEmployeeOnAction(ActionEvent event) throws SQLException {
         String id = cmbwaiterID.getValue();
         // Lookup employee by ID and update UI
-        Employee employee = EmployeeRepo.searchById(id);
+        EmployeeDTO employee = EmployeeRepo.searchById(id);
     }
 
     @FXML
     void cmbItemOnAction(ActionEvent event) {
         String code = cmbItemID.getValue();
         try {
-            Item item = ItemRepo.searchByCode(code);
+            ItemDTO item = ItemRepo.searchByCode(code);
             if (item != null) {
                 lblItemName.setText(item.getDescription());
                 LblUnitPrice.setText(String.valueOf(item.getPrice()));
@@ -491,7 +487,7 @@ public class orderFormController implements Initializable {
         String cusTel = txtcusContact.getText();
 
         try {
-            Customer customer = CustomerRepo.searchByContact(cusTel);
+            CustomerDTO customer = CustomerRepo.searchByContact(cusTel);
 
             lblcustomerName.setText(customer.getName());
             customer_id=customer.getId();
@@ -523,14 +519,14 @@ public class orderFormController implements Initializable {
 //            Map<String, Object> parameters = new HashMap<>();
 //            parameters.put("orderId", orderId);
 //
-//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DbConnection.getInstance().getConnection());
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, DBConnection.getInstance().getConnection());
 //            JasperViewer.viewReport(jasperPrint, false);
 //        } catch (JRException | SQLException e) {
 //            throw new RuntimeException(e);
 //        }
     }
     @FXML
-    void btnPrintBillOnAction(ActionEvent event) throws  SQLException, JRException {
+    void btnPrintBillOnAction(ActionEvent event) throws SQLException, JRException, ClassNotFoundException {
         JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/Reports/CocktailBill.jrxml");
         JRDesignQuery jrDesignQuery = new JRDesignQuery();
         jrDesignQuery.setText("SELECT \n" +
@@ -569,7 +565,7 @@ public class orderFormController implements Initializable {
 
 
         JasperPrint jasperPrint =
-                JasperFillManager.fillReport(jasperReport, null,DbConnection.getInstance().getConnection());
+                JasperFillManager.fillReport(jasperReport, null, DBConnection.getDbConnection().getConnection());
         JasperViewer.viewReport(jasperPrint,false);
     }
    private void loadAllOrders() {
@@ -578,19 +574,19 @@ public class orderFormController implements Initializable {
        ObservableList<OrderTm> obList = FXCollections.observableArrayList();
 
        try {
-           List<OrderDetails> orderDetailsList = PlaceOrderRepo.getordersAll();
-           for (OrderDetails orderDetails : orderDetailsList) {
+           List<OrderDetailsDTO> orderDetailsDTOList = PlaceOrderRepo.getordersAll();
+           for (OrderDetailsDTO orderDetailsDTO : orderDetailsDTOList) {
                OrderTm tm = new OrderTm(
-                       orderDetails.getOrderId(),
-                       orderDetails.getOrderDate(),
-                       orderDetails.getOrderTime(),
-                       orderDetails.getTableType(),
-                       orderDetails.getWaiter(),
-                       orderDetails.getCustomerID(),
-                       orderDetails.getItemId(),
-                       orderDetails.getOrderPrice(),
-                       orderDetails.getQuantity(),
-                       orderDetails.getNetTotal()
+                       orderDetailsDTO.getOrderId(),
+                       orderDetailsDTO.getOrderDate(),
+                       orderDetailsDTO.getOrderTime(),
+                       orderDetailsDTO.getTableType(),
+                       orderDetailsDTO.getWaiter(),
+                       orderDetailsDTO.getCustomerID(),
+                       orderDetailsDTO.getItemId(),
+                       orderDetailsDTO.getOrderPrice(),
+                       orderDetailsDTO.getQuantity(),
+                       orderDetailsDTO.getNetTotal()
 
                );
 

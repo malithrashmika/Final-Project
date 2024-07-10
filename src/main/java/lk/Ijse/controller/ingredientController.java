@@ -9,8 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.db.IngredientCategory;
-import lk.Ijse.model.Ingredient;
-import lk.Ijse.model.tm.IngredientTm;
+import lk.Ijse.model.IngredientDTO;
+import lk.Ijse.tm.IngredientTm;
 import lk.Ijse.repository.IngredientsRepo;
 import lk.Ijse.repository.SupplierRepo;
 
@@ -33,15 +33,15 @@ public class ingredientController implements Initializable {
         ObservableList<IngredientTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Ingredient> ingredientList = IngredientsRepo.getAll();
-            for (Ingredient ingredient : ingredientList) {
+            List<IngredientDTO> ingredientDTOList = IngredientsRepo.getAll();
+            for (IngredientDTO ingredientDTO : ingredientDTOList) {
                 IngredientTm ingredientTm = new IngredientTm(
-                        ingredient.getIngredient_id(),
-                        ingredient.getIngredient_name(),
-                        ingredient.getCategory(),
-                        ingredient.getQty_avalible(),
-                        ingredient.getUnit_price(),
-                        ingredient.getSupplier_id()
+                        ingredientDTO.getIngredient_id(),
+                        ingredientDTO.getIngredient_name(),
+                        ingredientDTO.getCategory(),
+                        ingredientDTO.getQty_avalible(),
+                        ingredientDTO.getUnit_price(),
+                        ingredientDTO.getSupplier_id()
                 );
 
                 obList.add(ingredientTm);
@@ -154,10 +154,10 @@ public class ingredientController implements Initializable {
         double price = Double.parseDouble(txtInUnitPrice.getText());
         String supplier= cmbISupplier.getSelectionModel().getSelectedItem();
 
-        Ingredient ingredient = new Ingredient(id, name, category,qty,price,supplier);
+        IngredientDTO ingredientDTO = new IngredientDTO(id, name, category,qty,price,supplier);
 
         try {
-            boolean isSaved = IngredientsRepo.save(ingredient);
+            boolean isSaved = IngredientsRepo.save(ingredientDTO);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item saved!").show();
                 clearFields();
@@ -178,10 +178,10 @@ public class ingredientController implements Initializable {
         double price = Double.parseDouble(txtInUnitPrice.getText());
         String supplier= cmbISupplier.getSelectionModel().getSelectedItem();
 
-        Ingredient ingredient = new Ingredient(id, name, category,qty,price,supplier);
+        IngredientDTO ingredientDTO = new IngredientDTO(id, name, category,qty,price,supplier);
 
         try {
-            boolean isUpdated = IngredientsRepo.update(ingredient);
+            boolean isUpdated = IngredientsRepo.update(ingredientDTO);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Ingredient updated!").show();
                 clearFields();
@@ -228,14 +228,14 @@ public class ingredientController implements Initializable {
     void btnSearchOnAction(ActionEvent event) throws SQLException {
         String id = txtsearchId.getText();
 
-        Ingredient ingredient = IngredientsRepo.searchById(id);
-        if (ingredient != null) {
-            txtInid.setText(ingredient.getIngredient_id());
-            txtInName.setText(ingredient.getIngredient_name());
-            cmbInCategory.getSelectionModel().select(IngredientCategory.valueOf(ingredient.getCategory()));
-            txtInQty_avalible.setText(String.valueOf(ingredient.getQty_avalible()));
-            txtInUnitPrice.setText(String.valueOf(ingredient.getUnit_price()));
-            cmbISupplier.getSelectionModel().select(ingredient.getSupplier_id());
+        IngredientDTO ingredientDTO = IngredientsRepo.searchById(id);
+        if (ingredientDTO != null) {
+            txtInid.setText(ingredientDTO.getIngredient_id());
+            txtInName.setText(ingredientDTO.getIngredient_name());
+            cmbInCategory.getSelectionModel().select(IngredientCategory.valueOf(ingredientDTO.getCategory()));
+            txtInQty_avalible.setText(String.valueOf(ingredientDTO.getQty_avalible()));
+            txtInUnitPrice.setText(String.valueOf(ingredientDTO.getUnit_price()));
+            cmbISupplier.getSelectionModel().select(ingredientDTO.getSupplier_id());
         } else {
             new Alert(Alert.AlertType.INFORMATION, "Ingredient not found!").show();
         }

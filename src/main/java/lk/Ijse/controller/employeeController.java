@@ -62,7 +62,7 @@ public class employeeController implements Initializable {
     private void setCellValueFactory() {
         colempId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colempName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colempTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colempTel.setCellValueFactory(new PropertyValueFactory<>("e_Tel"));
         colempRole.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
@@ -86,10 +86,10 @@ public class employeeController implements Initializable {
     void btnSaveOnAction(ActionEvent event) {
        /* String id =txtempID.getText();
         String name = txtname.getText();
-        String tel = txtTel.getText();
+        String e_Tel = txtTel.getText();
         String Role = String.valueOf(cmbempRole.getValue());
 
-        employee employee = new employee(id, name, tel, Role);
+        employee employee = new employee(id, name, e_Tel, Role);
 
         try {
             boolean isSaved = EmployeeRepo.save(employee);
@@ -114,14 +114,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
+import lk.Ijse.bo.custom.impl.EmployeeBOImpl;
+import lk.Ijse.dao.custom.impl.EmployeeDAOImpl;
 import lk.Ijse.db.EmployeeRoles;
-import lk.Ijse.model.Customer;
-import lk.Ijse.model.Employee;
-import lk.Ijse.model.tm.EmployeeTm;
-import lk.Ijse.repository.CustomerRepo;
-import lk.Ijse.repository.EmployeeRepo;
+import lk.Ijse.model.EmployeeDTO;
+import lk.Ijse.tm.EmployeeTm;
 
-import java.awt.event.KeyEvent;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -156,7 +155,7 @@ public class employeeController implements Initializable {
         private AnchorPane root;
 
         @FXML
-        private TableView<EmployeeRepo> tblemployee;
+        private TableView<EmployeeBOImpl> tblemployee;
 
         @FXML
         private TextField txtId;
@@ -173,14 +172,14 @@ public class employeeController implements Initializable {
     private TextField txtSalary;
 
 
-    ObservableList<EmployeeRepo> obList = FXCollections.observableArrayList();
+    ObservableList<EmployeeDAOImpl> obList = FXCollections.observableArrayList();
 
 
     private void loadAllEmployees() {
 
         try {
-            List<Employee> employeeList = EmployeeRepo.getAll();
-            for (Employee employee : employeeList) {
+            List<EmployeeDTO> employeeList = EmployeeBOImpl.getAllEmployee();
+            for (EmployeeDTO employee : employeeList) {
                 EmployeeTm emptm = new EmployeeTm(
                         employee.getId(),
                         employee.getName(),
@@ -251,7 +250,7 @@ public class employeeController implements Initializable {
             String salary = txtSalary.getText();
             String Role =cmbEmpRole.getSelectionModel().getSelectedItem().toString();
 
-            Employee employee = new Employee(id, name, tel,salary, Role);
+            EmployeeDTO employee = new EmployeeDTO(id, name, tel,salary, Role);
 
             try {
                 if (isValid()) {
@@ -279,7 +278,7 @@ public class employeeController implements Initializable {
             String salary = txtSalary.getText();
             String Role= cmbEmpRole.getSelectionModel().getSelectedItem().toString();
 
-            Employee employee = new Employee(id, name, tel, salary, Role);
+            EmployeeDTO employee = new EmployeeDTO(id, name, tel, salary, Role);
 
             try {
                 boolean isUpdated = EmployeeRepo.update(employee);
@@ -298,7 +297,7 @@ public class employeeController implements Initializable {
         void txtSearchOnAction(ActionEvent event) throws SQLException {
             String id = txtsearchId.getText();
 
-            Employee employee = EmployeeRepo.searchById(id);
+            EmployeeDTO employee = EmployeeRepo.searchById(id);
             if (employee != null) {
                 txtId.setText(employee.getId());
                 txtName.setText(employee.getName());

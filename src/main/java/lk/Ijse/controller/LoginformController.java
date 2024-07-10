@@ -11,12 +11,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.Ijse.Util.Regex;
-import lk.Ijse.Util.TextFieldRegex;
-import lk.Ijse.db.DbConnection;
+import lk.Ijse.db.DBConnection;
 
 
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -56,7 +53,7 @@ public class LoginformController {
     private void checkCredential(String userId, String pw) throws SQLException, IOException {
         String sql = "SELECT user_id, password FROM users WHERE user_id = ?";
 
-        Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setObject(1, userId);
 
