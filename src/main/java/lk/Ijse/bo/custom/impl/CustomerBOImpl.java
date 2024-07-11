@@ -8,7 +8,7 @@ import lk.Ijse.model.CustomerDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class CustomerBOImpl implements CustomerBO {
+public class CustomerBOImpl implements CustomerBO{
     @Override
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
         CustomerDAO customerDAO = new CustomerDAOImpl();
@@ -40,8 +40,9 @@ public class CustomerBOImpl implements CustomerBO {
     }
 
     @Override
-    public String generateNewCustomerID() throws SQLException, ClassNotFoundException {
+    public CustomerDTO searchcustomer(String id) throws SQLException, ClassNotFoundException {
         CustomerDAO customerDAO = new CustomerDAOImpl();
-        return customerDAO.generateNewID();
+        return customerDAO.search(id);
     }
+
 }

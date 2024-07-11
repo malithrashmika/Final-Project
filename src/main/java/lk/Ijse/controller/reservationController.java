@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class reservationController implements Initializable {
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();

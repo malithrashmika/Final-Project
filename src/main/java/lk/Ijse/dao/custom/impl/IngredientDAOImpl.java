@@ -3,8 +3,6 @@ package lk.Ijse.dao.custom.impl;
 import lk.Ijse.dao.SQLUtil;
 import lk.Ijse.dao.custom.IngredientDAO;
 import lk.Ijse.model.IngredientDTO;
-import lk.Ijse.model.ItemDTO;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -58,6 +56,6 @@ public class IngredientDAOImpl implements IngredientDAO {
     public IngredientDTO search(String id) throws SQLException, ClassNotFoundException {
         ResultSet rst = SQLUtil.execute("SELECT * FROM ingredient WHERE ingredient_id=?", id + "");
         rst.next();
-        return new IngredientDTO(id + "", rst.getString("name"), rst.getString("category"), rst.getString("qty_available"), rst.getDouble("price"), rst.getInt("Qty_On_Hand"));
+        return new IngredientDTO(id + "", rst.getString("name"), rst.getString("category"), rst.getInt("qty_available"), rst.getDouble("unit_price"), rst.getString("supplier_id"));
     }
 }

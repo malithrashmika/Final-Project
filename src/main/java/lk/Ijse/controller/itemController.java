@@ -179,17 +179,20 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.scene.input.KeyEvent;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
+import lk.Ijse.bo.BOFactory;
+import lk.Ijse.bo.custom.CustomerBO;
+import lk.Ijse.bo.custom.ItemBO;
 import lk.Ijse.db.ResturentItem;
-
 import lk.Ijse.model.ItemDTO;
 import lk.Ijse.tm.ItemTm;
-import lk.Ijse.repository.ItemRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -197,12 +200,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class itemController implements Initializable {
+    ItemBO itemBO  = (ItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.ITEM);
 
     @FXML
     private TableView<ItemDTO> tableView;
     @FXML
     private JFXComboBox<ResturentItem> ItemType;
-   
+
     @FXML
     private TableColumn<?, ?> colItemDes;
 
@@ -241,6 +245,7 @@ public class itemController implements Initializable {
 
     @FXML
     private TextField txtsearchId;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
@@ -253,7 +258,7 @@ public class itemController implements Initializable {
         ObservableList<ItemTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<ItemDTO> itemList = ItemRepo.getAll();
+            List<ItemDTO> itemList =itemBO.getAllItems();
             for (ItemDTO item : itemList) {
                 ItemTm itemTm = new ItemTm(
                         item.getCode(),
@@ -274,6 +279,8 @@ public class itemController implements Initializable {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -288,25 +295,24 @@ public class itemController implements Initializable {
     }
 
 
-
     @FXML
     void UpdateOnAction(ActionEvent event) {
-        String code =txtItemID.getText();
+        String code = txtItemID.getText();
         String name = txtItemName.getText();
         String des = txtItemDes.getText();
-        String category =ItemType.getSelectionModel().getSelectedItem().toString();
+        String category = ItemType.getSelectionModel().getSelectedItem().toString();
         double price = Double.parseDouble(txtItemPrice.getText());
         int qty = Integer.parseInt(txtItemQty.getText());
 
         ItemDTO item = new ItemDTO(code, name, des, category, price, qty);
 
         try {
-            boolean isUpdated = ItemRepo.update(item);
-            if(isUpdated) {
+            boolean isUpdated = itemBO.updateItem(item);
+            if (isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item updated!").show();
                 refreshTable();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -329,13 +335,13 @@ public class itemController implements Initializable {
         String id = txtItemID.getText();
 
         try {
-            boolean isDeleted = ItemRepo.delete(id);
-            if(isDeleted) {
+            boolean isDeleted =itemBO.deleteItem(id);
+            if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item deleted!").show();
                 refreshTable();
                 clearFields();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
@@ -343,23 +349,23 @@ public class itemController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        String code =txtItemID.getText();
+        String code = txtItemID.getText();
         String name = txtItemName.getText();
         String des = txtItemDes.getText();
-        String category =ItemType.getSelectionModel().getSelectedItem().toString();
+        String category = ItemType.getSelectionModel().getSelectedItem().toString();
         double price = Double.parseDouble(txtItemPrice.getText());
         int qty = Integer.parseInt(txtItemQty.getText());
 
         ItemDTO item = new ItemDTO(code, name, des, category, price, qty);
 
         try {
-            boolean isSaved = ItemRepo.save(item);
+            boolean isSaved =itemBO.saveItem(item);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item saved!").show();
                 clearFields();
                 refreshTable();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -374,10 +380,10 @@ public class itemController implements Initializable {
     }
 
     @FXML
-    void txtSearchOnAction(ActionEvent event) throws SQLException {
+    void txtSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtsearchId.getText();
 
-        ItemDTO item = ItemRepo.searchByCode(id);
+        ItemDTO item = itemBO.search(id);
         if (item != null) {
             txtItemID.setText(item.getCode());
             txtItemName.setText(item.getName());
@@ -389,10 +395,11 @@ public class itemController implements Initializable {
             new Alert(Alert.AlertType.INFORMATION, "ITEM not found!").show();
         }
     }
+
     private void refreshTable() {
         try {
             // Reload data from the database or any other source
-            List<ItemDTO> itemList = ItemRepo.getAll();
+            List<ItemDTO> itemList =itemBO.getAllItems();
             ObservableList<ItemTm> obList = FXCollections.observableArrayList();
 
             for (ItemDTO item : itemList) {
@@ -409,25 +416,25 @@ public class itemController implements Initializable {
             // Clear and set new items to the TableView
             tblItem.getItems().clear();
             tblItem.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
 
     public void txtIDOnKeyReleased(KeyEvent keyEvent) {
-        Regex.setTextColor(TextFieldRegex.ID,txtItemID);
+        Regex.setTextColor(TextFieldRegex.ID, txtItemID);
     }
 
     public void txtNameOnKeyReleased(KeyEvent keyEvent) {
     }
 
     public void UnitPriceOnKeyReleased(KeyEvent keyEvent) {
-        Regex.setTextColor(TextFieldRegex.PRICE,txtItemPrice);
+        Regex.setTextColor(TextFieldRegex.PRICE, txtItemPrice);
     }
 
     public void txtQtyOnKeyReleased(KeyEvent keyEvent) {
-        Regex.setTextColor(TextFieldRegex.QTY,txtItemQty);
+        Regex.setTextColor(TextFieldRegex.QTY, txtItemQty);
     }
 }
 

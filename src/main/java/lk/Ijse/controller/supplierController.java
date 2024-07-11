@@ -13,9 +13,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
+import lk.Ijse.bo.BOFactory;
+import lk.Ijse.bo.custom.SupplierBO;
 import lk.Ijse.model.SupplierDTO;
 import lk.Ijse.tm.SupplierTm;
-import lk.Ijse.repository.SupplierRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class supplierController implements Initializable {
+    SupplierBO supplierBO= (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUP);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
@@ -32,7 +34,7 @@ public class supplierController implements Initializable {
         ObservableList<SupplierTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<SupplierDTO> supplierDTOList = SupplierRepo.getAll();
+            List<SupplierDTO> supplierDTOList = supplierBO.getAllSuppliers();
             for (SupplierDTO supplierDTO : supplierDTOList) {
                 SupplierTm tm = new SupplierTm(
                         supplierDTO.getSupplierId(),
@@ -45,7 +47,7 @@ public class supplierController implements Initializable {
             }
 
             tblSupplier.setItems(obList);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -106,12 +108,12 @@ public class supplierController implements Initializable {
         String id = txtID.getText();
 
         try {
-            boolean isDeleted = SupplierRepo.delete(id);
+            boolean isDeleted = supplierBO.deleteSupplier(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier deleted!").show();
                 loadAllSupplier();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -126,7 +128,7 @@ public class supplierController implements Initializable {
         SupplierDTO supplierDTO = new SupplierDTO(id, name, tel, email);
 
         try {
-            boolean isSaved = SupplierRepo.save(supplierDTO);
+            boolean isSaved = supplierBO.addSupplier(supplierDTO);
             if (isValid()) {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Supplier saved!").show();
@@ -134,7 +136,7 @@ public class supplierController implements Initializable {
                     loadAllSupplier();
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -148,7 +150,7 @@ public class supplierController implements Initializable {
 
         SupplierDTO supplierDTO = new SupplierDTO(id, name, tel, email);
         try {
-            boolean isSaved = SupplierRepo.update(supplierDTO);
+            boolean isSaved = supplierBO.updateSupplier(supplierDTO);
             if (isValid()) {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Supplier updated!").show();
@@ -156,23 +158,23 @@ public class supplierController implements Initializable {
                     loadAllSupplier();
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    void txtSearchOnAction(ActionEvent event) throws SQLException {
+    void txtSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtSearchId.getText();
 
-        SupplierDTO supplierDTO = SupplierRepo.searchById(id);
+        SupplierDTO supplierDTO = supplierBO.search(id);
         if (supplierDTO != null) {
             txtID.setText(supplierDTO.getSupplierId());
             txtName.setText(supplierDTO.getSupplierName());
             txtTel.setText(supplierDTO.getContactNumber());
             txtemail.setText(supplierDTO.getContactEmail());
         } else {
-            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
+            new Alert(Alert.AlertType.INFORMATION, "Supplier not found!").show();
         }
     }
 

@@ -102,20 +102,30 @@
             <String fx:value="table-view" />
          </styleClass>
       </TableView>
-      <HBox layoutX="715.0" layoutY="264.0">
+      <HBox layoutX="618.0" layoutY="260.0">
          <children>
-            <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
+            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
                <font>
                   <Font name="Sitka Text" size="29.0" />
                </font>
             </Label>
-            <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
+            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
                <font>
                   <Font name="Sitka Text" size="29.0" />
                </font>
             </Label>
          </children>
       </HBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="684.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="833.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+         </image>
+      </ImageView>
       <TextField fx:id="txtsearchId" layoutX="608.0" layoutY="37.0" onAction="#btnSearchOnAction" prefHeight="39.0" prefWidth="350.0" promptText="Search CustomerID" style="-fx-border-color: #635666; -fx-background-radius: 1em; -fx-border-radius: 1em;">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -131,10 +141,5 @@
             <Font name="Georgia" size="23.0" />
          </font>
       </Label>
-      <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="715.0" layoutY="67.0">
-         <image>
-            <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

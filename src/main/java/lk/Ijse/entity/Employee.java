@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 
-public class Employee implements Serializable {
+public class Employee  {
     String id;
     String name;
     String Tel;

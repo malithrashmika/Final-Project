@@ -10,7 +10,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Cart implements Serializable {
+public class Cart  {
      String code;
      String description;
      double unitPrice;

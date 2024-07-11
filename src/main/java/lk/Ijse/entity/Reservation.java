@@ -11,7 +11,7 @@ import java.sql.Time;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Reservation implements Serializable {
+public class Reservation  {
     String reservationId;
     Date date_of_reservation;
     Date reserved_date;

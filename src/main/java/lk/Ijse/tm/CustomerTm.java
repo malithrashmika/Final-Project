@@ -8,9 +8,14 @@ import lombok.*;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class CustomerTm {
+public class CustomerTm implements Comparable<CustomerTm> {
     private String id;
     private String name;
     private String tel;
     private String email;
+
+    @Override
+    public int compareTo(CustomerTm o) {
+        return id.compareTo(o.getId());
+    }
 }

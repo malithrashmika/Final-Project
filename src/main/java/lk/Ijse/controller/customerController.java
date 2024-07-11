@@ -15,15 +15,21 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.Ijse.Util.Regex;
 import lk.Ijse.Util.TextFieldRegex;
+import lk.Ijse.bo.BOFactory;
+import lk.Ijse.bo.custom.CustomerBO;
+import lk.Ijse.dao.custom.CustomerDAO;
 import lk.Ijse.model.CustomerDTO;
 import lk.Ijse.tm.CustomerTm;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class customerController implements Initializable {
+    CustomerBO customerBO  = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
@@ -32,23 +38,18 @@ public class customerController implements Initializable {
 
     private void loadAllCustomers() {
         ObservableList<CustomerTm> obList = FXCollections.observableArrayList();
-
+        tblCustomer.getItems().clear();
         try {
-            List<CustomerDTO> customerList = CustomerRepo.getAll();
-            for (CustomerDTO customer : customerList) {
-                CustomerTm tm = new CustomerTm(
-                        customer.getId(),
-                        customer.getName(),
-                        customer.getTel(),
-                        customer.getEmail()
-                );
+            /*Get all customers*/
+            ArrayList<CustomerDTO> allCustomers = customerBO.getAllCustomers();
 
-                obList.add(tm);
+            for (CustomerDTO c : allCustomers) {
+                tblCustomer.getItems().add(new CustomerTm(c.getId(), c.getName(), c.getTel(),c.getEmail()));
             }
-
-            tblCustomer.setItems(obList);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
@@ -117,17 +118,23 @@ public class customerController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String id = txtId.getText();
-
+        /*Delete Customer*/
+        String id = tblCustomer.getSelectionModel().getSelectedItem().getId();
         try {
-            boolean isDeleted = CustomerRepo.delete(id);
-            if(isDeleted) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer deleted!").show();
-                clearFields();
-                loadAllCustomers();
+            if (!existCustomer(id)) {
+                new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
             }
+
+            //Delete Customer
+            customerBO.deleteCustomer(id);
+
+            tblCustomer.getItems().remove(tblCustomer.getSelectionModel().getSelectedItem());
+            tblCustomer.getSelectionModel().clearSelection();
+
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Failed to delete the customer " + id).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -138,22 +145,47 @@ public class customerController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        CustomerDTO customer = new CustomerDTO(id, name, tel, email);
-
-        try {
-            boolean isSaved = CustomerRepo.save(customer);
-            if (isValid()){
-            if (isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "customer saved!").show();
-                clearFields();
-                loadAllCustomers();
-
-            }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (!name.matches("[A-Za-z ]+")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid name").show();
+            txtName.requestFocus();
+            return;
+        } else if (!tel.matches(".{3,}")) {
+            new Alert(Alert.AlertType.ERROR, "Address should be at least 3 characters long").show();
+            txtTel.requestFocus();
+            return;
         }
+
+
+            /*Save Customer*/
+            try {
+                if (existCustomer(id)) {
+                    new Alert(Alert.AlertType.ERROR, id + " already exists").show();
+                }
+
+                //Add Customer
+                customerBO.addCustomer(new CustomerDTO(id, name, tel, email));
+
+                tblCustomer.getItems().add(new CustomerTm(id, name, tel, email));
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+
+
+            CustomerTm selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+            selectedCustomer.setName(name);
+            selectedCustomer.setTel(tel);
+            tblCustomer.refresh();
+
+
     }
+    boolean existCustomer(String id) throws SQLException, ClassNotFoundException {
+        return customerBO.existCustomer(id);
+    }
+
 
     @FXML
     void btnUpdateOnaction(ActionEvent event) {
@@ -162,36 +194,30 @@ public class customerController implements Initializable {
         String tel = txtTel.getText();
         String email =txtemail.getText();
 
-        CustomerDTO customer = new CustomerDTO(id, name, tel,email);
-
         try {
-            boolean isUpdated = CustomerRepo.update(customer);
-            if (isValid()) {
-                if (isUpdated) {
-                    new Alert(Alert.AlertType.CONFIRMATION, "customer updated!").show();
-                    loadAllCustomers();
-                    clearFields();
-                }
-                new Alert(Alert.AlertType.ERROR, "Invalid Input").show();
+            if (!existCustomer(id)) {
+                new Alert(Alert.AlertType.ERROR, "There is no such customer associated with the id " + id).show();
             }
 
+            //Update Customer
+            customerBO.updateCustomer(new CustomerDTO(id, name, tel, email));
+
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            new Alert(Alert.AlertType.ERROR, "Failed to update the customer " + id + e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+
+        CustomerTm selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+        selectedCustomer.setName(name);
+        selectedCustomer.setTel(tel);
+        tblCustomer.refresh();
     }
     @FXML
-    void btnSearchOnAction(ActionEvent event) throws SQLException {
+    void btnSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtsearchId.getText();
 
-        CustomerDTO customer = CustomerRepo.searchById(id);
-        if (customer != null) {
-            txtId.setText(customer.getId());
-            txtName.setText(customer.getName());
-            txtTel.setText(customer.getTel());
-            txtemail.setText(customer.getEmail());
-        } else {
-            new Alert(Alert.AlertType.INFORMATION, "customer not found!").show();
-        }
+        customerBO.searchcustomer(id);
     }
     public boolean isValid(){
         if (!Regex.setTextColor(TextFieldRegex.ID,txtId)) return false;

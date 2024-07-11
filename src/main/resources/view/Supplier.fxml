@@ -105,6 +105,11 @@
             </ImageView>
         </graphic>
     </JFXButton>
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="766.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+        </image>
+    </ImageView>
     <TextField fx:id="txtID" alignment="CENTER" layoutX="136.0" layoutY="159.0" onKeyReleased="#txtIDOnKeyRelease" prefHeight="34.0" prefWidth="266.0" promptText="Supplier ID" style="-fx-background-radius: 1em; -fx-border-color: #8B7E74; -fx-border-radius: 1em;">
         <font>
             <Font name="Arial Bold" size="13.0" />
@@ -125,29 +130,28 @@
             <Font name="Arial Bold" size="13.0" />
         </font>
     </TextField>
-    <HBox layoutX="710.0" layoutY="224.0" />
+    <HBox layoutX="710.0" layoutY="224.0">
+        <children>
+            <Label prefHeight="34.0" prefWidth="95.0" text="COCKT" textFill="#ffc74e" translateY="-3.0">
+                <font>
+                    <Font name="Sitka Text" size="29.0" />
+                </font>
+            </Label>
+            <Label prefHeight="33.0" prefWidth="132.0" text="AIL  HUB" textFill="#717100" translateY="-3.0">
+                <font>
+                    <Font name="Sitka Text" size="29.0" />
+                </font>
+            </Label>
+        </children>
+    </HBox>
+    <ImageView fitHeight="51.0" fitWidth="47.0" layoutX="925.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../icons/—Pngtree—colorful%20cocktail%20martini%20glass_3570052.png" />
+        </image>
+    </ImageView>
    <Label alignment="CENTER" layoutX="101.0" layoutY="82.0" prefHeight="38.0" prefWidth="322.0" text="Supplier Form" textFill="#f2b600">
       <font>
          <Font name="Georgia" size="23.0" />
       </font>
    </Label>
-   <HBox layoutX="725.0" layoutY="274.0">
-      <children>
-         <Label prefHeight="34.0" prefWidth="113.0" text="WHITE" textFill="#ffc74e" translateY="-3.0">
-            <font>
-               <Font name="Sitka Text" size="29.0" />
-            </font>
-         </Label>
-         <Label prefHeight="33.0" prefWidth="132.0" text="PEPER" textFill="#717100" translateY="-3.0">
-            <font>
-               <Font name="Sitka Text" size="29.0" />
-            </font>
-         </Label>
-      </children>
-   </HBox>
-   <ImageView fitHeight="200.0" fitWidth="193.0" layoutX="725.0" layoutY="77.0">
-      <image>
-         <Image url="@../../../../../../resorces/612673f6089683dfd97f4ff33a1371aa.png" />
-      </image>
-   </ImageView>
 </AnchorPane>

@@ -1,14 +1,17 @@
 package lk.Ijse.bo.custom.impl;
 
+import lk.Ijse.bo.SuperBO;
 import lk.Ijse.bo.custom.ItemBO;
 import lk.Ijse.dao.custom.ItemDAO;
+import lk.Ijse.dao.custom.SupplierDAO;
 import lk.Ijse.dao.custom.impl.ItemDAOImpl;
+import lk.Ijse.dao.custom.impl.SupplierDAOImpl;
 import lk.Ijse.model.ItemDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ItemBOImpl implements ItemBO {
+public class ItemBOImpl implements ItemBO, SuperBO {
     @Override
     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException {
         ItemDAO itemDAO = new ItemDAOImpl();
@@ -43,5 +46,11 @@ public class ItemBOImpl implements ItemBO {
     public String generateNewCode() throws SQLException, ClassNotFoundException {
         ItemDAO itemDAO = new ItemDAOImpl();
         return itemDAO.generateNewID();
+    }
+
+    @Override
+    public ItemDTO search(String id) throws SQLException, ClassNotFoundException {
+        ItemDAO itemDAO= new ItemDAOImpl();
+        return itemDAO.search(id);
     }
 }

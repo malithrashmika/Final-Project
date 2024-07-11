@@ -1,9 +1,8 @@
 package lk.Ijse.bo.custom.impl;
 
 import lk.Ijse.bo.custom.EmployeeBO;
-import lk.Ijse.dao.custom.CustomerDAO;
 import lk.Ijse.dao.custom.EmployeeDAO;
-import lk.Ijse.dao.custom.impl.CustomerDAOImpl;
+;
 import lk.Ijse.dao.custom.impl.EmployeeDAOImpl;
 import lk.Ijse.model.EmployeeDTO;
 
@@ -40,10 +39,10 @@ public class EmployeeBOImpl implements EmployeeBO {
         EmployeeDAO employeeDAO = new EmployeeDAOImpl();
         return employeeDAO.delete(id);
     }
-
+    
     @Override
-    public String generateNewEmployeeID() throws SQLException, ClassNotFoundException {
-        CustomerDAO customerDAO = new CustomerDAOImpl();
-        return customerDAO.generateNewID();
+    public EmployeeDTO searchemployee(String id) throws SQLException, ClassNotFoundException {
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        return employeeDAO.search(id);
     }
 }

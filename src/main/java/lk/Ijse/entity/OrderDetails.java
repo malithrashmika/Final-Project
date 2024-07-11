@@ -10,7 +10,7 @@ import java.sql.Time;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OrderDetails implements Serializable {
+public class OrderDetails  {
     private String orderId;
     private Date orderDate;
     private Time orderTime;

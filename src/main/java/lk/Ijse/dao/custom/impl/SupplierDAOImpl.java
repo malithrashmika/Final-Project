@@ -7,6 +7,7 @@ import lk.Ijse.model.SupplierDTO;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SupplierDAOImpl implements SupplierDAO {
     @Override
@@ -59,5 +60,17 @@ public class SupplierDAOImpl implements SupplierDAO {
         ResultSet rst = SQLUtil.execute("SELECT * FROM Supplier WHERE id=?", id + "");
         rst.next();
         return new SupplierDTO(id + "", rst.getString("name"), rst.getString("contact"), rst.getString("email"));
+    }
+
+    @Override
+    public List<String> getIDS() throws SQLException, ClassNotFoundException {
+        List<String> idList = new ArrayList<>();
+
+        ResultSet resultSet = SQLUtil.execute("SELECT supplier_id FROM supplier");
+        while (resultSet.next()) {
+            String id = resultSet.getString(1);
+            idList.add(id);
+        }
+        return idList;
     }
 }

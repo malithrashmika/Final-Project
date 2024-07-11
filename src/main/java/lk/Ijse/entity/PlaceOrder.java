@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PlaceOrder implements Serializable {
+public class PlaceOrder  {
     private Order orderDTO;
     private List<order_item> odList;
 }

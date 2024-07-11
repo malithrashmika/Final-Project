@@ -11,7 +11,7 @@ import java.sql.Time;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Order implements Serializable {
+public class Order  {
     private String orderId;
     private String customerId;
     private Date orderDate;

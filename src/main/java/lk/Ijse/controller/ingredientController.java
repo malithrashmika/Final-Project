@@ -8,18 +8,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.Ijse.bo.BOFactory;
+import lk.Ijse.bo.custom.IngredientBO;
+import lk.Ijse.bo.custom.ItemBO;
+import lk.Ijse.bo.custom.SupplierBO;
 import lk.Ijse.db.IngredientCategory;
 import lk.Ijse.model.IngredientDTO;
+import lk.Ijse.model.SupplierDTO;
 import lk.Ijse.tm.IngredientTm;
-import lk.Ijse.repository.IngredientsRepo;
-import lk.Ijse.repository.SupplierRepo;
+
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ingredientController implements Initializable {
+    IngredientBO ingredientBO=(IngredientBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.IN);
+    SupplierBO supplierBO= (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUP);
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
@@ -33,7 +40,7 @@ public class ingredientController implements Initializable {
         ObservableList<IngredientTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<IngredientDTO> ingredientDTOList = IngredientsRepo.getAll();
+            List<IngredientDTO> ingredientDTOList = ingredientBO.getAll();
             for (IngredientDTO ingredientDTO : ingredientDTOList) {
                 IngredientTm ingredientTm = new IngredientTm(
                         ingredientDTO.getIngredient_id(),
@@ -56,7 +63,7 @@ public class ingredientController implements Initializable {
                 System.out.println(ingredientTm);
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -135,12 +142,12 @@ public class ingredientController implements Initializable {
         String id = txtInid.getText();
 
         try {
-            boolean isDeleted = IngredientsRepo.delete(id);
+            boolean isDeleted = ingredientBO.delete(id);
             if(isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item deleted!").show();
                 loadAllIngredients();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -157,14 +164,14 @@ public class ingredientController implements Initializable {
         IngredientDTO ingredientDTO = new IngredientDTO(id, name, category,qty,price,supplier);
 
         try {
-            boolean isSaved = IngredientsRepo.save(ingredientDTO);
+            boolean isSaved = ingredientBO.save(ingredientDTO);
             if (isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item saved!").show();
                 clearFields();
                 loadAllIngredients();
 
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -181,13 +188,13 @@ public class ingredientController implements Initializable {
         IngredientDTO ingredientDTO = new IngredientDTO(id, name, category,qty,price,supplier);
 
         try {
-            boolean isUpdated = IngredientsRepo.update(ingredientDTO);
+            boolean isUpdated = ingredientBO.update(ingredientDTO);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Ingredient updated!").show();
                 clearFields();
                 loadAllIngredients();
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
@@ -200,21 +207,14 @@ public class ingredientController implements Initializable {
 
     void setDataSuppiler(){
         try {
-            List<String> supplier = SupplierRepo.searchById();
+            List<String> supplier =supplierBO.getIds();
 
             ObservableList<String> observableList = FXCollections.observableArrayList();
 
-            for(String s:supplier){
-                System.out.println(s);
-            }
-
-            for(String s: supplier){
-                observableList.add(s);
-            }
 
             cmbISupplier.setItems(observableList);
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -225,10 +225,10 @@ public class ingredientController implements Initializable {
     }
 
     @FXML
-    void btnSearchOnAction(ActionEvent event) throws SQLException {
+    void btnSearchOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
         String id = txtsearchId.getText();
 
-        IngredientDTO ingredientDTO = IngredientsRepo.searchById(id);
+        IngredientDTO ingredientDTO = ingredientBO.search(id);
         if (ingredientDTO != null) {
             txtInid.setText(ingredientDTO.getIngredient_id());
             txtInName.setText(ingredientDTO.getIngredient_name());

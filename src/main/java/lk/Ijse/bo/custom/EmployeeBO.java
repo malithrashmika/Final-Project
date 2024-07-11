@@ -1,12 +1,12 @@
 package lk.Ijse.bo.custom;
 
-import lk.Ijse.model.CustomerDTO;
+import lk.Ijse.bo.SuperBO;
 import lk.Ijse.model.EmployeeDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface EmployeeBO {
+public interface EmployeeBO extends SuperBO {
     public ArrayList<EmployeeDTO> getAllEmployee() throws SQLException, ClassNotFoundException;
 
     public boolean addEmployee(EmployeeDTO dto) throws SQLException, ClassNotFoundException ;
@@ -17,5 +17,5 @@ public interface EmployeeBO {
 
     public boolean deleteEmployee(String id) throws SQLException, ClassNotFoundException;
 
-    public String generateNewEmployeeID() throws SQLException, ClassNotFoundException;
+    public EmployeeDTO searchemployee(String id) throws SQLException, ClassNotFoundException;
 }

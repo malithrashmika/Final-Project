@@ -1,8 +1,7 @@
 package lk.Ijse.dao;
 
 import lk.Ijse.bo.custom.impl.QueryDAOImpl;
-import lk.Ijse.dao.custom.impl.CustomerDAOImpl;
-import lk.Ijse.dao.custom.impl.ItemDAOImpl;
+import lk.Ijse.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -15,7 +14,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        CUSTOMER,ITEM,ORDER,ORDER_DETAILS,QUERY_DAO
+        CUSTOMER,ITEM,ORDER,Employee,ORDER_DETAILS,QUERY_DAO
     }
 
     public SuperDAO getDAO(DAOTypes types){
@@ -24,6 +23,8 @@ public class DAOFactory {
                 return new CustomerDAOImpl();
             case ITEM:
                 return new ItemDAOImpl();
+            case Employee:
+                return new EmployeeDAOImpl();
             case ORDER:
                 return new OrderDAOImpl();
             case ORDER_DETAILS:

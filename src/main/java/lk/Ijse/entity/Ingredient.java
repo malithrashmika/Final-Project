@@ -9,7 +9,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Ingredient implements Serializable {
+public class Ingredient  {
     String Ingredient_id;
     String Ingredient_name;
     String category;
